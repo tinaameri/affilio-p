@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_page_section_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "television",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "orange",
+        "green",
+        "white"
+      ]
+    }
+  }
+}

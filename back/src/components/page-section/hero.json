@@ -1,0 +1,52 @@
+{
+  "collectionName": "components_page_section_heroes",
+  "info": {
+    "displayName": "hero",
+    "icon": "crown",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "caption": {
+      "type": "string"
+    },
+    "title": {
+      "type": "richtext",
+      "maxLength": 200,
+      "required": true
+    },
+    "sub_title": {
+      "type": "richtext",
+      "maxLength": 900
+    },
+    "action": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-element.button"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "greenPattern",
+        "orangePattern",
+        "bluePattern",
+        "green",
+        "blue"
+      ],
+      "default": "green"
+    },
+    "words_animation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page-element.words-animation"
+    }
+  }
+}

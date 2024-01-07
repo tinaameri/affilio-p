@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_page_section_contactuses",
+  "info": {
+    "displayName": "ContactUs",
+    "icon": "envelop",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "richtext"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-element.button"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "green",
+        "white",
+        "blue"
+      ]
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_page_section_2col_with_images",
+  "info": {
+    "displayName": "cardSection",
+    "icon": "layout",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading_title": {
+      "type": "string"
+    },
+    "heading_description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page-element.button"
+    },
+    "reverse": {
+      "type": "boolean",
+      "default": false
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "orange",
+        "green",
+        "white",
+        "blue"
+      ],
+      "default": "white"
+    },
+    "content": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page-element.content"
+    }
+  }
+}

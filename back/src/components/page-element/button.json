@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_page_element_buttons",
+  "info": {
+    "displayName": "button",
+    "icon": "cursor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "newPage": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "primaryArrow",
+        "secondaryArrow",
+        "primary",
+        "secondary"
+      ]
+    }
+  }
+}

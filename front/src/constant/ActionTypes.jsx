@@ -1,0 +1,10 @@
+export const DEMO = "DEMO";
+export const SUCCESS = "SUCCESS";
+export const DEMOMODAL = "DEMOMODAL";
+export const CONTACTUS = "CONTACTUS";
+export const CONTACT = "CONTACT";
+export const GDPRMODAL = "GDPRMODAL";
+export const ESSENTIAL = "ESSENTIAL";
+export const ANALYTICAL = "ANALYTICAL";
+
+// export const BLOG = "BLOG";

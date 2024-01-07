@@ -1,0 +1,1 @@
+importScripts("https://static1.intrack.ir/api/web/download/sdk/v1/sw.js");

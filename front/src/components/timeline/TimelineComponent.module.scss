@@ -1,0 +1,67 @@
+.date {
+    position: relative;
+    pointer-events: none;
+    width: 162px;
+    padding-right: 0;
+    padding-left: 0;
+    &::before {
+        content:'';
+        position: absolute;
+        box-sizing: border-box;
+        top: 54px;
+        right: 48%;
+        left: auto;
+        bottom: -180px;
+        border-right: 0.125rem dashed #d0cdcd;
+        border-spacing: 8px;
+  
+           @media(max-width: 64em) {
+            bottom: -248px;
+        }
+    }
+}
+
+.itemBody {
+    margin-bottom: 70px;
+    @media(max-width:64em) {
+         font-size: 16px;   
+
+    } 
+    &:last-of-type {
+        .date {
+            &::before {
+
+                display: none;
+            }
+
+        }
+    }
+}
+
+
+
+.activeItem {
+    &::before {
+
+        border-right: 0.125rem dashed #3D8423
+    }
+}
+
+.deactiveImg {
+    filter:grayscale(100%);
+}
+
+
+
+.svg {
+
+    svg{
+        height:200px;
+        width:200px;
+    }
+
+}
+
+.fit {
+    object-fit:unset;
+}
