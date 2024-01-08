@@ -1,7 +1,7 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-import { ServerStyles, createStylesServer } from "@mantine/next";
-import rtlCache from "@/components/rtl-cache";
+import { ServerStyles, createStylesServer } from '@mantine/next';
+import rtlCache from '@/components/rtl-cache';
 
 const stylesServer = createStylesServer(rtlCache);
 export default class _Document extends Document {
@@ -16,8 +16,8 @@ export default class _Document extends Document {
           html={initialProps.html}
           server={stylesServer}
           key="styles"
-        />
-      ]
+        />,
+      ],
     };
   }
 
@@ -60,7 +60,7 @@ export default class _Document extends Document {
               src="https://www.googletagmanager.com/ns.html?id=GTM-WGXHJ68Z"
               height="0"
               width="0"
-              style={{ display: "none", visibility: "hidden" }}
+              style={{ display: 'none', visibility: 'hidden' }}
             ></iframe>
           </noscript>
           <Main />

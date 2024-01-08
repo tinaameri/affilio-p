@@ -1,10 +1,10 @@
-import React from "react";
-import DynamicPage from "@/components/sections/contactUs/DynamicPage";
-import { pages } from "public/assets/contentJson";
-import { getContactUs } from "@/api/query/staticPages";
-import { getConfig } from "@/api/query/shared";
+import React from 'react';
+import DynamicPage from '@/components/sections/contactUs/DynamicPage';
+import { pages } from 'public/assets/contentJson';
+import { getContactUs } from '@/api/query/staticPages';
+import { getConfig } from '@/api/query/shared';
 
-import { REVALIDATE_RATE } from "@/api/clinet";
+import { REVALIDATE_RATE } from '@/api/clinet';
 
 export default function contactUs({ contactUs, contactForm }) {
   return (

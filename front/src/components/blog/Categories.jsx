@@ -1,4 +1,4 @@
-import { Container, List, Button, Flex, Loader, Box } from '@mantine/core';
+import { Container, List, Flex, Loader, Box } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -10,8 +10,6 @@ export default function Categories({
   categoriesTab,
   currentCategory,
 }) {
-
-
   const allPosts = content.blog.categories;
   const uniqueCategories = new Set();
   const [categoryLoader, setcategoryLoader] = useState(false);
@@ -23,7 +21,7 @@ export default function Categories({
   };
   const largerLgScreen = useMediaQuery('(min-width: 75em)');
   return (
-    categories && (   
+    categories && (
       <Bounce>
         <Container size={largerLgScreen ? 'md' : 'xl'} display={categoriesTab}>
           <Flex align="center" justify="center" direction="column">
@@ -52,9 +50,14 @@ export default function Categories({
                     >
                       {allPosts.title}
                     </Button> */}
-                    <button className={`${currentCategory ? 'simple-button-transparent' : 'simple-button-outline'} simple-button`}>
+                    <button
+                      className={`${
+                        currentCategory
+                          ? 'simple-button-transparent'
+                          : 'simple-button-outline'
+                      } simple-button`}
+                    >
                       {allPosts?.title}
-
                     </button>
                   </a>
                 </Link>
@@ -65,27 +68,25 @@ export default function Categories({
                   uniqueCategories.add(category?.attributes?.slug);
                   return (
                     <List.Item key={category?.attributes?.slug} mx="2px">
-
                       <button
                         // loading={loadingStates[index]}
                         // onClick={() => toggleLoader(index)}
                         onClick={() => toggleLoading()}
-                        className={`${!currentCategory ? 'simple-button-transparent' : 'simple-button-outline'} simple-button text-medium`}
-
-                 
+                        className={`${
+                          !currentCategory
+                            ? 'simple-button-transparent'
+                            : 'simple-button-outline'
+                        } simple-button text-medium`}
                       >
                         <Link
                           href={`/blog/category/${category?.attributes?.slug}/page/1`}
                           passHref
                         >
                           <a aria-label={category?.attributes?.title}>
-
                             {category?.attributes?.title}
                           </a>
                         </Link>
-
                       </button>
-
                     </List.Item>
                   );
                 }
@@ -95,7 +96,7 @@ export default function Categories({
             <Box h="20px">{categoryLoader && <Loader mr="sm" size="xs" />}</Box>
           </Flex>
         </Container>
-      </Bounce >
+      </Bounce>
     )
   );
 }

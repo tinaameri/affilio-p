@@ -1,5 +1,4 @@
-;
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 //import Image from 'next/image';
 // import { ModalWithReducer } from "@/context/ModalProvider";
@@ -21,13 +20,12 @@ import {
   Accordion,
   Image,
   Flex,
-
+  Menu,
 } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 
 //import NavbarItem from '@/components/NavbarItem';
 import NavItem from './NavItem';
-import { mockdata } from '@/lib/page-directory/navJson';
 import Logo from '@/components/Logo';
 //import { content } from 'public/assets/contentJson';
 import ButtonComponent from '@/components/Button';
@@ -35,7 +33,6 @@ import { IMAGES_BASE_UR } from '@/api/clinet';
 import TopBanner from './TopBanner';
 
 const useStyles = createStyles((theme) => ({
-
   //  wrapperHeader : {
 
   //   background: 'url(/assets/images/smartech/bg-blue-menu.png),linear-gradient(90deg, #112751 44.8%, #193871 99.74%)!important',
@@ -61,26 +58,21 @@ const useStyles = createStyles((theme) => ({
   //   }
   // },
   item: {
-
     fontWeight: 700,
     fontSize: theme.fontSizes.sm,
     borderTop: `1px solid ${theme.colors.gray[3]}`,
     borderBottom: 'unset',
-
-  }, label: {
-
+  },
+  label: {
     fontWeight: 700,
     fontSize: theme.fontSizes.sm,
-
   },
   content: {
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   link: {
     display: 'flex',
     alignItems: 'center',
-    height: '100%',
-
     fontWeight: 700,
     cursor: 'pointer',
     paddingLeft: theme.spacing.lg,
@@ -91,7 +83,6 @@ const useStyles = createStyles((theme) => ({
     borderTop: `1px solid ${theme.colors.gray[3]}`,
     '&:hover': {
       background: '#F6FFF2',
-
     },
     [theme.fn.smallerThan('sm')]: {
       height: rem(42),
@@ -109,20 +100,25 @@ const useStyles = createStyles((theme) => ({
     borderRadius: theme.radius.lg,
     border: '1px solid rgba(188, 201, 226, 0.60)',
     ...theme.fn.hover({
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#F6FFF2',
+      backgroundColor:
+        theme.colorScheme === 'dark' ? theme.colors.dark[7] : '#F6FFF2',
     }),
 
     '&:active': theme.activeStyles,
   },
 
   dropdownFooter: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[7]
+        : theme.colors.gray[0],
     margin: `calc(${theme.spacing.md} * -1)`,
     marginTop: theme.spacing.sm,
     padding: `${theme.spacing.md} calc(${theme.spacing.md} * 2)`,
     paddingBottom: theme.spacing.xl,
-    borderTop: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
-      }`,
+    borderTop: `${rem(1)} solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
+    }`,
   },
 
   hiddenMobile: {
@@ -143,14 +139,18 @@ const useStyles = createStyles((theme) => ({
   mobileCard: {
     '&:hover': {
       background: '#F6FFF2',
-
     },
-  }
+  },
 }));
 
-
-
-export default function GeneralHeader({ links, logo, slug, button, top_banner,topBannerHeight }) {
+export default function GeneralHeader({
+  links,
+  logo,
+  slug,
+  button,
+  top_banner,
+  topBannerHeight,
+}) {
   //?change style menu after scroll */
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -172,13 +172,14 @@ export default function GeneralHeader({ links, logo, slug, button, top_banner,to
   //const button = content.header?.button[0]
   // const { modalOpenState, dispatch } = useContext(ModalWithReducer);
   // const [collapseStates,setCollapseStates]=useState('false')
-  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
+  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
+    useDisclosure(false);
   // const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
 
   const { classes, theme } = useStyles();
-  const largerScreen = useMediaQuery('(min-width:75em)');
+  //const largerScreen = useMediaQuery('(min-width:75em)');
   const smallerXsScreen = useMediaQuery('(max-width: 22.5em)');
-  const smallerLgScreen = useMediaQuery('(max-width: 75em)');
+  //const smallerLgScreen = useMediaQuery('(max-width: 75em)');
 
   // const openDemoRequest = () => {
   //   closeDrawer();
@@ -187,82 +188,73 @@ export default function GeneralHeader({ links, logo, slug, button, top_banner,to
   // }
   const handleClose = () => {
     closeDrawer();
+  };
 
-  }
-
-
-  const home = mockdata?.Home
-  const services = Object.keys(mockdata).slice(1, 2).map((key) => mockdata[key]);
-  const company = Object.keys(mockdata).slice(3, 4).map((key) => mockdata[key]);
-
-  const menuMapper = (menu) => {
-    return menu?.map((items, index) => (
-      items?.map((item, idx) => (
-        <Accordion.Item key={idx} value={item?.menu}>
-          <Accordion.Control className={classes.mobileCard}>
-            {item?.menu}
-          </Accordion.Control>
-          {item?.subMenu?.map((subItem, idx) => (
-
-
-            <Accordion.Panel key={idx} px='md' className={classes.mobileCard}>
-              <Link prefetch={false} href={subItem?.link} passHref>
-                <Group noWrap align="flex-start" onClick={handleClose} className='cursor-pointer'>
-                  <Image layout='fixed' src={subItem?.icon} alt={item?.title} width={40} height={40} className={classes.image} />
-                  <Box w='100%'>
-                    <Text component='strong' className='text-body3b'>
-                      {subItem?.title}
-                    </Text>
-                    <Text component='p' color={theme.colors.dark[5]} lineClamp={2} className='text-body3r'>
-                      {subItem?.description}
-                    </Text>
-                  </Box>
-                </Group>
-
-              </Link>
-            </Accordion.Panel>
-          ))}
-          {/* {key === "Platform" && <Accordion.Panel px='xl' bg='primary.7'>
-        <LinksRightMenu />
-
-      </Accordion.Panel>} */}
-
-        </Accordion.Item>
-      ))
-    ))
-  }
   return (
-
-
     <>
       {/* <Header sx={{ border: '0', zIndex: '100' }} bg='transparent' height={smallerXsScreen ? '66px' : smallerLgScreen ? '80px' : '86px'} pos="fixed" > */}
-      <Header sx={{
-        border: '0', zIndex: '1000'
-      }}
+      <Header
+        sx={{
+          border: '0',
+          zIndex: '1000',
+        }}
+        bg="transparent"
+        height={!top_banner && smallerXsScreen ? '66px' : '85px'}
+        pos="fixed"
+      >
+        {top_banner && (
+          <TopBanner content={top_banner} header={topBannerHeight} />
+        )}
 
-        bg='transparent'
-        height={(!top_banner && smallerXsScreen) ? '66px' : '85px'}
-        pos="fixed" >
-        {top_banner && <TopBanner content={top_banner} header={topBannerHeight} />}
-
-        <Box px="md"
+        <Box
+          px="md"
           className={isScrolled ? 'headerBlur' : 'wrapperHeader'}
-          h='100%'
-
+          h="100%"
         >
-          <Container size='1344px' h='100%' p='0'>
+          <Container size="1344px" h="100%" p="0">
             <Group position="apart" sx={{ height: '100%' }}>
-
-              <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
+              <Burger
+                opened={drawerOpened}
+                onClick={toggleDrawer}
+                className={classes.hiddenDesktop}
+              />
               <Logo logo={logo} />
-              <Group sx={{ height: '100%', flex: '1', marginLeft: '50px' }} spacing={10} className={classes.hiddenMobile}>
+              <Group
+                sx={{ height: '100%', flex: '1', marginLeft: '50px' }}
+                spacing={10}
+                className={classes.hiddenMobile}
+              >
                 {/* <NavbarItem services={services} home={home} company={company} /> */}
                 {links?.length ? <NavItem links={links} slug={slug} /> : null}
               </Group>
-              <Group className={classes.hiddenMobile}>
-                <ButtonComponent type={button?.type} href={button?.link} title={button?.title} targetBlank={button?.newPage} />
-
-              </Group>
+              {button && (
+                <Group className={`${classes.hiddenMobile} dropDownMenu`}>
+                  <Menu shadow="md" width={150} position="bottom">
+                    <Menu.Target>
+                      <ButtonComponent
+                        type={button?.MainButton?.type}
+                        href={button?.MainButton?.link}
+                        title={button?.MainButton?.title}
+                        targetBlank={button?.MainButton?.newPage}
+                      />
+                    </Menu.Target>
+                    {button?.dropDownItem?.length > 0 && (
+                      <Menu.Dropdown>
+                        {button?.dropDownItem?.map((item, index) => (
+                          <Menu.Item
+                            key={index}
+                            component="a"
+                            href={item?.link}
+                            target={item?.newPage}
+                          >
+                            {item?.title}
+                          </Menu.Item>
+                        ))}
+                      </Menu.Dropdown>
+                    )}
+                  </Menu>
+                </Group>
+              )}
             </Group>
           </Container>
         </Box>
@@ -347,7 +339,6 @@ export default function GeneralHeader({ links, logo, slug, button, top_banner,to
                         className="link-section"
                         style={{ justifyContent: 'flex-start' }}
                       >
-
                         {menuItem.title}
                       </a>
                     </Link>
@@ -363,7 +354,12 @@ export default function GeneralHeader({ links, logo, slug, button, top_banner,to
               pt="xl"
               px="md"
             >
-                        <ButtonComponent type={button?.type} href={button?.link} title={button?.title} targetBlank={button?.newPage} />
+              <ButtonComponent
+                type={button?.type}
+                href={button?.link}
+                title={button?.title}
+                targetBlank={button?.newPage}
+              />
             </Flex>
           </ScrollArea>
         </Drawer>

@@ -40,7 +40,7 @@ const useStyles = createStyles((theme) => ({
 
     ...theme.fn.hover({
       //backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : '#F6FFF2',
-      height: '85px'
+      height: '85px',
     }),
   },
 
@@ -52,7 +52,6 @@ const useStyles = createStyles((theme) => ({
     border: '1px solid rgba(188, 201, 226, 0.60)',
     ...theme.fn.hover({
       backgroundColor: '#F6FFF2',
-
     }),
 
     '&:active': theme.activeStyles,
@@ -60,19 +59,21 @@ const useStyles = createStyles((theme) => ({
   subLinkTitle: {
     display: 'flex',
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
-
-
   dropdownFooter: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[7]
+        : theme.colors.gray[0],
     margin: `calc(${theme.spacing.md} * -1)`,
     marginTop: theme.spacing.sm,
     padding: `${theme.spacing.md} calc(${theme.spacing.md} * 2)`,
     paddingBottom: theme.spacing.xl,
-    borderTop: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
-      }`,
+    borderTop: `${rem(1)} solid ${
+      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
+    }`,
   },
 
   hiddenMobile: {
@@ -101,16 +102,15 @@ const useStyles = createStyles((theme) => ({
     position: 'absolute',
 
     backgroundColor: 'white',
-
-  }, rightList: {
-    listStyleType: 'none;'
+  },
+  rightList: {
+    listStyleType: 'none;',
   },
   cardItem: {
     '&:hover': {
       background: '#F6FFF2',
-
     },
-  }
+  },
 }));
 const SimpleSubMenu = ({ link, onClick, imageData, title }) => {
   const { classes } = useStyles();
@@ -133,64 +133,45 @@ const SimpleSubMenu = ({ link, onClick, imageData, title }) => {
     </UnstyledButton>
   );
 };
-const CardSubMenuSS = ({ link, onClick, imageData, title, description }) => {
-  return (
-    <Card dir="rtl" bg="transparent" radius="lg" onClick={onClick}>
-      <Link href={link} as={link}>
-        <a className="card-link-section"></a>
-      </Link>
-      <Box mb="md">
-        <Image
-          src={`${IMAGES_BASE_UR}${imageData?.url}`}
-          alt={imageData?.caption}
-          height={135}
-          radius="lg"
-        />
-      </Box>
-      <Box px="xs">
-        <Text component="strong" fz="lg" fw="600" color="primary.1">
-          {title}
-        </Text>
-        <Text
-          component="p"
-          mt="sm"
-          lineClamp={2}
-          fz="sm"
-          fw="400"
-          color="primary.1"
-        >
-          {description}
-        </Text>
-      </Box>
-    </Card>
-  );
-};
 const CardSubMenu = ({ link, onClick, imageData, title, description }) => {
   const { classes } = useStyles();
   const smallerLgScreen = useMediaQuery('(max-width: 75em)');
   return (
-    <Card dir='rtl'
-      bg='transparent'
-      radius='lg'
+    <Card
+      dir="rtl"
+      bg="transparent"
+      radius="lg"
       onClick={onClick}
       className={classes.cardItem}
     >
-      <Link href={link} >
-        <a className='card-link-section' aria-label={title}></a>
+      <Link href={link}>
+        <a className="card-link-section" aria-label={title}></a>
       </Link>
-      <Box mb='md'>
+      <Box mb="md">
         <Image
           src={`${IMAGES_BASE_UR}${imageData?.url}`}
           height={135}
           alt={title}
-          radius='lg'
+          radius="lg"
         />
       </Box>
-      <Box px='xs'>
-        <Text component='strong' fz={smallerLgScreen ? 'md' : 'lg'} fw='600' color='primary.6'>
+      <Box px="xs">
+        <Text
+          component="strong"
+          fz={smallerLgScreen ? 'md' : 'lg'}
+          fw="600"
+          color="primary.6"
+        >
           {title}
         </Text>
-        <Text component="p" mt='xs' lineClamp={2} fz='sm' fw='400' color='primary.6'>
+        <Text
+          component="p"
+          mt="xs"
+          lineClamp={2}
+          fz="sm"
+          fw="400"
+          color="primary.6"
+        >
           {description}
         </Text>
       </Box>
@@ -213,7 +194,11 @@ export default function NavbarItem({ links, slug }) {
           key={idx}
         >
           <HoverCard.Target>
-            <Box className={`${classes.link} ${router.pathname === slug && 'active'} menu-link`}>
+            <Box
+              className={`${classes.link} ${
+                router.pathname === slug && 'active'
+              } menu-link`}
+            >
               {item?.sub_links?.length ? (
                 <Center inline>
                   <Text component="span" mr={5} color="primary.1">
@@ -222,7 +207,11 @@ export default function NavbarItem({ links, slug }) {
                   <IconChevronDown size={20} />
                 </Center>
               ) : (
-                <ActiveLink href={item?.link || '#'} as={item?.link} activeClassName="active">
+                <ActiveLink
+                  href={item?.link || '#'}
+                  as={item?.link}
+                  activeClassName="active"
+                >
                   <a
                     className="link-section"
                     style={{ justifyContent: 'flex-start' }}
@@ -246,10 +235,14 @@ export default function NavbarItem({ links, slug }) {
                 mih="320px"
                 dir="rtl"
               >
-                <Container size='900'>
+                <Container size="900">
                   <Grid>
                     <Grid.Col xs={12} lg={12} py="xl">
-                      <SimpleGrid cols={5} spacing={0} px={smallerLgScreen ? '0' : '100px'}>
+                      <SimpleGrid
+                        cols={5}
+                        spacing={0}
+                        px={smallerLgScreen ? '0' : '100px'}
+                      >
                         {item?.sub_links?.map((subItem, idx) => (
                           <>
                             {subItem?.description ? (
@@ -282,7 +275,6 @@ export default function NavbarItem({ links, slug }) {
     </>
   );
 }
-
 
 // <Container size='900'>
 

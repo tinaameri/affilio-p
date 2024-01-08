@@ -1,18 +1,18 @@
-import { Text, Grid, createStyles, Box, Image } from "@mantine/core";
+import { Text, Grid, Box, Image } from '@mantine/core';
 // import { IconGitBranch, IconGitPullRequest, IconGitCommit, IconMessageDots } from '@tabler/icons-react';
-import Layout from "@/components/LayoutComponent";
-import Heading from "@/components/Heading";
+import Layout from '@/components/LayoutComponent';
+import Heading from '@/components/Heading';
 //import Image from 'next/image';
-import ButtonComponent from "@/components/Button";
-import { useEffect, useRef, useState } from "react";
-import { useMediaQuery } from "@mantine/hooks";
-import { IMAGES_BASE_UR } from "@/api/clinet";
-import classes from './TimelineComponent.module.scss'
+import ButtonComponent from '@/components/Button';
+import { useEffect, useState } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
+import { IMAGES_BASE_UR } from '@/api/clinet';
+import classes from './TimelineComponent.module.scss';
 export default function TimelineComponent({ heading_title, content }) {
   const [activeButton, setActiveButton] = useState(0);
-  const smallermidScreen = useMediaQuery("(max-width: 64em)"); //(max-600)md green
+  const smallermidScreen = useMediaQuery('(max-width: 64em)'); //(max-600)md green
   const handleScroll = () => {
-    const buttons = document.querySelectorAll(".btn-date");
+    const buttons = document.querySelectorAll('.btn-date');
     buttons.forEach((button, index) => {
       const buttonPosition = button.getBoundingClientRect();
       if (buttonPosition.top < window.innerHeight * 0.5) {
@@ -22,9 +22,9 @@ export default function TimelineComponent({ heading_title, content }) {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -43,7 +43,7 @@ export default function TimelineComponent({ heading_title, content }) {
               >
                 <Grid.Col span={4} className="flex-center">
                   <ButtonComponent
-                    type={`${activeButton >= index ? "primary" : "secondary"}`}
+                    type={`${activeButton >= index ? 'primary' : 'secondary'}`}
                     title={item?.date}
                     className={`${classes.date} ${
                       activeButton >= index && classes.activeItem
@@ -65,7 +65,7 @@ export default function TimelineComponent({ heading_title, content }) {
                       width={100}
                       fit="contain"
                       className={`${
-                        activeButton >= index ? "" : classes.deactiveImg
+                        activeButton >= index ? '' : classes.deactiveImg
                       })`}
                     />
                     {/* <Image src={item?.img} alt={item?.title} height={150} width={200} objectFit='none'
@@ -91,12 +91,11 @@ export default function TimelineComponent({ heading_title, content }) {
                 </Grid.Col>
                 <Grid.Col span={4} className="flex-center">
                   <ButtonComponent
-                    type={`${activeButton >= index ? "primary" : "secondary"}`}
+                    type={`${activeButton >= index ? 'primary' : 'secondary'}`}
                     title={item?.date}
                     className={`${classes.date} ${
                       activeButton >= index && classes.activeItem
                     }  btn-date`}
-
                   />
                 </Grid.Col>
                 <Grid.Col
@@ -113,7 +112,7 @@ export default function TimelineComponent({ heading_title, content }) {
                     height={100}
                     width={200}
                     className={`${
-                      activeButton >= index ? "" : classes.deactiveImg
+                      activeButton >= index ? '' : classes.deactiveImg
                     }`}
                   />
                 </Grid.Col>

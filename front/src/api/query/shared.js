@@ -40,10 +40,19 @@ config {
           }
         }
         header_button{
-          title
-          link
-          newPage
-          type
+          MainButton{
+            id
+            title
+            link
+            newPage
+            type
+          }
+          dropDownItem{
+            title
+            link
+            newPage
+            
+          }
         }
         footerNavigation {
           id

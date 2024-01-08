@@ -1,14 +1,13 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer } from 'react';
 import {
   DEMO,
   CONTACTUS,
   CONTACT,
   ESSENTIAL,
   ANALYTICAL,
-  DECLINE,
   GDPRMODAL,
-  SUCCESS
-} from "@/constant/ActionTypes";
+  SUCCESS,
+} from '@/constant/ActionTypes';
 const ModalWithReducer = createContext({
   modalOpenState: {
     demoModalOpen: false,
@@ -17,11 +16,11 @@ const ModalWithReducer = createContext({
     showModalGpdr: true,
     useCookie: {
       essential: true,
-      analytics: true
-    }
+      analytics: true,
+    },
   },
 
-  dispatch: () => {}
+  dispatch: () => {},
 });
 export { ModalWithReducer };
 function reducer(state, action) {
@@ -31,17 +30,15 @@ function reducer(state, action) {
         demoModalOpen: true,
         successModal: false,
         contactModalOpen: false,
-        showModalGpdr: false
+        showModalGpdr: false,
       };
-      break;
     case SUCCESS:
       return {
         demoModalOpen: false,
         successModal: true,
         contactModalOpen: false,
-        showModalGpdr: false
+        showModalGpdr: false,
       };
-      break;
 
     case CONTACTUS:
       return {
@@ -49,51 +46,47 @@ function reducer(state, action) {
         successModal: false,
 
         contactModalOpen: true,
-        showModalGpdr: false
+        showModalGpdr: false,
       };
-      break;
     case CONTACT:
       return {
         demoModalOpen: false,
         successModal: false,
         contactModalOpen: false,
-        showModalGpdr: false
+        showModalGpdr: false,
       };
-      break;
+
     case GDPRMODAL:
       return {
         ...state,
-        showModalGpdr: true
+        showModalGpdr: true,
       };
-      break;
+
     case ESSENTIAL:
       return {
         ...state,
         useCookie: {
           essential: !state.useCookie?.essential,
-          analytics: !!state.useCookie?.analytics
-        }
+          analytics: !!state.useCookie?.analytics,
+        },
       };
 
-      break;
     case ANALYTICAL:
       return {
         ...state,
         useCookie: {
           analytics: !state.useCookie?.analytics,
-          essential: !!state.useCookie?.essential
-        }
+          essential: !!state.useCookie?.essential,
+        },
       };
-      break;
 
-    case "Close":
+    case 'Close':
       return {
         demoModalOpen: false,
         successModal: false,
         contactModalOpen: false,
-        showModalGpdr: false
+        showModalGpdr: false,
       };
-      break;
 
     default:
       break;
@@ -107,8 +100,8 @@ export default function ModalWithReducerProvider({ children }) {
     showModalGpdr: false,
     useCookie: {
       essential: true,
-      analytics: true
-    }
+      analytics: true,
+    },
   });
   return (
     <ModalWithReducer.Provider

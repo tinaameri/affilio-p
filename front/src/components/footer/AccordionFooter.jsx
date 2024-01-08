@@ -1,4 +1,4 @@
-import { Container, Accordion, Box, createStyles,Text } from '@mantine/core';
+import { Container, Accordion, Box, createStyles, Text } from '@mantine/core';
 import Logo from '@/components/Logo';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -9,37 +9,32 @@ const useStyles = createStyles((theme) => ({
   control: {
     ...theme.fn.hover({
       backgroundColor: theme.colors.secondary[1],
-      color: 'white'
-
+      color: 'white',
     }),
   },
   item: {
     backgroundColor: theme.colors.secondary[1],
 
     borderBottom: '1px solid white',
-
   },
   label: {
     color: 'white!important',
 
     fontWeight: 700,
-
   },
   content: {
     color: 'white',
     fontSize: '14px',
-    paddingLeft: '40px'
-  }, panel: {
-    color: 'white'
+    paddingLeft: '40px',
+  },
+  panel: {
+    color: 'white',
   },
   chevron: {
-    color: 'white'
-  }
-
-
-
+    color: 'white',
+  },
 }));
-export default function AccordionFooterNew({ links,trust,logo }) {
+export default function AccordionFooterNew({ links, trust, logo }) {
   const [show, setShow] = useState(false);
   const { setActiveTab } = useThemeContext();
 
@@ -61,9 +56,9 @@ export default function AccordionFooterNew({ links,trust,logo }) {
   const { classes } = useStyles();
 
   return (
-    <Box bg='#0E1E57' py='45px'>
+    <Box bg="#0E1E57" py="45px">
       <Container size="xl">
-        <Logo logo={logo} position='footer' />
+        <Logo logo={logo} position="footer" />
         <Box bg="primary.1">
           <Accordion classNames={classes}>
             {links.map((item) => (
@@ -83,7 +78,7 @@ export default function AccordionFooterNew({ links,trust,logo }) {
                       >
                         <Text
                           component="span"
-                          sx={(theme) => ({
+                          sx={() => ({
                             '&:hover': {
                               color: '#EAEEF6',
                             },
@@ -99,9 +94,8 @@ export default function AccordionFooterNew({ links,trust,logo }) {
             ))}
           </Accordion>
         </Box>
-        <TrustLogo items={trust}/>
+        <TrustLogo items={trust} />
       </Container>
     </Box>
   );
 }
-

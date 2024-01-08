@@ -1,6 +1,6 @@
-import client from "@/utils/api";
-import { gql } from "graphql-request";
-import { PAGINATION_POSTS_PER_PAGE } from "@/utils/constants";
+import client from '@/utils/api';
+import { gql } from 'graphql-request';
+import { PAGINATION_POSTS_PER_PAGE } from '@/utils/constants';
 
 export async function requestPosts({ categoryName, page, query, search }) {
   const defaultPageNumber = page || 1;

@@ -1,18 +1,17 @@
-import { useContext, useEffect, useState } from 'react'
-import Header from "@/components/GeneralHeader"
-import Footer from "@/components/GeneralFooter"
-import { ModalWithReducer } from "@/context/ModalProvider";
-import { useRouter } from "next/router";
+import { useContext, useEffect } from 'react';
+import Header from '@/components/GeneralHeader';
+import Footer from '@/components/GeneralFooter';
+import { ModalWithReducer } from '@/context/ModalProvider';
+import { useRouter } from 'next/router';
 import RequestDemoModal from '@/components/modal/RequestDemoModal';
 import SuccessModal from '@/components/modal/SuccessModal';
 import GDPR from '@/components/modal/GDPR';
-import { NextSeo } from "next-seo";
-import TopBanner from './TopBanner';
+import { NextSeo } from 'next-seo';
 // import LineScrollAnimation from './LineScrollAnimation';
 
 const initIntrack = () => {
   (function (i, n, t, r, a, c, k) {
-    let o = i["InTrack"] = i["InTrack"] || {};
+    let o = (i['InTrack'] = i['InTrack'] || {});
     i[a] =
       i[a] ||
       function () {
@@ -29,28 +28,31 @@ const initIntrack = () => {
   })(
     window,
     document,
-    "script",
-    "//static1.intrack.ir/api/web/download/sdk/v1/inTrack.min.js",
-    "Intk",
+    'script',
+    '//static1.intrack.ir/api/web/download/sdk/v1/inTrack.min.js',
+    'Intk',
     {
       app_key: 'AAAAGg',
       auth_key: 'a8cf0ed4-d915-44bf-9645-2b72a349036c',
-      public_key: 'BPbiuDzDiduVxrx4pxSZynQ9ianfmIYD7oC_GJ-Mg7bQvyzkAf8NuPDHuBicjRVkMPkwmg-xurke8kgC12TRLD4=',
+      public_key:
+        'BPbiuDzDiduVxrx4pxSZynQ9ianfmIYD7oC_GJ-Mg7bQvyzkAf8NuPDHuBicjRVkMPkwmg-xurke8kgC12TRLD4=',
       yektanet_syncing: true,
-      mediaad_syncing: true
-    }
-  )
-}
+      mediaad_syncing: true,
+    },
+  );
+};
 const initAnalytics = () => {
   // Google Analytics tracking code
   window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'GTM-52KXVG8', {
     page_path: window.location.pathname,
   });
   const script = document.createElement('script');
-  script.src = "https://www.googletagmanager.com/gtag/js?id=$GTM-52KXVG8";
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=$GTM-52KXVG8';
   script.async = true;
   document.head.appendChild(script);
 
@@ -64,41 +66,44 @@ const initAnalytics = () => {
   //   //** r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
   //   //**  a.appendChild(r);
   //   //**})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-}
+};
 export default function BaseLayout({ config, children, slug }) {
-  const { modalOpenState, dispatch } = useContext(ModalWithReducer);
+  const { modalOpenState } = useContext(ModalWithReducer);
   const router = useRouter();
   const shouldHideGDPR = router.pathname.startsWith('/users');
 
   useEffect(() => {
     const storageStateOption = JSON.parse(localStorage.getItem('option'));
-    const analytics = storageStateOption?.analytics
-    const essential = storageStateOption?.essential
+    const analytics = storageStateOption?.analytics;
+    //const essential = storageStateOption?.essential;
 
     if (analytics === true) {
-      initAnalytics()
+      initAnalytics();
     }
     // if (essential === true) {
     // }
-    initIntrack()
+    initIntrack();
 
-
-    if (!modalOpenState.showModalGpdr && storageStateOption !== null && !shouldHideGDPR) {
-      Intk('updateProfile', {
+    if (
+      !modalOpenState.showModalGpdr &&
+      storageStateOption !== null &&
+      !shouldHideGDPR
+    ) {
+      window.Intk('updateProfile', {
         attributes: {
           adverge: true,
-        }
+        },
       });
-      Intk('InitWebPush', {
+      window.Intk('InitWebPush', {
         isRTL: true,
         widget: {
           enable: true,
-        }
+        },
       });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modalOpenState.showModalGpdr])
+  }, [modalOpenState.showModalGpdr]);
 
   // const [show, setShow] = useState(true);
 
@@ -110,7 +115,6 @@ export default function BaseLayout({ config, children, slug }) {
   // };
   // const [scrolled, setScrolled] = useState(false)
   // useEffect(() => {
-
 
   //   const handleScroll = () => {
   //     if (!scrolled) {
@@ -155,21 +159,18 @@ export default function BaseLayout({ config, children, slug }) {
   // }, []);
   return (
     <>
-      <NextSeo
-        titleTemplate=' ادورج | %s'
-      />
+      <NextSeo titleTemplate=" ادورج | %s" />
       <Header
         links={config?.Navigation}
         logo={config?.logo}
         slug={slug}
         button={config?.header_button}
         top_banner={config?.top_banner}
-        
       />
       <main
         className={`main-box fixed-pattern `}
-        style={{ marginTop: (config?.top_banner) ? '182px' : 'unset' }}
-        >
+        style={{ marginTop: config?.top_banner ? '182px' : 'unset' }}
+      >
         {/* <LineScrollAnimation/> */}
         {children}
       </main>
@@ -178,12 +179,11 @@ export default function BaseLayout({ config, children, slug }) {
         logo={config?.logo}
         trust={config?.trust_logo || []}
         copy_right={config?.copy_right}
-        social={config?.social_media} />
+        social={config?.social_media}
+      />
       <RequestDemoModal />
       <SuccessModal />
       {shouldHideGDPR ? null : <GDPR content={config?.Gdpr} />}
-
     </>
-  )
-
+  );
 }

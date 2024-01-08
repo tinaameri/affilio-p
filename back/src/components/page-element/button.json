@@ -13,7 +13,7 @@
     },
     "link": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "newPage": {
       "type": "boolean",
@@ -23,8 +23,6 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "primaryArrow",
-        "secondaryArrow",
         "primary",
         "secondary"
       ]

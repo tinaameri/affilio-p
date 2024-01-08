@@ -1,32 +1,33 @@
-import { Container } from "@mantine/core";
+import { Container } from '@mantine/core';
 //import styles from './page.module.scss'
-import HeroSection from "@/components/HeroSection";
+import HeroSection from '@/components/HeroSection';
 //import CustomersCarousel from '@/components/CustomersCarousel';
 //import Heading from '@/components/Heading';
 //import { content } from '/public/assets/contentJson'
-import { Card } from "@/components/card";
+import { Card } from '@/components/card';
 //import BlogSection from '@/components/blog/BlogSection';
 //import RequestDemo from '@/components/RequestDemo';
 // import Bubble from '@/components/sections/homePage/Bubble'
-import { LocalBusinessJsonLd, LogoJsonLd, NextSeo } from "next-seo";
+import { LocalBusinessJsonLd, LogoJsonLd, NextSeo } from 'next-seo';
 //import { requestPosts, GRAPHQL_QUERY as QUERY } from '@/utils/posts';
-import { HERO_BACKGROUNDS, CARD_BACKGROUNDS, COLOR } from "@/utils/constants";
+import { HERO_BACKGROUNDS, CARD_BACKGROUNDS, COLOR } from '@/utils/constants';
 
-import Banner from "@/components/Banner";
-import Video from "@/components/Video";
-import Testimonial from "@/components/Testimonial";
-import ContactUs from "@/components/ContactUs";
-import Campaign from "@/components/Campaign";
-import { IMAGES } from "@/utils/constants";
-import React from "react";
-import Carousel from "@/components/CustomersCarousel";
-import ImageCarousel from "@/components/CustomersImageCarousel";
-import CardBnanner from "@/components/card/CardBanner";
-import { IMAGES_BASE_UR } from "@/api/clinet";
-import TimelineComponent from "@/components/timeline/TimelineComponent";
+import Banner from '@/components/Banner';
+import Video from '@/components/Video';
+import Testimonial from '@/components/Testimonial';
+import ContactUs from '@/components/ContactUs';
+import Campaign from '@/components/Campaign';
+import { IMAGES } from '@/utils/constants';
+import React from 'react';
+import Carousel from '@/components/CustomersCarousel';
+import ImageCarousel from '@/components/CustomersImageCarousel';
+import CardBnanner from '@/components/card/CardBanner';
+import { IMAGES_BASE_UR } from '@/api/clinet';
+import TimelineComponent from '@/components/timeline/TimelineComponent';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-export default function DynamicPage({ data,config, seo,pageData }) {
+import CounterAnimation from './counterAnimation/CounterAnimation';
+export default function DynamicPage({ data, config, seo }) {
   const router = useRouter();
   const logo = config?.logo?.header?.data?.attributes?.url;
   const twitterData =
@@ -38,8 +39,10 @@ export default function DynamicPage({ data,config, seo,pageData }) {
     return socialLinks?.filter((item) => item?.link).map((link) => link?.link);
   };
   const sameAsLinks = generateSameAsLinks(socialLinks);
-  const heroImage = data?.filter((item) => item?.__typename === 'ComponentPageSectionHero')?.map((item) => item?.media.data?.attributes?.url);
-  const additionalMetaTags=[
+  const heroImage = data
+    ?.filter((item) => item?.__typename === 'ComponentPageSectionHero')
+    ?.map((item) => item?.media.data?.attributes?.url);
+  const additionalMetaTags = [
     {
       name: 'viewport',
       content: 'width=device-width, initial-scale=1',
@@ -49,7 +52,7 @@ export default function DynamicPage({ data,config, seo,pageData }) {
       // eslint-disable-next-line no-undef
       content: seo?.keywords,
     },
-  ]
+  ];
   if (facebookData?.title) {
     additionalMetaTags.push(
       {
@@ -63,9 +66,9 @@ export default function DynamicPage({ data,config, seo,pageData }) {
       {
         name: 'facebook:image',
         content: `${IMAGES_BASE_UR}${facebookData?.image?.data?.attributes?.url}`,
-      }
+      },
     );
-  }  
+  }
   if (twitterData?.title) {
     additionalMetaTags.push(
       {
@@ -84,7 +87,6 @@ export default function DynamicPage({ data,config, seo,pageData }) {
   }
   return (
     <>
-
       <Head>
         {seo?.structuredData !== null && (
           <script
@@ -173,22 +175,22 @@ export default function DynamicPage({ data,config, seo,pageData }) {
               //     />
               //   </>
               // ) :
-              section.__typename === "ComponentPageSectionHero" ? (
+              section.__typename === 'ComponentPageSectionHero' ? (
                 <>
                   <HeroSection
                     bg={HERO_BACKGROUNDS[section?.heroBackground]}
                     title={section?.title}
                     subtitle={section?.sub_title}
                     src={`${IMAGES_BASE_UR}${section?.media?.data?.attributes?.url}`}
-                    buttonType={section?.action?.type}
-                    button={section?.action?.title}
-                    link={section?.action?.link}
-                    targetBlank={!!section?.action?.newPage}
+                    //buttonType={section?.action?.type}
+                    button={section?.action}
+                    //link={section?.action?.link}
+                    //targetBlank={!!section?.action?.newPage}
                     wordsAnimation={section?.words_animation}
                   />
                 </>
               ) : section?.__typename ===
-                "ComponentPageSectionSellerCarousel" ? (
+                'ComponentPageSectionSellerCarousel' ? (
                 <>
                   <Carousel
                     customers={section}
@@ -196,20 +198,20 @@ export default function DynamicPage({ data,config, seo,pageData }) {
                   />
                 </>
               ) : section?.__typename ===
-                "ComponentPageSectionImageCarousel" ? (
+                'ComponentPageSectionImageCarousel' ? (
                 <>
                   <ImageCarousel
                     customers={section?.images?.data}
                     className="white-images"
                   />
                 </>
-              ) : section.__typename === "ComponentPageSectionBanner" ? (
+              ) : section.__typename === 'ComponentPageSectionBanner' ? (
                 <Banner
                   title={section?.title}
                   description={section?.description}
                   //customers={section?.data?.carousel}
                 />
-              ) : section.__typename === "ComponentPageSection2ColWithImage" ? (
+              ) : section.__typename === 'ComponentPageSection2ColWithImage' ? (
                 <>
                   <Card
                     //colorEven="white"
@@ -224,14 +226,14 @@ export default function DynamicPage({ data,config, seo,pageData }) {
                     // }
                   />
                 </>
-              ) : section.__typename === "ComponentPageSectionVideo" ? (
+              ) : section.__typename === 'ComponentPageSectionVideo' ? (
                 <>
                   <Video
                     content={section}
                     bgSection={CARD_BACKGROUNDS[section?.videoBackground]}
                   />
                 </>
-              ) : section.__typename === "ComponentPageSectionCardBanner" ? (
+              ) : section.__typename === 'ComponentPageSectionCardBanner' ? (
                 <CardBnanner
                   bgBanner={`url(${IMAGES}/bg/bg-orange-pattern.png) left/100% no-repeat`}
                   title={section?.title}
@@ -241,7 +243,7 @@ export default function DynamicPage({ data,config, seo,pageData }) {
                   image={`${IMAGES_BASE_UR}${section?.image?.data?.attributes?.url}`}
                   image_height={section?.image?.data?.attributes?.height}
                 />
-              ) : section.__typename === "ComponentPageSectionTestimonial" ? (
+              ) : section.__typename === 'ComponentPageSectionTestimonial' ? (
                 <>
                   <Testimonial
                     testimonial={section}
@@ -249,7 +251,7 @@ export default function DynamicPage({ data,config, seo,pageData }) {
                   />
                 </>
               ) : section.__typename ===
-                "ComponentPageSectionCreateCampaign" ? (
+                'ComponentPageSectionCreateCampaign' ? (
                 <>
                   <Campaign
                     heading_title={section?.ht}
@@ -257,7 +259,7 @@ export default function DynamicPage({ data,config, seo,pageData }) {
                     image_mobile={`${IMAGES_BASE_UR}${section?.image_mobile?.data?.attributes?.url}`}
                   />
                 </>
-              ) : section.__typename === "ComponentPageSectionContactUs" ? (
+              ) : section.__typename === 'ComponentPageSectionContactUs' ? (
                 <ContactUs
                   bg={COLOR[section?.contactUsBackground]}
                   img={`${IMAGES_BASE_UR}${section?.image.data?.attributes?.url}`}
@@ -268,7 +270,7 @@ export default function DynamicPage({ data,config, seo,pageData }) {
                   targetBlank={!!section?.button?.newPage}
                 />
               ) : section.__typename ===
-                "ComponentPageSectionTimelineSection" ? (
+                'ComponentPageSectionTimelineSection' ? (
                 <>
                   <TimelineComponent
                     heading_title={section?.headingTimeline}

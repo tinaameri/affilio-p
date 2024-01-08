@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Posts from "@/components/blog/Posts";
-import { getConfig } from "@/api/query/shared";
-import { requestPosts } from "@/api/query/blogPosts";
-import { NextSeo } from "next-seo";
-import { Box } from "@mantine/core";
-import { PAGINATION_POSTS_PER_PAGE, REVALIDATE_RATE } from "@/api/clinet";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Posts from '@/components/blog/Posts';
+import { getConfig } from '@/api/query/shared';
+import { requestPosts } from '@/api/query/blogPosts';
+import { NextSeo } from 'next-seo';
+import { Box } from '@mantine/core';
+import { PAGINATION_POSTS_PER_PAGE, REVALIDATE_RATE } from '@/api/clinet';
 
 export async function getStaticProps() {
   const response = await getConfig();
@@ -60,5 +60,3 @@ export default function SearchPage() {
     </>
   );
 }
-
-

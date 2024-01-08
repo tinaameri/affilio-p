@@ -20,11 +20,9 @@ export interface PageElementButton extends Schema.Component {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    link: Attribute.String & Attribute.Required;
+    link: Attribute.String;
     newPage: Attribute.Boolean & Attribute.DefaultTo<false>;
-    type: Attribute.Enumeration<
-      ['primaryArrow', 'secondaryArrow', 'primary', 'secondary']
-    >;
+    type: Attribute.Enumeration<['primary', 'secondary']>;
   };
 }
 
@@ -38,6 +36,18 @@ export interface PageElementContent extends Schema.Component {
   attributes: {
     description: Attribute.RichText & Attribute.Required;
     title: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface PageElementDropDownMenu extends Schema.Component {
+  collectionName: 'components_page_element_drop_down_menus';
+  info: {
+    displayName: 'DropDownMenu';
+    description: '';
+  };
+  attributes: {
+    dropDownItem: Attribute.Component<'page-element.button', true>;
+    MainButton: Attribute.Component<'page-element.button'>;
   };
 }
 
@@ -332,7 +342,7 @@ export interface PageSectionHero extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 900;
       }>;
-    action: Attribute.Component<'page-element.button'>;
+    action: Attribute.Component<'page-element.button', true>;
     image: Attribute.Media;
     background: Attribute.Enumeration<
       ['greenPattern', 'orangePattern', 'bluePattern', 'green', 'blue']
@@ -557,6 +567,7 @@ declare module '@strapi/types' {
       'page-element.button-without-link': PageElementButtonWithoutLink;
       'page-element.button': PageElementButton;
       'page-element.content': PageElementContent;
+      'page-element.drop-down-menu': PageElementDropDownMenu;
       'page-element.field-info': PageElementFieldInfo;
       'page-element.footer-links': PageElementFooterLinks;
       'page-element.logo': PageElementLogo;

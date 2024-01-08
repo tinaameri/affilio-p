@@ -14,7 +14,6 @@ import Layout from '@/components/LayoutComponent';
 import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { IconChevronLeft } from '@tabler/icons-react';
-import { useState, useEffect } from 'react';
 import { IMAGES_BASE_UR } from '@/api/clinet';
 import Markdown from '@/components/Markdown';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
@@ -47,12 +46,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ post }) {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
-  }, []);
   const router = useRouter();
 
   const smallerXsScreen = useMediaQuery('(max-width: 22.5em)');
@@ -81,53 +74,53 @@ export default function Post({ post }) {
     {};
   const facebookData =
     post?.seo?.metaSocial.find((item) => item.socialNetwork === 'Facebook') ||
-    {}; 
-    
-    const additionalMetaTags=[
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        name: 'keywords',
-        // eslint-disable-next-line no-undef
-        content: post?.seo?.keywords,
-      },
-    ]
-    if (facebookData?.title) {
-      additionalMetaTags.push(
-        {
-          name: 'facebook:title',
-          content: facebookData.title,
-        },
-        {
-          name: 'facebook:description',
-          content: facebookData.description,
-        },
-        {
-          name: 'facebook:image',
-          content: `${IMAGES_BASE_UR}${facebookData?.image?.data?.attributes?.url}`,
-        }
-      );
-    }  
-    if (twitterData?.title) {
-      additionalMetaTags.push(
-        {
-          name: 'twitter:title',
-          content: twitterData?.title,
-        },
-        {
-          name: 'twitter:description',
-          content: twitterData?.description,
-        },
-        {
-          name: 'twitter:image',
-          content: `${IMAGES_BASE_UR}${twitterData?.image?.data?.attributes?.url}`,
-        },
-      );
-    }
+    {};
 
-    return (
+  const additionalMetaTags = [
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1',
+    },
+    {
+      name: 'keywords',
+      // eslint-disable-next-line no-undef
+      content: post?.seo?.keywords,
+    },
+  ];
+  if (facebookData?.title) {
+    additionalMetaTags.push(
+      {
+        name: 'facebook:title',
+        content: facebookData.title,
+      },
+      {
+        name: 'facebook:description',
+        content: facebookData.description,
+      },
+      {
+        name: 'facebook:image',
+        content: `${IMAGES_BASE_UR}${facebookData?.image?.data?.attributes?.url}`,
+      },
+    );
+  }
+  if (twitterData?.title) {
+    additionalMetaTags.push(
+      {
+        name: 'twitter:title',
+        content: twitterData?.title,
+      },
+      {
+        name: 'twitter:description',
+        content: twitterData?.description,
+      },
+      {
+        name: 'twitter:image',
+        content: `${IMAGES_BASE_UR}${twitterData?.image?.data?.attributes?.url}`,
+      },
+    );
+  }
+
+  return (
     <>
       {post?.seo?.structuredData !== null && (
         <Head>
@@ -199,7 +192,6 @@ export default function Post({ post }) {
           </Flex>
           <Box h={largerSmallScreen ? '420px' : '200px'}>
             {post?.featuredImage?.data?.attributes?.url ? (
-
               <Image
                 //layout='responsive'
                 fit="cover"

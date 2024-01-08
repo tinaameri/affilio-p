@@ -1,13 +1,17 @@
-
-import { MediaQuery, Box, createStyles } from '@mantine/core'
+import { MediaQuery, Box } from '@mantine/core';
 
 import BottomFooter from '@/components/footer/BottomFooter';
 import TopFooter from '@/components/footer/TopFooter';
 import AccordionFooter from '@/components/footer/AccordionFooter';
 // import { mockdata, mockdataRightMenu, companyFooter } from '@/lib/page-directory/navJson';
 
-export default function GeneralFooter({ links,trust,copy_right,social,logo }) {
-
+export default function GeneralFooter({
+  links,
+  trust,
+  copy_right,
+  social,
+  logo,
+}) {
   // const trust=[
   //     {
   //       "title": "سازمان نظام صنفی کشور",
@@ -30,7 +34,7 @@ export default function GeneralFooter({ links,trust,copy_right,social,logo }) {
     <footer>
       <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
         <Box>
-          <TopFooter links={links} trust={trust} logo={logo}/>
+          <TopFooter links={links} trust={trust} logo={logo} />
         </Box>
       </MediaQuery>
       <MediaQuery largerThan="md" styles={{ display: 'none' }}>
@@ -39,6 +43,6 @@ export default function GeneralFooter({ links,trust,copy_right,social,logo }) {
         </Box>
       </MediaQuery>
       <BottomFooter copy_right={copy_right} social={social} />
-    </footer >
-  )
+    </footer>
+  );
 }

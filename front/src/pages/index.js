@@ -1,10 +1,10 @@
-import React from "react";
-import DynamicPage from "@/components/DynamicPage";
+import React from 'react';
+import DynamicPage from '@/components/DynamicPage';
 // import { pages } from "public/assets/contentJson";
-import { getSinglePage } from "@/api/query/staticPages";
+import { getSinglePage } from '@/api/query/staticPages';
 
 export async function getStaticProps() {
-  const res = await getSinglePage("home");
+  const res = await getSinglePage('home');
   if (!res?.pageData) {
     return {
       notFound: true,
@@ -21,10 +21,7 @@ export async function getStaticProps() {
 export default function Home({ pageData }) {
   return (
     <>
-      <DynamicPage
-        data={pageData?.page_dynamic_sections}
-        seo={pageData?.seo}
-      />
+      <DynamicPage data={pageData?.page_dynamic_sections} seo={pageData?.seo} />
     </>
   );
 }

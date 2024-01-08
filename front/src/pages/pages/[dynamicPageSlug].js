@@ -38,9 +38,9 @@
 //     )
 // }
 
-import { getPagesSlugs, getSinglePage } from "@/api//query/staticPages";
-import DynamicPage from "@/components/DynamicPage";
-import { REVALIDATE_RATE } from "@/api/clinet";
+import { getPagesSlugs, getSinglePage } from '@/api//query/staticPages';
+import DynamicPage from '@/components/DynamicPage';
+import { REVALIDATE_RATE } from '@/api/clinet';
 
 export async function getStaticProps({ params }) {
   const res = await getSinglePage(params.dynamicPageSlug);
@@ -71,11 +71,10 @@ export async function getStaticPaths() {
   return data;
 }
 
-export default function Page({pageData}) {
+export default function Page({ pageData }) {
   return (
     <>
-      <DynamicPage   data={pageData?.page_dynamic_sections}
-        seo={pageData?.seo}/>
+      <DynamicPage data={pageData?.page_dynamic_sections} seo={pageData?.seo} />
     </>
   );
 }

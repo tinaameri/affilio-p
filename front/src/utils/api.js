@@ -1,6 +1,6 @@
-import { GraphQLClient, gql as _gql } from "graphql-request";
+import { GraphQLClient, gql as _gql } from 'graphql-request';
 
-import { GRAPHQL_ENDPOINT } from "@/utils/constants";
+import { GRAPHQL_ENDPOINT } from '@/utils/constants';
 
 const client = new GraphQLClient(GRAPHQL_ENDPOINT, { headers: {} });
 export default client;

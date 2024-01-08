@@ -62,15 +62,15 @@
       "repeatable": false,
       "component": "page-element.logo"
     },
-    "header_button": {
-      "type": "component",
-      "repeatable": false,
-      "component": "page-element.button"
-    },
     "top_banner": {
       "type": "component",
       "repeatable": false,
       "component": "page-section.top-banner"
+    },
+    "header_button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-element.drop-down-menu"
     }
   }
 }

@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import Router from "next/router";
+import { useEffect, useState } from 'react';
+import Router from 'next/router';
 
 export default function useUser({
-  redirectTo = "",
-  redirectIfFound = false
+  redirectTo = '',
+  redirectIfFound = false,
 } = {}) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/api/user", {
-      credentials: "same-origin",
+    fetch('/api/user', {
+      credentials: 'same-origin',
       headers: {
-        accept: "application/json"
-      }
+        accept: 'application/json',
+      },
     })
       .then((res) => {
         if (!res.ok)

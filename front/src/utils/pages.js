@@ -1,6 +1,6 @@
-import { gql } from "graphql-request";
+import { gql } from 'graphql-request';
 
-import client from "@/utils/api";
+import client from '@/utils/api';
 
 export async function getPagesSlugs() {
   const PAGE_SLUG = gql`

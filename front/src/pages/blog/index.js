@@ -1,10 +1,14 @@
-import { ArticleJsonLd, LogoJsonLd, NextSeo } from "next-seo";
-import Posts from "@/components/blog/Posts";
-import TopHeader from "@/components/blog/TopHeader";
-import LatestPost from "@/components/blog/LatestPost";
-import { IMAGES_BASE_UR, PAGINATION_POSTS_PER_PAGE, REVALIDATE_RATE } from "@/api/clinet";
-import { requestPosts } from "@/api/query/blogPosts";
-import PostPagination from "@/components/blog/PostPagination";
+import { ArticleJsonLd, LogoJsonLd, NextSeo } from 'next-seo';
+import Posts from '@/components/blog/Posts';
+import TopHeader from '@/components/blog/TopHeader';
+import LatestPost from '@/components/blog/LatestPost';
+import {
+  IMAGES_BASE_UR,
+  PAGINATION_POSTS_PER_PAGE,
+  REVALIDATE_RATE,
+} from '@/api/clinet';
+import { requestPosts } from '@/api/query/blogPosts';
+import PostPagination from '@/components/blog/PostPagination';
 export async function getStaticProps() {
   const response = await requestPosts({});
   try {
@@ -27,7 +31,13 @@ export async function getStaticProps() {
     };
   }
 }
-export default function Post({ posts, categories, totalPages, currentPage,config }) {
+export default function Post({
+  posts,
+  categories,
+  totalPages,
+  currentPage,
+  config,
+}) {
   var data = [];
   for (var i = 1; i <= totalPages; i++) {
     data.push(i);

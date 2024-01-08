@@ -1,11 +1,11 @@
-import { Grid, Box } from "@mantine/core";
+import { Grid, Box } from '@mantine/core';
 //import Image from 'next/image';
-import Layout from "@/components/LayoutComponent";
+import Layout from '@/components/LayoutComponent';
 
 // import { EffectFade } from 'swiper/modules';
-import "swiper/css/effect-cards";
-import Heading from "@/components/Heading";
-import CardCarousel from "@/components/cardCarousel/CardCarousel";
+import 'swiper/css/effect-cards';
+import Heading from '@/components/Heading';
+import CardCarousel from '@/components/cardCarousel/CardCarousel';
 
 export default function Testimonial({ testimonial, bgSection }) {
   return (

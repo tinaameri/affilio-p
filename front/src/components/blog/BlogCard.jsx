@@ -9,8 +9,8 @@ import {
   Image,
 } from '@mantine/core';
 import Link from 'next/link';
-import { TxtLoader, ImageLoader } from '@/components/blog/Loader';
-import { useState, useEffect } from 'react';
+import { TxtLoader } from '@/components/blog/Loader';
+import { useState } from 'react';
 import Zoom from 'react-reveal/Zoom';
 import { IMAGES_BASE_UR } from '@/api/clinet';
 
@@ -21,12 +21,6 @@ const getSlug = (title) => {
 };
 
 export default function BlogCard(props) {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
   const {
     title,
     categories,
@@ -40,7 +34,6 @@ export default function BlogCard(props) {
     orderImg,
     imgAlign,
     dateDisplay,
-    imgHeightLoader,
     marginLeftImg,
     marginRightImg,
   } = props;
@@ -86,7 +79,7 @@ export default function BlogCard(props) {
                 <Box
                   mb="20px"
                   sx={{ overflow: 'hidden', borderRadius: imgRadius }}
-                //className='object-fit-blog-card'
+                  //className='object-fit-blog-card'
                 >
                   {loadingPost && (
                     <Loader
@@ -101,19 +94,19 @@ export default function BlogCard(props) {
                     />
                   )}
                   {/* {img ? ( */}
-                    <Image
-                      src={`${IMAGES_BASE_UR}${img}`}
-                      height={imgHeight ?? '175px'}
-                      //width={imgWidth ?? (smallerMidScreen ? '328px' : '260px')}
-                      width="100%"
-                      alt={title}
-                      fit="cover"
-                      //layout='fixed'
-                      radius={imgRadius ?? '10px'}
-                      withPlaceholder
-                      ml={marginLeftImg ?? 'auto'}
-                      mr={marginRightImg ?? 'auto'}
-                    />
+                  <Image
+                    src={`${IMAGES_BASE_UR}${img}`}
+                    height={imgHeight ?? '175px'}
+                    //width={imgWidth ?? (smallerMidScreen ? '328px' : '260px')}
+                    width="100%"
+                    alt={title}
+                    fit="cover"
+                    //layout='fixed'
+                    radius={imgRadius ?? '10px'}
+                    withPlaceholder
+                    ml={marginLeftImg ?? 'auto'}
+                    mr={marginRightImg ?? 'auto'}
+                  />
 
                   {/* // ) : (
                   //   <ImageLoader imgHeight={imgHeightLoader} />
@@ -147,7 +140,7 @@ export default function BlogCard(props) {
                             component="span"
                             c="gray.6"
                             fz="xs"
-                            fw='900'
+                            fw="900"
                             sx={(theme) => ({
                               '&:hover': {
                                 color: theme.colors.gray[9],
@@ -161,7 +154,12 @@ export default function BlogCard(props) {
                           {/* </a>
                     </Link> */}
 
-                          <Text display={dateDisplay} c="gray.6" fz="xs" fw='900'>
+                          <Text
+                            display={dateDisplay}
+                            c="gray.6"
+                            fz="xs"
+                            fw="900"
+                          >
                             {postDate}
                           </Text>
                         </Flex>
@@ -169,7 +167,6 @@ export default function BlogCard(props) {
                     </>
                   ) : (
                     <TxtLoader />
-
                   )}
                 </Box>
               </Grid.Col>

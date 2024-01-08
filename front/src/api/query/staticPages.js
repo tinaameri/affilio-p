@@ -22,68 +22,61 @@ export async function getPagesSlugs() {
 
 export async function getContactUs() {
   const CONTACT_US = gql`
-  query GET_CONTACT_US{
-    contactUs{
-      data{
-        id
-        attributes{
-          title:heading_title
-          description:heading_description
-          info_description:description
-          image {
-            data {
-              id
-              attributes {
-                url
-                caption
-                width
-              }
-            }
-          }
-          info{
-            id
-            title
-            info
-            link
-            
-          }
-          social_title:title
-          social_description
-          social_media{
-            id
-            title
-            link
-            icon {
+    query GET_CONTACT_US {
+      contactUs {
+        data {
+          id
+          attributes {
+            title: heading_title
+            description: heading_description
+            info_description: description
+            image {
               data {
                 id
                 attributes {
                   url
                   caption
+                  width
+                }
+              }
+            }
+            info {
+              id
+              title
+              info
+              link
+            }
+            social_title: title
+            social_description
+            social_media {
+              id
+              title
+              link
+              icon {
+                data {
+                  id
+                  attributes {
+                    url
+                    caption
+                  }
                 }
               }
             }
           }
-          
-          
         }
       }
-      
     }
-  }
-  `
-  let response
+  `;
+  let response;
   try {
     response = await strapiClient.request(CONTACT_US);
-
   } catch (error) {
-
+    console.error('error contact-us');
   }
 
   return {
-    contactUs: response?.contactUs?.data?.attributes || {}
+    contactUs: response?.contactUs?.data?.attributes || {},
   };
-
-
 }
 
 export async function getSinglePage(slug) {
@@ -386,27 +379,23 @@ export async function getSinglePage(slug) {
       }
     }
   `;
-  let response
+  let response;
   try {
     response = await strapiClient.request(SINGLE_PAGE);
-
   } catch (error) {
-    console.error(">>>>>", slug)
-    console.error(">>>>>error", error)
-
-
+    console.error('>>>>>', slug);
+    console.error('>>>>>error', error);
   }
 
- console.log(">>>>>>>res", response)
+  console.log('>>>>>>>res', response);
   return {
     pageData: response?.staticPages?.data?.length
       ? response?.staticPages?.data[0]?.attributes
       : null,
     config: response?.config?.data?.attributes || {},
     seo: response?.staticPages?.data?.length
-    ? response?.staticPages?.data[0]?.attributes?.seo
-    : null,
+      ? response?.staticPages?.data[0]?.attributes?.seo
+      : null,
     //contactUs: response?.contactUs?.data?.attributes || {}
   };
-
 }

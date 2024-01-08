@@ -1,8 +1,7 @@
-import { Button, Text } from "@mantine/core";
-import { IconArrowLeft } from "@tabler/icons-react";
-import { useRef, useState, useEffect } from "react";
+import { Button, Text } from '@mantine/core';
+import { IconArrowLeft } from '@tabler/icons-react';
 
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function ButtonComponent({
   type,
@@ -12,47 +11,39 @@ export default function ButtonComponent({
   className,
   actionType,
   onClick,
-  rightIcon
+  rightIcon,
 }) {
-  const ref = useRef();
-  const [titleWidth, setTitleWidth] = useState(0);
-  useEffect(() => {
-    if (ref.current) {
-      const width = ref.current.getBoundingClientRect().width;
-      setTitleWidth(width);
-    }
-  }, [title]);
   return (
     <>
       {href ? (
         <Link href={href} passHref>
           <Button
-          className={className}
+            className={className}
             component="a"
-            target={targetBlank ? '_blank' :'_self'}
+            target={targetBlank ? '_blank' : '_self'}
             type={actionType}
             onClick={onClick}
             bg={
-              type === "primaryArrow" || type === "primary"
-                ? "primary.0"
-                : type === "secondaryArrow" || type === "secondary"
-                  ? "white"
-                  : ""
+              type === 'primaryArrow' || type === 'primary'
+                ? 'primary.0'
+                : type === 'secondaryArrow' || type === 'secondary'
+                  ? 'white'
+                  : ''
             }
             sx={(theme) => ({
-              cursor: !href && !onClick && "unset",
-              "&:hover": {
+              cursor: !href && !onClick && 'unset',
+              '&:hover': {
                 backgroundColor:
-                  type === "secondaryArrow" || type === "secondary"
-                    ? "white"
-                    : theme.colors.primary[0]
+                  type === 'secondaryArrow' || type === 'secondary'
+                    ? 'white'
+                    : theme.colors.primary[0],
               },
 
-              padding: "0 20px"
+              padding: '0 20px',
             })}
             rightIcon={
               rightIcon ??
-              ((type === "primaryArrow" || type === "secondaryArrow") && (
+              ((type === 'primaryArrow' || type === 'secondaryArrow') && (
                 <IconArrowLeft size="23px" />
               ))
             }
@@ -62,31 +53,30 @@ export default function ButtonComponent({
         </Link>
       ) : (
         <Button
-        className={className}
+          className={className}
           type={actionType}
           onClick={onClick}
           bg={
-            type === "primaryArrow" || type === "primary"
-              ? "primary.0"
-              : type === "secondaryArrow" || type === "secondary"
-                ? "white"
-                : ""
+            type === 'primaryArrow' || type === 'primary'
+              ? 'primary.0'
+              : type === 'secondaryArrow' || type === 'secondary'
+                ? 'white'
+                : ''
           }
-         
           sx={(theme) => ({
-            cursor: !href && !onClick && actionType !== 'submit' && "unset",
-            "&:hover": {
+            cursor: !href && !onClick && actionType !== 'submit' && 'unset',
+            '&:hover': {
               backgroundColor:
-                type === "secondaryArrow" || type === "secondary"
-                  ? "white"
-                  : theme.colors.primary[0]
+                type === 'secondaryArrow' || type === 'secondary'
+                  ? 'white'
+                  : theme.colors.primary[0],
             },
 
-            padding: "0 20px"
+            padding: '0 20px',
           })}
           rightIcon={
             rightIcon ??
-            ((type === "primaryArrow" || type === "secondaryArrow") && (
+            ((type === 'primaryArrow' || type === 'secondaryArrow') && (
               <IconArrowLeft size="23px" />
             ))
           }

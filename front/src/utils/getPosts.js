@@ -1,8 +1,8 @@
 // import 'server-only';
 
-import api, { gql } from "@/utils/api";
-import { postPerPage } from "@/utils/constants";
-import { cache } from "react";
+import api, { gql } from '@/utils/api';
+import { postPerPage } from '@/utils/constants';
+import { cache } from 'react';
 
 const getPosts = cache(
   async ({ categoryName, currentPage, pageSize, query, search } = {}) => {

@@ -790,8 +790,8 @@ export interface ApiConfigConfig extends Schema.SingleType {
     trust_logo: Attribute.Component<'page-element.trust-logo', true>;
     social_media: Attribute.Component<'page-element.social', true>;
     logo: Attribute.Component<'page-element.logo'>;
-    header_button: Attribute.Component<'page-element.button'>;
     top_banner: Attribute.Component<'page-section.top-banner'>;
+    header_button: Attribute.Component<'page-element.drop-down-menu'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

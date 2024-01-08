@@ -1,5 +1,5 @@
-import client from "@/utils/api";
-import { gql } from "graphql-request";
+import client from '@/utils/api';
+import { gql } from 'graphql-request';
 
 export default function getPostList() {
   const query = gql`

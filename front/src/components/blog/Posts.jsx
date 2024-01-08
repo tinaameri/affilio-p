@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
 import BlogCard from '@/components/blog/BlogCard';
 import Layout from '@/components/LayoutComponent';
-import { Grid, Box, Text, Loader } from '@mantine/core';
+import { Grid, Box, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import PostPagination from '@/components/blog/PostPagination';
 import { useRouter } from 'next/router';
@@ -31,9 +30,7 @@ export default function Posts({
   // }, [loadingLoader]);
   return (
     <>
-      {router.pathname !== '/blog' && (
-        <Search mt="140px" />
-      )}
+      {router.pathname !== '/blog' && <Search mt="140px" />}
       <Layout pb="40px">
         <Grid.Col xs={12} mt="lg">
           <Categories
@@ -89,7 +86,6 @@ export default function Posts({
               </Grid.Col>
             ))
           )
-        
         ) : posts?.length <= 0 ? (
           <Grid.Col xs={12} mx="auto" ta="center">
             <Text ta="center" component="p">
@@ -121,7 +117,7 @@ export default function Posts({
           ))
         )}
 
-        {posts?.length  && (
+        {posts?.length && (
           <Grid.Col display={paginationDisplay}>
             <PostPagination totalPages={totalPages} currentPage={currentPage} />
           </Grid.Col>
