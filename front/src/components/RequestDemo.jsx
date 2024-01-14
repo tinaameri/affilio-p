@@ -112,7 +112,7 @@ export default function RequestDemo({ source, bgColor, pLayout, py, demo }) {
         //tellUsMore: values.tellUsMore,
         jobTitle: values.jobTitle,
         hearAbout: values.hearAbout,
-        adverge: true,
+        affilio: true,
       },
     };
 
@@ -121,7 +121,7 @@ export default function RequestDemo({ source, bgColor, pLayout, py, demo }) {
       eventName: 'demo-request',
       eventData: {
         'site-position': source,
-        source: 'adverge',
+        source: 'affilio',
       },
     });
     dispatch({ type: 'SUCCESS' });

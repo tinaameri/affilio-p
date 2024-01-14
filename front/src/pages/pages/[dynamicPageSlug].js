@@ -44,17 +44,24 @@ import { REVALIDATE_RATE } from '@/api/clinet';
 
 export async function getStaticProps({ params }) {
   const res = await getSinglePage(params.dynamicPageSlug);
+
   if (!res?.pageData) {
     return {
       notFound: true,
     };
   }
-  return {
-    props: {
-      ...res,
-    },
-    revalidate: REVALIDATE_RATE,
-  };
+  try {
+    return {
+      props: {
+        ...res,
+      },
+      revalidate: REVALIDATE_RATE,
+    };
+  } catch (error) {
+    return {
+      props: {},
+    };
+  }
 }
 export async function getStaticPaths() {
   const pageSlugs = await getPagesSlugs();
@@ -71,10 +78,14 @@ export async function getStaticPaths() {
   return data;
 }
 
-export default function Page({ pageData }) {
+export default function Page({ pageData, posts }) {
   return (
     <>
-      <DynamicPage data={pageData?.page_dynamic_sections} seo={pageData?.seo} />
+      <DynamicPage
+        data={pageData?.page_dynamic_sections}
+        seo={pageData?.seo}
+        posts={posts}
+      />
     </>
   );
 }

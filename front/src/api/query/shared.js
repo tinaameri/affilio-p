@@ -54,6 +54,11 @@ config {
             
           }
         }
+        newsletter{
+          title
+          email_placeholder
+          button
+        }
         footerNavigation {
           id
           title
@@ -62,8 +67,11 @@ config {
             link
             title
             newPage
+            type
           }
+
         }
+
         Gdpr {
           id
           heading_title

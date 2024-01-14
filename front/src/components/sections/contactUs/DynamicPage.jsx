@@ -11,7 +11,7 @@ export default function DynamicPage({ contactForm, content }) {
         title="تماس با ما"
         description=""
         openGraph={{
-          url: 'https://adverge.ir/pages/contact-us',
+          url: 'https://affilio.ir/pages/contact-us',
           title: 'تماس با ما',
           description: '',
           images: [

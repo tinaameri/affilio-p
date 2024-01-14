@@ -12,12 +12,16 @@ export default function ButtonComponent({
   actionType,
   onClick,
   rightIcon,
+  mr,
+  ml,
 }) {
   return (
     <>
       {href ? (
         <Link href={href} passHref>
           <Button
+            ml={ml}
+            mr={mr}
             className={className}
             component="a"
             target={targetBlank ? '_blank' : '_self'}
@@ -53,6 +57,8 @@ export default function ButtonComponent({
         </Link>
       ) : (
         <Button
+          ml={ml}
+          mr={mr}
           className={className}
           type={actionType}
           onClick={onClick}

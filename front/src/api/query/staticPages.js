@@ -1,6 +1,6 @@
+import { BLOG_POSTS_SECTION } from './blogPosts';
 import { CONFIG_QUERY, SEO_QUERY } from './shared';
 import { strapiClient, gql } from '@/api/clinet';
-
 export async function getPagesSlugs() {
   const PAGE_SLUG = gql`
     {
@@ -83,7 +83,7 @@ export async function getSinglePage(slug) {
   const SINGLE_PAGE = gql`
     query GET_PAGE{
       ${CONFIG_QUERY}
-
+      ${BLOG_POSTS_SECTION}
       staticPages(filters:{slug:{
         eq:"${slug}"
       }}){
@@ -194,13 +194,34 @@ export async function getSinglePage(slug) {
                 }
               }
 
-
+              ... on ComponentPageSectionBlogSection{
+                id
+                heading_title
+                button{
+                  id
+                  title
+                  link
+                  newPage
+                  type
+                }
+                background
+              }
               ...on ComponentPageSectionVerticalCardList{
                 id
+                heading_title
+                heading_description
+                three_column
                 cards{
                   id
                   title
                   description
+                  
+button{
+  title
+  link
+  newPage
+  type
+}
                   image{
                     data{
                       attributes{
@@ -352,6 +373,16 @@ export async function getSinglePage(slug) {
                 }
               }
             } 
+            ... on ComponentPageSectionCounter{
+              heading_title
+              heading_description
+              Counter{
+                id
+                title
+                unit
+                count
+              }
+            }
             ... on ComponentPageSectionTimelineSection {
               id
               headingTimeline:heading_title
@@ -393,6 +424,7 @@ export async function getSinglePage(slug) {
       ? response?.staticPages?.data[0]?.attributes
       : null,
     config: response?.config?.data?.attributes || {},
+    posts: response?.blogPosts?.data || {},
     seo: response?.staticPages?.data?.length
       ? response?.staticPages?.data[0]?.attributes?.seo
       : null,

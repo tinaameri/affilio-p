@@ -6,10 +6,10 @@ import {
   Box,
   Grid,
   Loader,
-  Image,
+  Center,
 } from '@mantine/core';
 import Link from 'next/link';
-import { TxtLoader } from '@/components/blog/Loader';
+import { ImageLoader, TxtLoader } from '@/components/blog/Loader';
 import { useState } from 'react';
 import Zoom from 'react-reveal/Zoom';
 import { IMAGES_BASE_UR } from '@/api/clinet';
@@ -30,12 +30,9 @@ export default function BlogCard(props) {
     latestTxt,
     latestImg,
     imgHeight,
-    imgRadius,
     orderImg,
     imgAlign,
     dateDisplay,
-    marginLeftImg,
-    marginRightImg,
   } = props;
   let options = { year: 'numeric', month: 'long', day: 'numeric' };
   let postDate = new Date(date).toLocaleDateString('fa-IR', options);
@@ -76,9 +73,10 @@ export default function BlogCard(props) {
                 h={imgHeight ?? '175px'}
                 mb="17px"
               >
-                <Box
+                <Center
                   mb="20px"
-                  sx={{ overflow: 'hidden', borderRadius: imgRadius }}
+                  h="100%"
+                  sx={{ overflow: 'hidden', borderRadius: '10px' }}
                   //className='object-fit-blog-card'
                 >
                   {loadingPost && (
@@ -93,28 +91,20 @@ export default function BlogCard(props) {
                       }}
                     />
                   )}
-                  {/* {img ? ( */}
-                  <Image
-                    src={`${IMAGES_BASE_UR}${img}`}
-                    height={imgHeight ?? '175px'}
-                    //width={imgWidth ?? (smallerMidScreen ? '328px' : '260px')}
-                    width="100%"
-                    alt={title}
-                    fit="cover"
-                    //layout='fixed'
-                    radius={imgRadius ?? '10px'}
-                    withPlaceholder
-                    ml={marginLeftImg ?? 'auto'}
-                    mr={marginRightImg ?? 'auto'}
-                  />
-
-                  {/* // ) : (
-                  //   <ImageLoader imgHeight={imgHeightLoader} />
-
-                  // )} */}
-                </Box>
+                  {img ? (
+                    <figure>
+                      <img
+                        className="img-responsive"
+                        loading="lazy"
+                        alt="title"
+                        src={`${IMAGES_BASE_UR}${img}`}
+                      />
+                    </figure>
+                  ) : (
+                    <ImageLoader imgHeight={200} />
+                  )}
+                </Center>
               </Grid.Col>
-
               <Grid.Col
                 xs={12}
                 sm={12}

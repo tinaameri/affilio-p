@@ -221,7 +221,11 @@ export function CardItem(props) {
                       {item?.title}
                     </Title>
 
-                    <Text py="10px" fz={largerSmallScreen ? '18px' : '16px'}>
+                    <Text
+                      py="10px"
+                      mt="40px"
+                      fz={largerSmallScreen ? '18px' : '16px'}
+                    >
                       <Markdown text={item?.description} />
                     </Text>
                   </Box>

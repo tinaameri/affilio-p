@@ -7,7 +7,7 @@ import {
   Box,
   Breadcrumbs,
   Skeleton,
-  Image,
+  BackgroundImage,
 } from '@mantine/core';
 import { getPostSlugs, getSinglePost } from '@/api/query/blogPosts';
 import Layout from '@/components/LayoutComponent';
@@ -192,15 +192,20 @@ export default function Post({ post }) {
           </Flex>
           <Box h={largerSmallScreen ? '420px' : '200px'}>
             {post?.featuredImage?.data?.attributes?.url ? (
-              <Image
-                //layout='responsive'
-                fit="cover"
-                withPlaceholder
-                width="100%"
-                alt={post?.title}
-                height={largerSmallScreen ? '420px' : '200px'}
-                radius="1rem"
+              // <Image
+              //   //layout='responsive'
+              //   fit="cover"
+              //   withPlaceholder
+              //   width="100%"
+              //   alt={post?.title}
+              //   height={largerSmallScreen ? '420px' : '200px'}
+              //   radius="1rem"
+              //   src={`${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`}
+              // />
+              <BackgroundImage
                 src={`${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`}
+                h={largerSmallScreen ? '420px' : '200px'}
+                py="20%"
               />
             ) : (
               <Skeleton
@@ -211,7 +216,7 @@ export default function Post({ post }) {
               />
             )}
           </Box>
-          <Flex align="center">
+          <Flex align="center" mt="xl">
             <Breadcrumbs separator={<IconChevronLeft size="20px" />} mt="xs">
               {items.map((item, index) => (
                 <Text

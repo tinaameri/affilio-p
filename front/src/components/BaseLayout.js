@@ -180,6 +180,7 @@ export default function BaseLayout({ config, children, slug }) {
         trust={config?.trust_logo || []}
         copy_right={config?.copy_right}
         social={config?.social_media}
+        newsletter={config?.newsletter}
       />
       <RequestDemoModal />
       <SuccessModal />

@@ -18,10 +18,14 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ pageData }) {
+export default function Home({ pageData, posts }) {
   return (
     <>
-      <DynamicPage data={pageData?.page_dynamic_sections} seo={pageData?.seo} />
+      <DynamicPage
+        data={pageData?.page_dynamic_sections}
+        seo={pageData?.seo}
+        posts={posts}
+      />
     </>
   );
 }

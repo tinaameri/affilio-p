@@ -13,7 +13,7 @@ const BLOG_CATEGORIES = gql`
   }
 `;
 
-const BLOG_POSTS = gql`
+export const BLOG_POSTS = gql`
   query GET_PERPAGEPOST(
     $page: Int
     $size: Int
@@ -68,7 +68,34 @@ const BLOG_POSTS = gql`
     ${CONFIG_QUERY}
   }
 `;
-
+export const BLOG_POSTS_SECTION = gql`
+  blogPosts(sort:"createdAt:desc") {
+    data {
+      id
+      attributes {
+        title
+        slug: title
+        date: publishedAt
+        featuredImage {
+          data {
+            attributes {
+              url
+              caption
+            }
+          }
+        }
+        categories {
+          data {
+            attributes {
+              title
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 export async function requestPosts({ categoryName, page, search, title } = {}) {
   const params = {
     size: PAGINATION_POSTS_PER_PAGE,

@@ -22,7 +22,6 @@
         "page-section.2col-with-image",
         "page-section.hero",
         "page-section.info",
-        "page-section.vertical-card-list",
         "page-section.image-carousel",
         "page-section.tabs",
         "page-section.simple-text",
@@ -34,7 +33,11 @@
         "page-section.contact-us",
         "page-section.timeline-section",
         "page-section.seller-carousel",
-        "page-section.top-banner"
+        "page-section.top-banner",
+        "page-section.counter",
+        "page-section.vertical-card-list",
+        "page-section.blog-section"
+        
       ]
     },
     "slug": {

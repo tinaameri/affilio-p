@@ -30,3 +30,8 @@ export const COLOR = {
   white: '#FDFDFD',
   blue: '#DCEAFF',
 };
+export const INFO_COLOR = {
+  white: '#FFF',
+  primary: 'primary.1',
+  gray: 'gray.0',
+};

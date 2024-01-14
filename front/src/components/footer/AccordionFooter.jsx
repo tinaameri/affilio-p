@@ -1,19 +1,21 @@
+/* eslint-disable no-unused-vars */
 import { Container, Accordion, Box, createStyles, Text } from '@mantine/core';
 import Logo from '@/components/Logo';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useThemeContext } from '@/context/theme';
-import TrustLogo from './TrustLogo';
+import TrustLogo from '@/components/footer/TrustLogo';
+import NewsletterInput from '../NewsletterInput';
 const useStyles = createStyles((theme) => ({
   //TODO: change style for mantine v7
   control: {
     ...theme.fn.hover({
-      backgroundColor: theme.colors.secondary[1],
+      backgroundColor: theme.colors.primary[1],
       color: 'white',
     }),
   },
   item: {
-    backgroundColor: theme.colors.secondary[1],
+    backgroundColor: theme.colors.primary[1],
 
     borderBottom: '1px solid white',
   },
@@ -34,7 +36,7 @@ const useStyles = createStyles((theme) => ({
     color: 'white',
   },
 }));
-export default function AccordionFooterNew({ links, trust, logo }) {
+export default function AccordionFooter({ links, trust, logo, newsletter }) {
   const [show, setShow] = useState(false);
   const { setActiveTab } = useThemeContext();
 
@@ -56,9 +58,9 @@ export default function AccordionFooterNew({ links, trust, logo }) {
   const { classes } = useStyles();
 
   return (
-    <Box bg="#0E1E57" py="45px">
+    <Box bg="primary.1" py="45px" mih="480px">
       <Container size="xl">
-        <Logo logo={logo} position="footer" />
+        <Logo position="footer" logo={logo} />
         <Box bg="primary.1">
           <Accordion classNames={classes}>
             {links.map((item) => (
@@ -71,23 +73,36 @@ export default function AccordionFooterNew({ links, trust, logo }) {
                     key={idx}
                     onClick={() => handleClose(subItem?.value)}
                   >
-                    <Link prefetch={false} href={subItem?.link}>
-                      <a
-                        target={subItem?.newPage ? '_blank' : '_self'}
-                        aria-label={subItem?.title}
-                      >
-                        <Text
-                          component="span"
-                          sx={() => ({
-                            '&:hover': {
-                              color: '#EAEEF6',
-                            },
-                          })}
+                    {subItem?.link ? (
+                      <Link prefetch={false} href={subItem?.link}>
+                        <a
+                          target={subItem?.newPage ? '_blank' : '_self'}
+                          aria-label={subItem?.title}
                         >
-                          {subItem?.title}
-                        </Text>
-                      </a>
-                    </Link>
+                          <Text
+                            component="span"
+                            sx={(theme) => ({
+                              '&:hover': {
+                                color: theme.colors.secondary[1],
+                              },
+                            })}
+                          >
+                            {subItem?.title}
+                          </Text>
+                        </a>
+                      </Link>
+                    ) : (
+                      <Text
+                        component="span"
+                        sx={(theme) => ({
+                          '&:hover': {
+                            color: theme.colors.secondary[1],
+                          },
+                        })}
+                      >
+                        {subItem?.title}
+                      </Text>
+                    )}
                   </Accordion.Panel>
                 ))}
               </Accordion.Item>
@@ -95,6 +110,7 @@ export default function AccordionFooterNew({ links, trust, logo }) {
           </Accordion>
         </Box>
         <TrustLogo items={trust} />
+        <NewsletterInput source="footer" newsletter={newsletter} />
       </Container>
     </Box>
   );

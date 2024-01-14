@@ -11,6 +11,7 @@ export default function GeneralFooter({
   copy_right,
   social,
   logo,
+  newsletter,
 }) {
   // const trust=[
   //     {
@@ -34,12 +35,22 @@ export default function GeneralFooter({
     <footer>
       <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
         <Box>
-          <TopFooter links={links} trust={trust} logo={logo} />
+          <TopFooter
+            links={links}
+            trust={trust}
+            logo={logo}
+            newsletter={newsletter}
+          />
         </Box>
       </MediaQuery>
       <MediaQuery largerThan="md" styles={{ display: 'none' }}>
         <Box>
-          <AccordionFooter links={links} trust={trust} logo={logo} />
+          <AccordionFooter
+            links={links}
+            trust={trust}
+            logo={logo}
+            newsletter={newsletter}
+          />
         </Box>
       </MediaQuery>
       <BottomFooter copy_right={copy_right} social={social} />

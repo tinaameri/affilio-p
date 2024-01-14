@@ -1,14 +1,24 @@
 {
   "collectionName": "components_page_section_vertical_card_lists",
   "info": {
-    "displayName": "verticalCardList"
+    "displayName": "VerticalCardList",
+    "description": ""
   },
   "options": {},
   "attributes": {
+    "heading_title": {
+      "type": "string"
+    },
+    "heading_description": {
+      "type": "richtext"
+    },
+    "three_column": {
+      "type": "boolean"
+    },
     "cards": {
       "type": "component",
       "repeatable": true,
-      "component": "page-section.vertical-card"
+      "component": "page-element.vertical-card"
     }
   }
 }

@@ -1,21 +1,14 @@
-import { Box, Container, Text, Flex, Divider } from '@mantine/core';
+import { Box, Container, Text, Flex } from '@mantine/core';
 
 import { useMediaQuery } from '@mantine/hooks';
-import Social from '@/components/Social';
+import Social from '../Social';
 
 export default function BottomFooter({ copy_right, social }) {
   const smallerLgScreen = useMediaQuery('(max-width: 75em)');
-  const smallerSmallScreen = useMediaQuery('(max-width: 37.5em)');
   const largerXlgScreen = useMediaQuery('(min-width: 88em)');
 
   return (
-    <Box
-      bg={smallerSmallScreen ? 'primary.6' : 'secondary.1'}
-      pb={smallerLgScreen ? '0' : '16px'}
-    >
-      {!smallerSmallScreen && (
-        <Divider size="xs" w="80%" mx="auto" color="#989898" />
-      )}
+    <Box bg="primary.2" pb={smallerLgScreen ? '0' : '16px'} mih="90px">
       <Container
         size={largerXlgScreen ? '1300px' : 'md'}
         pos="relative"
@@ -30,10 +23,10 @@ export default function BottomFooter({ copy_right, social }) {
         >
           <Text
             fz="sm"
-            fw="900"
             color="white"
             ta={smallerLgScreen && 'center'}
             py={smallerLgScreen && 'sm'}
+            px={smallerLgScreen && 'lg'}
           >
             {copy_right}
           </Text>

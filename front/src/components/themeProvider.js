@@ -170,7 +170,7 @@ export default function ThemeProvider(props) {
                           },
 
                           '&:is(h3)': {
-                            fontSize: '36px',
+                            fontSize: '28px',
                           },
                           '&:is(h4)': {
                             fontSize: '20px',
@@ -184,7 +184,7 @@ export default function ThemeProvider(props) {
                             fontSize: '32px',
                           },
                           '&:is(h3)': {
-                            fontSize: '28px',
+                            fontSize: '30px',
                           },
                           '&:is(h4)': {
                             fontSize: '24px',
@@ -324,31 +324,31 @@ export default function ThemeProvider(props) {
                         transition: 'all .15s linear 0s',
                         position: 'relative',
                         display: 'inline-block',
-                        backgroundColor: theme.colors.primary[0],
+                        //backgroundColor: theme.colors.primary[0],
 
-                        color: theme.colors.primary[6],
+                        //color: theme.colors.primary[6],
 
-                        boxShadow: `4px 4px 0 ${theme.colors.primary[6]}`,
+                        //boxShadow: `4px 4px 0 ${theme.colors.primary[6]}`,
 
-                        '&:hover': {
-                          top: ' 3px',
-                          left: '-3px',
-                          boxShadow: `0px 0px 0 ${theme.colors.primary[6]}`,
-                          //backgroundColor: theme.colors.primary[0],
-                          '&::after': {
-                            top: '1px',
-                            right: '-2px',
-                            width: '4px',
-                            height: '4px',
-                          },
+                        // '&:hover': {
+                        //   top: ' 3px',
+                        //   left: '-3px',
+                        //   boxShadow: `0px 0px 0 ${theme.colors.primary[6]}`,
+                        //   //backgroundColor: theme.colors.primary[0],
+                        //   '&::after': {
+                        //     top: '1px',
+                        //     right: '-2px',
+                        //     width: '4px',
+                        //     height: '4px',
+                        //   },
 
-                          '&::before': {
-                            bottom: '-2px',
-                            left: '1px',
-                            width: '4px',
-                            height: '4px',
-                          },
-                        },
+                        //   '&::before': {
+                        //     bottom: '-2px',
+                        //     left: '1px',
+                        //     width: '4px',
+                        //     height: '4px',
+                        //   },
+                        // },
                         a: {
                           position: 'absolute',
                           width: '100%',
@@ -1136,6 +1136,39 @@ export default function ThemeProvider(props) {
                         position: 'absolute',
                         left: '-3px',
                       },
+                    },
+                  },
+                  '.img-responsive': {
+                    minWidth: '100%',
+                    maxWidth: '100%',
+                    height: 'auto',
+                  },
+                  '.newsletter-section': {
+                    marginTop: '20px',
+                    height: '50px',
+                    border: '1px solid gray',
+                    borderRadius: '5px',
+                    position: 'relative',
+                    '.mantine-rtl-InputWrapper-root': {
+                      margin: '0px',
+                      height: '100%',
+                      borderBottom: '0',
+                      '.mantine-rtl-Input-wrapper': {
+                        height: '100%',
+                        paddingLeft: '10px',
+                        paddingRight: '10px',
+                      },
+                    },
+                    input: {
+                      height: '100%',
+                      color: 'white',
+                    },
+                    button: {
+                      position: 'absolute',
+                      height: '40px',
+                      left: '3px',
+                      top: '3px',
+                      borderRadius: '5px',
                     },
                   },
                 }),

@@ -22,7 +22,20 @@ export interface PageElementButton extends Schema.Component {
     title: Attribute.String & Attribute.Required;
     link: Attribute.String;
     newPage: Attribute.Boolean & Attribute.DefaultTo<false>;
-    type: Attribute.Enumeration<['primary', 'secondary']>;
+    type: Attribute.Enumeration<['disable']>;
+  };
+}
+
+export interface PageElementCards extends Schema.Component {
+  collectionName: 'components_page_element_cards';
+  info: {
+    displayName: 'cards';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media;
+    button: Attribute.Component<'page-element.button', true>;
   };
 }
 
@@ -36,6 +49,18 @@ export interface PageElementContent extends Schema.Component {
   attributes: {
     description: Attribute.RichText & Attribute.Required;
     title: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface PageElementCounter extends Schema.Component {
+  collectionName: 'components_page_element_counters';
+  info: {
+    displayName: 'Counter';
+  };
+  attributes: {
+    title: Attribute.String;
+    unit: Attribute.String;
+    count: Attribute.String;
   };
 }
 
@@ -126,6 +151,20 @@ export interface PageElementNavSubMenu extends Schema.Component {
     link: Attribute.String & Attribute.Required;
     image: Attribute.Media;
     description: Attribute.Text;
+  };
+}
+
+export interface PageElementNewsletter extends Schema.Component {
+  collectionName: 'components_page_element_newsletters';
+  info: {
+    displayName: 'newsletter';
+    icon: 'earth';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    email_placeholder: Attribute.String;
+    button: Attribute.String;
   };
 }
 
@@ -236,6 +275,20 @@ export interface PageElementTrustLogo extends Schema.Component {
   };
 }
 
+export interface PageElementVerticalCard extends Schema.Component {
+  collectionName: 'components_page_element_vertical_cards';
+  info: {
+    displayName: 'VerticalCard';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.RichText;
+    image: Attribute.Media;
+    button: Attribute.Component<'page-element.button', true>;
+  };
+}
+
 export interface PageElementWordsAnimation extends Schema.Component {
   collectionName: 'components_page_element_words_animations';
   info: {
@@ -277,6 +330,19 @@ export interface PageSectionBanner extends Schema.Component {
   };
 }
 
+export interface PageSectionBlogSection extends Schema.Component {
+  collectionName: 'components_page_section_blog_sections';
+  info: {
+    displayName: 'BlogSection';
+    description: '';
+  };
+  attributes: {
+    heading_title: Attribute.String;
+    button: Attribute.Component<'page-element.button'>;
+    background: Attribute.Enumeration<['white', 'primary']>;
+  };
+}
+
 export interface PageSectionCardBanner extends Schema.Component {
   collectionName: 'components_page_section_card_banners';
   info: {
@@ -307,6 +373,19 @@ export interface PageSectionContactUs extends Schema.Component {
     button: Attribute.Component<'page-element.button'>;
     image: Attribute.Media & Attribute.Required;
     background: Attribute.Enumeration<['green', 'white', 'blue']>;
+  };
+}
+
+export interface PageSectionCounter extends Schema.Component {
+  collectionName: 'components_page_section_counters';
+  info: {
+    displayName: 'Counter';
+    description: '';
+  };
+  attributes: {
+    Counter: Attribute.Component<'page-element.counter', true>;
+    heading_title: Attribute.String;
+    heading_description: Attribute.Text;
   };
 }
 
@@ -458,22 +537,14 @@ export interface PageSectionTopBanner extends Schema.Component {
 export interface PageSectionVerticalCardList extends Schema.Component {
   collectionName: 'components_page_section_vertical_card_lists';
   info: {
-    displayName: 'verticalCardList';
+    displayName: 'VerticalCardList';
+    description: '';
   };
   attributes: {
-    cards: Attribute.Component<'page-section.vertical-card', true>;
-  };
-}
-
-export interface PageSectionVerticalCard extends Schema.Component {
-  collectionName: 'components_page_section_vertical_cards';
-  info: {
-    displayName: 'verticalCard';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.Text;
-    image: Attribute.Media;
+    heading_title: Attribute.String;
+    heading_description: Attribute.RichText;
+    three_column: Attribute.Boolean;
+    cards: Attribute.Component<'page-element.vertical-card', true>;
   };
 }
 
@@ -566,7 +637,9 @@ declare module '@strapi/types' {
     export interface Components {
       'page-element.button-without-link': PageElementButtonWithoutLink;
       'page-element.button': PageElementButton;
+      'page-element.cards': PageElementCards;
       'page-element.content': PageElementContent;
+      'page-element.counter': PageElementCounter;
       'page-element.drop-down-menu': PageElementDropDownMenu;
       'page-element.field-info': PageElementFieldInfo;
       'page-element.footer-links': PageElementFooterLinks;
@@ -574,6 +647,7 @@ declare module '@strapi/types' {
       'page-element.meta-robots': PageElementMetaRobots;
       'page-element.nav-menu': PageElementNavMenu;
       'page-element.nav-sub-menu': PageElementNavSubMenu;
+      'page-element.newsletter': PageElementNewsletter;
       'page-element.option': PageElementOption;
       'page-element.search-box': PageElementSearchBox;
       'page-element.seller': PageElementSeller;
@@ -582,11 +656,14 @@ declare module '@strapi/types' {
       'page-element.tab': PageElementTab;
       'page-element.timeline-item': PageElementTimelineItem;
       'page-element.trust-logo': PageElementTrustLogo;
+      'page-element.vertical-card': PageElementVerticalCard;
       'page-element.words-animation': PageElementWordsAnimation;
       'page-section.2col-with-image': PageSection2ColWithImage;
       'page-section.banner': PageSectionBanner;
+      'page-section.blog-section': PageSectionBlogSection;
       'page-section.card-banner': PageSectionCardBanner;
       'page-section.contact-us': PageSectionContactUs;
+      'page-section.counter': PageSectionCounter;
       'page-section.create-campaign': PageSectionCreateCampaign;
       'page-section.hero': PageSectionHero;
       'page-section.image-carousel': PageSectionImageCarousel;
@@ -598,7 +675,6 @@ declare module '@strapi/types' {
       'page-section.timeline-section': PageSectionTimelineSection;
       'page-section.top-banner': PageSectionTopBanner;
       'page-section.vertical-card-list': PageSectionVerticalCardList;
-      'page-section.vertical-card': PageSectionVerticalCard;
       'page-section.video': PageSectionVideo;
       'shared.gdpr': SharedGdpr;
       'shared.meta-social': SharedMetaSocial;

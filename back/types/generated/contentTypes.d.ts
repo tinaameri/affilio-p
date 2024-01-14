@@ -792,6 +792,7 @@ export interface ApiConfigConfig extends Schema.SingleType {
     logo: Attribute.Component<'page-element.logo'>;
     top_banner: Attribute.Component<'page-section.top-banner'>;
     header_button: Attribute.Component<'page-element.drop-down-menu'>;
+    newsletter: Attribute.Component<'page-element.newsletter'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -865,7 +866,6 @@ export interface ApiStaticPageStaticPage extends Schema.CollectionType {
         'page-section.2col-with-image',
         'page-section.hero',
         'page-section.info',
-        'page-section.vertical-card-list',
         'page-section.image-carousel',
         'page-section.tabs',
         'page-section.simple-text',
@@ -877,7 +877,10 @@ export interface ApiStaticPageStaticPage extends Schema.CollectionType {
         'page-section.contact-us',
         'page-section.timeline-section',
         'page-section.seller-carousel',
-        'page-section.top-banner'
+        'page-section.top-banner',
+        'page-section.counter',
+        'page-section.vertical-card-list',
+        'page-section.blog-section'
       ]
     >;
     slug: Attribute.UID<'api::static-page.static-page', 'title'> &

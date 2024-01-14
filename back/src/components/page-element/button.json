@@ -23,8 +23,7 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "primary",
-        "secondary"
+        "disable"
       ]
     }
   }

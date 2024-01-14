@@ -10,7 +10,12 @@ import { Card } from '@/components/card';
 // import Bubble from '@/components/sections/homePage/Bubble'
 import { LocalBusinessJsonLd, LogoJsonLd, NextSeo } from 'next-seo';
 //import { requestPosts, GRAPHQL_QUERY as QUERY } from '@/utils/posts';
-import { HERO_BACKGROUNDS, CARD_BACKGROUNDS, COLOR } from '@/utils/constants';
+import {
+  HERO_BACKGROUNDS,
+  CARD_BACKGROUNDS,
+  COLOR,
+  INFO_COLOR,
+} from '@/utils/constants';
 
 import Banner from '@/components/Banner';
 import Video from '@/components/Video';
@@ -26,8 +31,10 @@ import { IMAGES_BASE_UR } from '@/api/clinet';
 import TimelineComponent from '@/components/timeline/TimelineComponent';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import CounterAnimation from './counterAnimation/CounterAnimation';
-export default function DynamicPage({ data, config, seo }) {
+import CounterAnimation from '@/components/counterAnimation/CounterAnimation';
+import { TopImageCardItems } from '@/components/card/TopImageCard';
+import BlogSection from '@/components/blog/BlogSection';
+export default function DynamicPage({ data, config, seo, posts }) {
   const router = useRouter();
   const logo = config?.logo?.header?.data?.attributes?.url;
   const twitterData =
@@ -163,6 +170,7 @@ export default function DynamicPage({ data, config, seo }) {
         ]}
       />
       <Container fluid className="w-100" size="xl" p="0">
+        {console.log('posts', posts)}
         {data?.map((section, idx) => (
           <React.Fragment key={idx}>
             {
@@ -189,6 +197,14 @@ export default function DynamicPage({ data, config, seo }) {
                     wordsAnimation={section?.words_animation}
                   />
                 </>
+              ) : section?.__typename === 'ComponentPageSectionInfo' ? (
+                <Banner
+                  title={section?.title}
+                  color={INFO_COLOR[section?.color]}
+                  py="40px"
+                  wrapperBgColor={CARD_BACKGROUNDS[section.infoBackground]}
+                  description={section.description}
+                />
               ) : section?.__typename ===
                 'ComponentPageSectionSellerCarousel' ? (
                 <>
@@ -224,6 +240,26 @@ export default function DynamicPage({ data, config, seo }) {
                     // color={
                     //   section.cardBackground === 'pattern' ? 'white' : null
                     // }
+                  />
+                </>
+              ) : section?.__typename ===
+                'ComponentPageSectionVerticalCardList' ? (
+                <>
+                  <TopImageCardItems
+                    imageHeight={274}
+                    imageWidth={299}
+                    cardContent={section?.cards}
+                    content={section}
+                  />
+                </>
+              ) : section?.__typename === 'ComponentPageSectionBlogSection' ? (
+                <>
+                  {' '}
+                  <BlogSection
+                    posts={posts}
+                    title={section?.heading_title}
+                    background={INFO_COLOR[section?.background]}
+                    button={section?.button}
                   />
                 </>
               ) : section.__typename === 'ComponentPageSectionVideo' ? (
@@ -275,6 +311,13 @@ export default function DynamicPage({ data, config, seo }) {
                   <TimelineComponent
                     heading_title={section?.headingTimeline}
                     content={section?.Item}
+                  />
+                </>
+              ) : section.__typename === 'ComponentPageSectionCounter' ? (
+                <>
+                  <CounterAnimation
+                    content={section?.Counter}
+                    heading_title={section?.heading_title}
                   />
                 </>
               ) : // : section.__typename === "ComponentPageSectionContactUsInfo" ? (
