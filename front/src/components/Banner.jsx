@@ -95,7 +95,7 @@ export default function Banner({
                   xl={image ? 6 : 12}
                   m="auto"
                 >
-                  <Text color={color} fw="800" align="center">
+                  <Text color={color} fw="900" align="center">
                     <Markdown text={title} />
                   </Text>
                 </Grid.Col>
@@ -108,7 +108,7 @@ export default function Banner({
                     xl={image ? 6 : 10}
                     mx="auto"
                   >
-                    <Text color={color} align="center" fz="lg" fw="500">
+                    <Text color={color} align="center" fz="lg" fw="400">
                       <Markdown text={description} />
                     </Text>
                     {button?.length && (

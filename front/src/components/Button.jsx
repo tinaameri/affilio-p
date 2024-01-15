@@ -29,22 +29,32 @@ export default function ButtonComponent({
             onClick={onClick}
             bg={
               type === 'primaryArrow' || type === 'primary'
-                ? 'primary.0'
-                : type === 'secondaryArrow' || type === 'secondary'
-                  ? 'white'
+                ? 'primary.3'
+                : type === 'disable' 
+                  ? '#EAEEF6'
                   : ''
             }
+
             sx={(theme) => ({
               cursor: !href && !onClick && 'unset',
               '&:hover': {
-                backgroundColor:
-                  type === 'secondaryArrow' || type === 'secondary'
-                    ? 'white'
-                    : theme.colors.primary[0],
+                border:`1px solid ${theme.colors.primary[0]}`,
+                color:type === 'primaryArrow' || type === 'primary' ? theme.colors.primary[0]: 'white',
+                background:
+                  type === 'primaryArrow' || type === 'primary'
+                    ? 'transparent!important'
+                    :  theme.colors.primary[3],
+                   
               },
 
               padding: '0 20px',
             })}
+            variant={
+              type === 'primaryOutline' ||
+              type === 'primaryOutlineArrow' 
+                ? 'outline'
+                : 'filled'
+            }
             rightIcon={
               rightIcon ??
               ((type === 'primaryArrow' || type === 'secondaryArrow') && (
@@ -64,7 +74,7 @@ export default function ButtonComponent({
           onClick={onClick}
           bg={
             type === 'primaryArrow' || type === 'primary'
-              ? 'primary.0'
+              ? 'primary.3'
               : type === 'secondaryArrow' || type === 'secondary'
                 ? 'white'
                 : ''
@@ -73,9 +83,9 @@ export default function ButtonComponent({
             cursor: !href && !onClick && actionType !== 'submit' && 'unset',
             '&:hover': {
               backgroundColor:
-                type === 'secondaryArrow' || type === 'secondary'
-                  ? 'white'
-                  : theme.colors.primary[0],
+                type === 'primaryArrow' || type === 'primary'
+                  ? 'transparent'
+                  : 'primary.3',
             },
 
             padding: '0 20px',
@@ -87,7 +97,7 @@ export default function ButtonComponent({
             ))
           }
         >
-          <Text component="span" c="primary.6">
+          <Text component="span" c="#fff">
             {title}
           </Text>
         </Button>

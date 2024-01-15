@@ -23,7 +23,14 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "disable"
+        "disable",
+        "primary",
+        "primaryArrow",
+        "secondary",
+        "secondaryArrow",
+        "primaryOutline",
+        "primaryOutlineArrow"
+        
       ]
     }
   }

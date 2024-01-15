@@ -70,7 +70,7 @@ export default function TabsTopImg({ imgHeight }) {
                 direction="column"
               >
                 {getIconForTab(tab?.icon)}
-                <Text component="span" fw="600" fz="lg">
+                <Text component="span" fw="700" fz="lg">
                   {tab?.title}
                 </Text>
               </Flex>

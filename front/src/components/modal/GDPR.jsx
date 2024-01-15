@@ -87,7 +87,7 @@ export default function GDPR({ content }) {
           </Flex>
 
           <Box my="xl">
-            <Text color="primary.6" fw="500" component="p">
+            <Text color="primary.6" fw="400" component="p">
               {content?.description}
             </Text>
             <Box mt="xl">

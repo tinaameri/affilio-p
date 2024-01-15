@@ -1,6 +1,6 @@
 import { Container } from '@mantine/core';
 //import styles from './page.module.scss'
-import HeroSection from '@/components/HeroSection';
+import HeroSection from '@/components/heroSection/HeroSection';
 //import CustomersCarousel from '@/components/CustomersCarousel';
 //import Heading from '@/components/Heading';
 //import { content } from '/public/assets/contentJson'

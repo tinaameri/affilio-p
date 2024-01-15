@@ -28,7 +28,7 @@ export function CustomFonts() {
             fontFamily: 'Yekan Bakh',
             fontDisplay: 'swap',
             fontStyle: 'normal',
-            fontWeight: 800,
+            fontWeight: 900,
             lineHeight: 'normal',
             src: `url('/assets/fonts/YekanBakhFaNum-Bold.woff') format('woff')`,
           },

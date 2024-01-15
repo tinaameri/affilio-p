@@ -125,7 +125,7 @@ const SimpleSubMenu = ({ link, onClick, imageData, title }) => {
             width={80}
             height={80}
           />
-          <Text component="span" fz="sm" fw="600" ml="sm" color="primary.1">
+          <Text component="span" fz="sm" fw="700" ml="sm" color="primary.1">
             {title}
           </Text>
         </a>
@@ -159,7 +159,7 @@ const CardSubMenu = ({ link, onClick, imageData, title, description }) => {
         <Text
           component="strong"
           fz={smallerLgScreen ? 'md' : 'lg'}
-          fw="600"
+          fw="700"
           color="primary.6"
         >
           {title}

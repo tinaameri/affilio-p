@@ -6,7 +6,7 @@ import Heading from '@/components/Heading';
 import { Fade } from 'react-reveal';
 // import { content } from 'public/assets/contentJson';
 // import RequestDemo from '@/components/RequestDemo';
-import Social from './Social';
+import Social from '@/components/Social';
 import { IMAGES_BASE_UR } from '@/api/clinet';
 
 export default function ContactInfo({ content }) {

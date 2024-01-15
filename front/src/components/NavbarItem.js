@@ -131,7 +131,7 @@ export function SubMenu({ item, onClick }) {
                 height={80}
               />
 
-              <Text component="span" fz="sm" fw="600" ml="sm" color="primary.1">
+              <Text component="span" fz="sm" fw="700" ml="sm" color="primary.1">
                 {subItem?.title}
               </Text>
 
@@ -181,7 +181,7 @@ export function CardSubMenu({ item, onClick }) {
             <Text
               component="strong"
               fz={smallerLgScreen ? 'md' : 'lg'}
-              fw="600"
+              fw="700"
               color="primary.6"
             >
               {subItem?.title}

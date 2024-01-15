@@ -46,10 +46,10 @@ export default function ThemeProvider(props) {
                 colors: {
                   // 'primary': ['0-main', '1-dark-hover', '2-light1','3-light2,'4-dlight','5-cText','6-text ','7-bg',   '8-dark bg','#1B286F', '#1B286F'],
                   primary: [
-                    '#8CE969',
-                    '#3D8423',
-                    '#63B245',
-                    '#D4F3C8',
+                    '#2C6CF6',
+                    '#1B52B0',
+                    '#E0E9FE',
+                    'linear-gradient(180deg, #2C6CF6 0%, #255ACC 100%)',
                     '#E6F1E0 ',
                     '#ffffff',
                     'rgba(0, 0, 0, 0.87)',
@@ -315,16 +315,13 @@ export default function ThemeProvider(props) {
 
                         minWidth: '120px',
                         width: 'auto',
-                        borderRadius: '15px',
+                        borderRadius: '4px 16px 16px 16px',
                         fontSize: '16px',
                         fontWeight: '700',
-                        border: '1px solid #000',
-                        top: '0',
-                        right: '0',
-                        transition: 'all .15s linear 0s',
+                       
                         position: 'relative',
                         display: 'inline-block',
-                        //backgroundColor: theme.colors.primary[0],
+                        //backgroundColor: theme.colors.primary[3],
 
                         //color: theme.colors.primary[6],
 
@@ -380,6 +377,7 @@ export default function ThemeProvider(props) {
                           height: '42px',
                           fontSize: '14px',
                           padding: '9px 16px',
+                          borderRadius:'3px 14px 14px 14px'
                         },
                         ...theme.fn.hover({
                           backgroundColor:
@@ -416,16 +414,17 @@ export default function ThemeProvider(props) {
                     borderRadius: '10px',
                     backgroundColor: theme.colors.primary[0],
                     color: '#000',
-                    width: '150px',
                     fontWeight: 900,
                     fontFamily: 'Yekan Bakh',
                     cursor: 'pointer',
+                    width: '150px',
                     '&-transparent': {
                       border: 'unset',
                       color: '#757575',
                       height: '50px',
                       padding: '9px 24px',
                       background: 'transparent',
+                      width: 'fit-content',
                     },
                     '&-outline': {
                       background: 'transparent',
@@ -434,6 +433,7 @@ export default function ThemeProvider(props) {
                       height: '50px',
                       padding: '9px 24px',
                       fontWeight: 900,
+                      width: 'fit-content',
                     },
                   },
                   '.mantine-rtl-Burger-root': {
@@ -521,22 +521,22 @@ export default function ThemeProvider(props) {
                     //     },
                     // }
                   },
-                  '.fixed-pattern': {
-                    '&:before': {
-                      content: '""',
-                      position: 'fixed',
-                      left: '10px',
-                      top: '0',
-                      width: '100px',
-                      height: '100%',
-                      zIndex: 5,
-                      backgroundImage: `url('/assets/images/adverge/home/left-patern.svg')`,
-                      backgroundSize: 'cover',
-                      [theme.fn.smallerThan('lg')]: {
-                        display: 'none',
-                      },
-                    },
-                  },
+                  // '.fixed-pattern': {
+                  //   '&:before': {
+                  //     content: '""',
+                  //     position: 'fixed',
+                  //     left: '10px',
+                  //     top: '0',
+                  //     width: '100px',
+                  //     height: '100%',
+                  //     zIndex: 5,
+                  //     backgroundImage: `url('/assets/images/adverge/home/left-patern.svg')`,
+                  //     backgroundSize: 'cover',
+                  //     [theme.fn.smallerThan('lg')]: {
+                  //       display: 'none',
+                  //     },
+                  //   },
+                  // },
                   '.trust-logo': {
                     cursor: 'pointer',
                     borderRadius: '10px',
@@ -1139,9 +1139,15 @@ export default function ThemeProvider(props) {
                     },
                   },
                   '.img-responsive': {
-                    minWidth: '100%',
-                    maxWidth: '100%',
-                    height: 'auto',
+                    height: '100%',
+                    width: '100%',
+                    overflow: 'hidden',
+                    img: {
+                      height: '100%',
+                      aspectRatio: 1,
+                      objectFit: 'cover',
+                      width: '100%',
+                    },
                   },
                   '.newsletter-section': {
                     marginTop: '20px',

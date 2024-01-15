@@ -22,7 +22,17 @@ export interface PageElementButton extends Schema.Component {
     title: Attribute.String & Attribute.Required;
     link: Attribute.String;
     newPage: Attribute.Boolean & Attribute.DefaultTo<false>;
-    type: Attribute.Enumeration<['disable']>;
+    type: Attribute.Enumeration<
+      [
+        'disable',
+        'primary',
+        'primaryArrow',
+        'secondary',
+        'secondaryArrow',
+        'primaryOutline',
+        'primaryOutlineArrow'
+      ]
+    >;
   };
 }
 

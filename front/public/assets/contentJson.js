@@ -1,22 +1,5 @@
 import { IMAGES } from '@/utils/constants';
 export const content = {
-  logo: {
-    header: `${IMAGES}/Logo-dark-adverge.svg`,
-    header_snapp_pay: `${IMAGES}/logo-white-persian-smartech.svg`,
-    footer: `${IMAGES}/Logo-white-adverge.svg`,
-    alt: 'اسمارتک',
-  },
-  header: {
-    button: [
-      {
-        title: 'ورود/ثبت نام',
-        link: 'https://dash.adverge.ir/',
-        targetBlank: true,
-      },
-    ],
-    logout: 'خروج',
-  },
-
   bottom_heading: `${IMAGES}/bottom-heading.svg`,
 
   section_request_demo: {

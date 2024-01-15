@@ -92,9 +92,8 @@ export default function BlogCard(props) {
                     />
                   )}
                   {img ? (
-                    <figure>
+                    <figure className="img-responsive">
                       <img
-                        className="img-responsive"
                         loading="lazy"
                         alt="title"
                         src={`${IMAGES_BASE_UR}${img}`}

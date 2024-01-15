@@ -109,7 +109,7 @@ export default function CardBnanner({
             pb={largerMidScreen ? '0' : '100px'}
             px={largerMidScreen && 'md'}
           >
-            <Title order={4} color={color} fw="800" align="left">
+            <Title order={4} color={color} fw="900" align="left">
               {title}
             </Title>
             <Text color={color} align="left" mt="xl">

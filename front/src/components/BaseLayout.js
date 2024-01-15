@@ -91,7 +91,7 @@ export default function BaseLayout({ config, children, slug }) {
     ) {
       window.Intk('updateProfile', {
         attributes: {
-          adverge: true,
+          affilio: true,
         },
       });
       window.Intk('InitWebPush', {

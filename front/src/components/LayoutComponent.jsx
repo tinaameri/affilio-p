@@ -17,6 +17,7 @@ export default function Layout({
   display,
   bgColor,
   sx,
+  containerClassName,
 }) {
   const midScreen = useMediaQuery('(max-width: 64em) and (min-width: 37.5em)');
 
@@ -31,6 +32,7 @@ export default function Layout({
       mt={mt}
       my={my}
       sx={{ zIndex: '3' }}
+      className={containerClassName}
     >
       <Grid
         gutter="xl"

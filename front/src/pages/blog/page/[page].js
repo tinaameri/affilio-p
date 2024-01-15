@@ -1,8 +1,12 @@
-import { PAGINATION_POSTS_PER_PAGE, REVALIDATE_RATE } from '@/api/clinet';
+import {
+  IMAGES_BASE_UR,
+  PAGINATION_POSTS_PER_PAGE,
+  REVALIDATE_RATE,
+} from '@/api/clinet';
 import { requestPosts } from '@/api/query/blogPosts';
 import Posts from '@/components/blog/Posts';
 import { Box } from '@mantine/core';
-import { NextSeo } from 'next-seo';
+import { ArticleJsonLd, LogoJsonLd, NextSeo } from 'next-seo';
 
 export async function getStaticPaths() {
   return {
@@ -42,18 +46,47 @@ export default function Category({
   totalPages,
   categories,
   currentCategory,
+  config,
 }) {
+  const logo = config?.logo?.header?.data?.attributes?.url;
   return (
     <>
       <Box mt="80px">
+        <ArticleJsonLd
+          type="BlogPosting"
+          url={`${IMAGES_BASE_UR}/blog`}
+          title="اخبار"
+          images={`${IMAGES_BASE_UR}${logo}`}
+          description="در جریان آخرین اخبار مارکتینگ تکنولوژی باشید"
+        />
+        <LogoJsonLd
+          logo={`${IMAGES_BASE_UR}${logo}`}
+          url={`${IMAGES_BASE_UR}`}
+        />
         <NextSeo
-          title={'در جریان آخرین اخبار مارکتینگ تکنولوژی باشید'}
-          // description={post?.seo?.metaDescription}
-          // images={[
-          //   {
-          //     url: `${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`,
-          //   },
-          // ]}
+          title="اخبار"
+          description="در جریان آخرین اخبار مارکتینگ تکنولوژی باشید"
+          additionalMetaTags={[
+            {
+              name: 'viewport',
+              content: 'width=device-width, initial-scale=1',
+            },
+          ]}
+          openGraph={{
+            type: 'website',
+            url: `${IMAGES_BASE_UR}/blog`,
+            title: 'اخبار',
+            description: 'در جریان آخرین اخبار مارکتینگ تکنولوژی باشید',
+            images: [
+              {
+                url: `${IMAGES_BASE_UR}${logo}`,
+                width: 600,
+                height: 800,
+                alt: 'اخبار',
+                type: 'image/png',
+              },
+            ],
+          }}
         />
         <Posts
           posts={posts}

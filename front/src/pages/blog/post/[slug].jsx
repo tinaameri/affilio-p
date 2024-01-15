@@ -203,6 +203,7 @@ export default function Post({ post }) {
               //   src={`${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`}
               // />
               <BackgroundImage
+                sx={{ borderRadius: '15px' }}
                 src={`${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`}
                 h={largerSmallScreen ? '420px' : '200px'}
                 py="20%"
@@ -221,7 +222,7 @@ export default function Post({ post }) {
               {items.map((item, index) => (
                 <Text
                   fz="sm"
-                  fw="600"
+                  fw="700"
                   component={Link}
                   href={item?.href}
                   key={index}
@@ -235,7 +236,7 @@ export default function Post({ post }) {
               <IconChevronLeft size="20px" />
             </Box>
 
-            <Text color="primary.1" fz="sm" mt="xs" fw="600" lineClamp={1}>
+            <Text color="primary.1" fz="sm" mt="xs" fw="700" lineClamp={1}>
               {post?.title || null}
             </Text>
           </Flex>

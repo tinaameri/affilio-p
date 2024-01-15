@@ -173,7 +173,7 @@ export function CardItem(props) {
               ta={smallerScreen && contentAlign}
             >
               {topTitle && (
-                <Text mb="lg" component="span" fw="500">
+                <Text mb="lg" component="span" fw="400">
                   {topTitle}
                 </Text>
               )}
@@ -216,7 +216,7 @@ export function CardItem(props) {
                             : 3
                       }
                       mt="md"
-                      fw="500"
+                      fw="400"
                     >
                       {item?.title}
                     </Title>

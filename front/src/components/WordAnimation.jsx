@@ -15,7 +15,7 @@ export default function WordAnimation({ content }) {
   }, [content?.length, currentWordIndex]);
 
   return (
-    <Text component="strong" fw="500" fz="28px">
+    <Text component="strong" fw="400" fz="28px">
       <Fade top key={currentWordIndex}>
         {content[currentWordIndex]?.title}
       </Fade>

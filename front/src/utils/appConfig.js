@@ -1,5 +1,5 @@
 export const appConfig = {
-  site_name: 'Adverge',
+  site_name: 'Affilio',
   title: '',
   description: '',
   locale: 'en',
