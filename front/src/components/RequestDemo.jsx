@@ -153,10 +153,10 @@ export default function RequestDemo({ source, bgColor, pLayout, py, demo }) {
           px="xl"
         >
           <Fade right>
-            <Title order={2} fz="36px" color="primary.6">
+            <Title order={2} fz="36px" color="primary.4">
               {demo?.title}
             </Title>
-            <Text color="primary.6" mt="xl">
+            <Text color="primary.4" mt="xl">
               <Markdown text={demo?.desc} />
             </Text>
           </Fade>

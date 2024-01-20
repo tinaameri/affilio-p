@@ -1,6 +1,5 @@
 import Providers from '@/pages/providers';
 import '@/styles/globals.scss';
-import '@/styles/wordpress.min.css';
 import Layout from '@/components/BaseLayout';
 import { Center, Loader } from '@mantine/core';
 // import dynamic from 'next/dynamic';
@@ -19,6 +18,6 @@ export default function App(props) {
           </Center>
         )}{' '}
       </Layout>
-    </Providers>
+  </Providers>
   );
 }

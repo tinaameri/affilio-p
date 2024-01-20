@@ -33,7 +33,9 @@ module.exports = withBundleAnalyzer({
     // loaderFile: './staticloader.js',
   },
 
-
+  sassOptions: {
+    prependData: `@import "@/styles/_mantine.scss";`,
+  },
   // async redirects() {
   //   return [
   //     {

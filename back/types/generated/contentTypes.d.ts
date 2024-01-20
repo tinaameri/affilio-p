@@ -729,19 +729,14 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     featuredImage: Attribute.Media & Attribute.Required;
-    body: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'Markdown';
-          preset: 'rich';
-        }
-      >;
     seo: Attribute.Component<'shared.seo'>;
     categories: Attribute.Relation<
       'api::blog-post.blog-post',
       'manyToMany',
       'api::blog-category.blog-category'
+    >;
+    page_dynamic_sections_blog: Attribute.DynamicZone<
+      ['page-section.accordion', 'page-section.article']
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

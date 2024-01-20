@@ -24,7 +24,9 @@ export const BLOG_POSTS = gql`
     blogPosts(
       sort:"createdAt:desc"
       filters: {
-        or: [{ body: { contains: $search } }, { title: { contains: $search } }]
+        or: [
+          #{ body: { contains: $search } },
+           { title: { contains: $search } }]
         categories: { slug: { contains: $categoryName } }
         title: {eq: $title}
       }
@@ -41,9 +43,22 @@ export const BLOG_POSTS = gql`
       data {
         attributes {
           title
+          page_dynamic_sections_blog{
+            ... on ComponentPageSectionArticle{
+              id
+              body
+            }
+            ... on ComponentPageSectionAccordion{
+              id
+              title
+              description
+              
+              
+            }
+          }
           slug: title
           date: publishedAt
-          body
+          #body
           featuredImage {
             data {
               attributes {

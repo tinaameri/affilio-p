@@ -27,7 +27,7 @@ export default function TopFooter({ links, trust, logo, newsletter, source }) {
   // };
 
   return (
-    <Box bg="secondary.1" py="80px" mih="400px">
+    <Box bg="radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%);" py="80px" mih="400px">
       <Container size="1344px">
         <Grid spacing="48px">
           <Grid.Col style={{ minHeight: '50px' }} xs={12} md={12} lg={2} xl={2}>
@@ -38,7 +38,7 @@ export default function TopFooter({ links, trust, logo, newsletter, source }) {
             <Grid columns={5}>
               {links.map((item, idx) => (
                 <Grid.Col key={idx} md={2} lg={1}>
-                  <Text component="span" color="gray.5">
+                  <Text component="span" color="white">
                     {item.title}
                   </Text>
                   <List listStyleType="none" size="sm">
@@ -59,7 +59,7 @@ export default function TopFooter({ links, trust, logo, newsletter, source }) {
                                 color="white"
                                 sx={(theme) => ({
                                   '&:hover': {
-                                    color: theme.colors.secondary[1],
+                                    color: theme.colors.secondary[0],
                                   },
                                 })}
                               >

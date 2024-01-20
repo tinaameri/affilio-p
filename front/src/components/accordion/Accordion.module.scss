@@ -1,0 +1,49 @@
+.grayBg {
+    &.item {
+        background-color: #F5F7FB;
+    }
+}
+
+.item {
+    border-bottom: 1px solid #BCC9E2;
+
+    &:nth-of-type(1) {
+        border-top: 1px solid #BCC9E2;
+
+    }
+
+    .label {
+        color: #132D5C;
+        font-weight: 700;
+        font-size: 18px;
+
+        @media (min-width: $mantine-breakpoint-md) {
+            font-size: 20px;
+        }
+
+    }
+
+    .panel {
+        color: $primary-1;
+        font-size: 18px;
+        font-weight: 500;
+
+        .content {
+            color: $primary-1;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 1rem 1.2rem 1rem 2rem;
+
+            @media (max-width: $mantine-breakpoint-md) {
+                font-size: 16px;
+                padding: 0 1rem 1rem 1rem
+            }
+
+        }
+    }
+
+    .chevron {
+        color: $primary-1;
+
+    }
+}

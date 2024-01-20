@@ -8,7 +8,7 @@ export default function BottomFooter({ copy_right, social }) {
   const largerXlgScreen = useMediaQuery('(min-width: 88em)');
 
   return (
-    <Box bg="primary.2" pb={smallerLgScreen ? '0' : '16px'} mih="90px">
+    <Box bg="#0D1F3D" pb={smallerLgScreen ? '0' : '16px'} mih="90px">
       <Container
         size={largerXlgScreen ? '1300px' : 'md'}
         pos="relative"
@@ -23,7 +23,7 @@ export default function BottomFooter({ copy_right, social }) {
         >
           <Text
             fz="sm"
-            color="white"
+            color="#A9B5CB"
             ta={smallerLgScreen && 'center'}
             py={smallerLgScreen && 'sm'}
             px={smallerLgScreen && 'lg'}

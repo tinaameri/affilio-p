@@ -25,6 +25,9 @@ export const CARD_BACKGROUNDS = {
   orangePattern: `url(${IMAGES}/bg/bg-orange-pattern.png) center/cover no-repeat`,
   blue: '#E9F2FF',
 };
+export const VERTICAL_CARD_BACKGROUNDS = {
+dark:'url("/assets/images/top-right-blue.png") no-repeat left top,url("/assets/images/bottom-left-blue.png") no-repeat right bottom,radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%)'
+};
 export const COLOR = {
   green: '#F4FBEC',
   white: '#FDFDFD',

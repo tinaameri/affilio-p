@@ -24,14 +24,6 @@
         "images"
       ]
     },
-    "body": {
-      "type": "customField",
-      "options": {
-        "output": "Markdown",
-        "preset": "rich"
-      },
-      "customField": "plugin::ckeditor.CKEditor"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
@@ -42,6 +34,13 @@
       "relation": "manyToMany",
       "target": "api::blog-category.blog-category",
       "mappedBy": "posts"
+    },
+    "page_dynamic_sections_blog": {
+      "type": "dynamiczone",
+      "components": [
+        "page-section.accordion",
+        "page-section.article"
+      ]
     }
   }
 }

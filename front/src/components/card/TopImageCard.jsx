@@ -1,10 +1,11 @@
 import React from 'react';
 import Layout from '@/components/LayoutComponent';
-import { Text, Title, Grid, Flex } from '@mantine/core';
+import { Text, Title, Grid, Flex, Container } from '@mantine/core';
 import { Fade } from 'react-reveal';
 import { IMAGES_BASE_UR } from '@/api/clinet';
 import ButtonComponent from '../Button';
 import Heading from '../Heading';
+import Bubble from './Bubble';
 
 export default function TopImageCard(props) {
   const {
@@ -16,6 +17,7 @@ export default function TopImageCard(props) {
     textAlign,
     button,
     three_column,
+    text_color
   } = props;
 
   return (
@@ -40,12 +42,12 @@ export default function TopImageCard(props) {
               m="auto"
               align="center"
             >
-              <figure>
+              <figure className={three_column && 'back-mini-img flex-center'}>
                 <img
                   src={src}
                   loading="lazy"
                   alt={title}
-                  height="auto"
+                  height={three_column ? '32px' :'auto'}
                   width="100%"
                 />
               </figure>
@@ -60,18 +62,18 @@ export default function TopImageCard(props) {
               align={textAlign}
               mt="lg"
             >
-              {/* <Title order={4} color='primary.1' mb='sm'>
+              {/* <Title order={4} color='primary.4' mb='sm'>
                                 {header}
 
                             </Title>     */}
-              <Title order={5} color="primary.1" mb="lg">
+              <Title order={5} color={text_color} mb="lg">
                 {title}
               </Title>
-              <Text component="p" color="primary.1">
+              <Text component="p" color={text_color} h='120px' >
                 {/* {textSplitter({ text: description, style: { pt: "xl" } })} */}
                 {description}
               </Text>
-              {button && (
+              {Object.keys(button).length !==0 && (
                 <Flex mt="40px">
                   {button?.map((button, index) => (
                     <ButtonComponent
@@ -99,16 +101,19 @@ export function TopImageCardItems({
   imageWidth,
   imageHeight,
   textAlign,
+  bgSection
 }) {
   return (
-    <Layout pb="96px">
+    <Container fluid bg={bgSection}>
+   <Layout pb="40px"  >
       {content?.heading_title && (
         <Heading
           title={content?.heading_title}
           description={content?.heading_description}
+          text_light={content?.text_light && 'text-white'}
+          without_image={true}
         />
       )}
-
       {Object?.values(cardContent).map((card, index) => (
         <TopImageCard
           key={index}
@@ -118,9 +123,10 @@ export function TopImageCardItems({
           src={`${IMAGES_BASE_UR}${card?.image?.data?.attributes?.url}`}
           imageWidth={imageWidth}
           imageHeight={imageHeight}
-          textAlign={textAlign}
+          textAlign={content?.three_column ? 'center' : 'right'}
           button={card?.button}
           three_column={content?.three_column}
+          text_color={content?.text_light ? 'primary.6' :'primary.4'}
           // button_1_title={card?.button_1_title}
           // button_1_link={card?.button_1_link}
           // button_1_newPage={card?.button_1_newPage}
@@ -130,7 +136,11 @@ export function TopImageCardItems({
           // button_2_newPage={card?.button_2_newPage}
           // button_2_type={card?.button_2_type}
         />
+
       ))}
+      <Bubble/>
     </Layout>
+    </Container>
+ 
   );
 }

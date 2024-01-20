@@ -1,5 +1,17 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface PageElementAccordion extends Schema.Component {
+  collectionName: 'components_page_element_accordions';
+  info: {
+    displayName: 'AccordionItem';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.RichText;
+  };
+}
+
 export interface PageElementButtonWithoutLink extends Schema.Component {
   collectionName: 'components_page_element_button_without_links';
   info: {
@@ -232,11 +244,13 @@ export interface PageElementSocial extends Schema.Component {
   info: {
     displayName: 'social';
     icon: 'earth';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
     link: Attribute.String & Attribute.Required;
     icon: Attribute.Media & Attribute.Required;
+    color: Attribute.String;
   };
 }
 
@@ -289,7 +303,6 @@ export interface PageElementVerticalCard extends Schema.Component {
   collectionName: 'components_page_element_vertical_cards';
   info: {
     displayName: 'VerticalCard';
-    description: '';
   };
   attributes: {
     title: Attribute.String;
@@ -325,6 +338,36 @@ export interface PageSection2ColWithImage extends Schema.Component {
     background: Attribute.Enumeration<['orange', 'green', 'white', 'blue']> &
       Attribute.DefaultTo<'white'>;
     content: Attribute.Component<'page-element.content', true>;
+  };
+}
+
+export interface PageSectionAccordion extends Schema.Component {
+  collectionName: 'components_page_section_accordions';
+  info: {
+    displayName: 'Accordion';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.RichText;
+  };
+}
+
+export interface PageSectionArticle extends Schema.Component {
+  collectionName: 'components_page_section_articles';
+  info: {
+    displayName: 'Article';
+    description: '';
+  };
+  attributes: {
+    body: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'Markdown';
+          preset: 'rich';
+        }
+      >;
   };
 }
 
@@ -554,6 +597,8 @@ export interface PageSectionVerticalCardList extends Schema.Component {
     heading_title: Attribute.String;
     heading_description: Attribute.RichText;
     three_column: Attribute.Boolean;
+    text_light: Attribute.Boolean & Attribute.DefaultTo<false>;
+    background: Attribute.Enumeration<['light', 'dark']>;
     cards: Attribute.Component<'page-element.vertical-card', true>;
   };
 }
@@ -645,6 +690,7 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'page-element.accordion': PageElementAccordion;
       'page-element.button-without-link': PageElementButtonWithoutLink;
       'page-element.button': PageElementButton;
       'page-element.cards': PageElementCards;
@@ -669,6 +715,8 @@ declare module '@strapi/types' {
       'page-element.vertical-card': PageElementVerticalCard;
       'page-element.words-animation': PageElementWordsAnimation;
       'page-section.2col-with-image': PageSection2ColWithImage;
+      'page-section.accordion': PageSectionAccordion;
+      'page-section.article': PageSectionArticle;
       'page-section.banner': PageSectionBanner;
       'page-section.blog-section': PageSectionBlogSection;
       'page-section.card-banner': PageSectionCardBanner;

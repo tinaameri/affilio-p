@@ -87,7 +87,7 @@ export default function GDPR({ content }) {
           </Flex>
 
           <Box my="xl">
-            <Text color="primary.6" fw="400" component="p">
+            <Text color="primary.4" fw="400" component="p">
               {content?.description}
             </Text>
             <Box mt="xl">
@@ -115,7 +115,7 @@ export default function GDPR({ content }) {
                     />
                   </Grid.Col>
                   <Grid.Col xs={9}>
-                    <Title order={4} color="primary.6">
+                    <Title order={4} color="primary.4">
                       {content?.toggle_option_essential?.title}
                     </Title>
                     {/* {modalOpenState.useCookie?.essential === false &&
@@ -128,7 +128,7 @@ export default function GDPR({ content }) {
 
 
                                         } */}
-                    <Text component="p" color="primary.6" mt="md">
+                    <Text component="p" color="primary.4" mt="md">
                       {content?.toggle_option_essential?.description}
                     </Text>
                   </Grid.Col>
@@ -148,10 +148,10 @@ export default function GDPR({ content }) {
                     />
                   </Grid.Col>
                   <Grid.Col xs={9} mt="md">
-                    <Title order={4} color="primary.6">
+                    <Title order={4} color="primary.4">
                       {content?.toggle_option_analytics?.title}
                     </Title>
-                    <Text component="p" color="primary.6" mt="md">
+                    <Text component="p" color="primary.4" mt="md">
                       {content?.toggle_option_analytics?.description}
                     </Text>
                   </Grid.Col>

@@ -159,7 +159,7 @@ export default function BaseLayout({ config, children, slug }) {
   // }, []);
   return (
     <>
-      <NextSeo titleTemplate=" ادورج | %s" />
+      <NextSeo titleTemplate="%s - افیلیو" />
       <Header
         links={config?.Navigation}
         logo={config?.logo}

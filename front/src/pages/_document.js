@@ -33,24 +33,31 @@ export default class _Document extends Document {
           />
           <link
             rel="preload"
-            href="/assets/fonts/YekanBakhFaNum-Bold.woff"
+            href="/assets/fonts/yekan bakh en 04 regular.woff2"
             as="font"
             crossOrigin="true"
-            type="font/woff"
+            type="font/woff2"
           />
           <link
             rel="preload"
-            href="/assets/fonts/YekanBakhFaNum-Regular.woff"
+            href="/assets/fonts/yekan bakh en 05 medium.woff"
             as="font"
             crossOrigin="true"
-            type="font/woff"
+            type="font/woff2"
           />
           <link
             rel="preload"
-            href="/assets/fonts/YekanBakhFaNum-SemiBold.woff2"
+            href="/assets/fonts/yekan bakh en 06 bold.woff2"
             as="font"
             crossOrigin="true"
-            type="font/woff"
+            type="font/woff2"
+          />       
+             <link
+            rel="preload"
+            href="/assets/fonts/yekan bakh en 07 heavy.woff2"
+            as="font"
+            crossOrigin="true"
+            type="font/woff2"
           />
           <meta name="theme-color" content="#3651DE" />
         </Head>

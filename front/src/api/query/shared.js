@@ -111,6 +111,7 @@ config {
         social_media {
           id
           title
+          color
           link
           icon {
             data {

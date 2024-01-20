@@ -210,6 +210,8 @@ export async function getSinglePage(slug) {
                 id
                 heading_title
                 heading_description
+                text_light
+                verticalCardBackground: background
                 three_column
                 cards{
                   id

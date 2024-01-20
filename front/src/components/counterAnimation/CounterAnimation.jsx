@@ -1,8 +1,9 @@
 import CountUp, { useCountUp } from 'react-countup';
-import Layout from '../LayoutComponent';
+import Layout from '@/components/LayoutComponent';
 import { Box, Flex, Grid, Text } from '@mantine/core';
 import Heading from '@/components/Heading';
-
+import classes from '@/components/counterAnimation/CounterAnimation.module.scss';
+import Bubble from '@/components/counterAnimation/Bubble';
 const CounterAnimation = ({ content, heading_title, heading_description }) => {
   useCountUp({
     ref: 'counter',
@@ -10,26 +11,52 @@ const CounterAnimation = ({ content, heading_title, heading_description }) => {
     enableScrollSpy: true,
     scrollSpyDelay: 1000,
   });
+  const colorArray = ['social.5', 'social.3', 'social.4', 'social.2'];
   return (
-    <Layout pb="100px">
+    <>
+    <Layout
+      className={classes.wrapper}
+      containerClassName={`${classes.container} radius-xl`}
+      bgLayout={`radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%)`}
+      pb="100px"
+    >
       {heading_title && (
-        <Heading title={heading_title} description={heading_description} />
+        <Heading
+          title={heading_title}
+          description={heading_description}
+          className="text-white"
+          without_image={false}
+        />
       )}
+
       {content?.map((item, index) => (
-        <Grid.Col sx={12} md={6} lg={3} key={index}>
+        <Grid.Col sx={12} md={6} lg={3} key={index} mb="xl">
           <Box>
             <Box>
-              <Flex fw="900" fz="30px">
-                <Text component="span">{item?.unit}</Text>
+              <Flex
+                fw="900"
+                fz="36px"
+                c={colorArray[index % colorArray.length]}
+              >
+                <Text component="span" fw="900">
+                  +
+                </Text>
+                <Text component="span" fw="900">
+                  {item?.unit}
+                </Text>
                 <CountUp end={item?.count} enableScrollSpy />
-                <Text component="span">+</Text>
               </Flex>
             </Box>
-            <Text component="p">{item?.title}</Text>
+            <Text component="p" fz="sm" c="primary.6">
+              {item?.title}
+            </Text>
           </Box>
         </Grid.Col>
       ))}
+          <Bubble/>
     </Layout>
+
+    </>
   );
 };
 

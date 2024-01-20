@@ -18,19 +18,25 @@ export default function Social({ social, position }) {
       }}
     >
       {social?.map((item, i) => (
-        <List.Item ml="xl" key={i}>
+        <List.Item ml="xl" key={i}  sx={{border:`2px solid ${item?.color}`,      
+         '&:hover': {
+          backgroundColor: item?.color,
+        },}} className='social-item'>
           <Link prefetch={false} href={item?.link} passHref>
             <a
               className="cursor-pointer"
               target="_blank"
               aria-label={item?.social_title}
             >
-              <Image
-                width={35}
-                height={35}
+              <figure>
+              <img loading='lazy'
+                width={20}
+                height={20}
                 alt={item?.social_title}
                 src={`${IMAGES_BASE_UR}${item?.icon?.data?.attributes?.url}`}
               />
+              </figure>
+             
             </a>
           </Link>
         </List.Item>

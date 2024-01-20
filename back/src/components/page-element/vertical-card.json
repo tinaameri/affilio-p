@@ -1,8 +1,7 @@
 {
   "collectionName": "components_page_element_vertical_cards",
   "info": {
-    "displayName": "VerticalCard",
-    "description": ""
+    "displayName": "VerticalCard"
   },
   "options": {},
   "attributes": {
@@ -13,15 +12,14 @@
       "type": "richtext"
     },
     "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "type": "media",
+      "multiple": false
     },
     "button": {
       "type": "component",

@@ -19,6 +19,7 @@ import Markdown from '@/components/Markdown';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import AccordionComponent from '@/components/accordion/Accordion';
 
 export async function getStaticPaths() {
   const slugs = await getPostSlugs();
@@ -243,7 +244,20 @@ export default function Post({ post }) {
         </Grid.Col>
         <Grid.Col>
           <article className="article-post">
-            <Markdown text={post?.body} />
+            {post?.page_dynamic_sections_blog?.map((pageSection, idx) => (
+
+              pageSection?.__typename ===
+                'ComponentPageSectionAccordion' ? (
+                <>
+                        <AccordionComponent
+                          content={pageSection?.accordion_item}
+                        />
+
+                </>)
+                : pageSection?.__typename === 'ComponentPageSectionArticle' ? (<></>):null
+              ))
+
+            }
           </article>
         </Grid.Col>
       </Layout>

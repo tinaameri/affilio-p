@@ -15,7 +15,19 @@
     "three_column": {
       "type": "boolean"
     },
+    "text_light": {
+      "type": "boolean",
+      "default": false
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "light",
+        "dark"
+      ]
+    },
     "cards": {
+      "displayName": "VerticalCard",
       "type": "component",
       "repeatable": true,
       "component": "page-element.vertical-card"

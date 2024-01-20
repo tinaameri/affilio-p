@@ -8,6 +8,7 @@ import Markdown from '@/components/Markdown';
 import ButtonComponent from '@/components/Button';
 //import { ModalWithReducer } from '@/context/ModalProvider';
 import classes from '@/components/heroSection/HeroSection.module.scss';
+import Bubble from '@/components/heroSection/Bubble';
 // const DotLottiePlayer = dynamic(() => import('@dotlottie/react-player').then((module) => module.DotLottiePlayer));
 
 export default function HeroSection(props) {
@@ -66,7 +67,8 @@ export default function HeroSection(props) {
       <Box
         bg={bg}
         mt={smallerXsScreen ? '78px' : smallerLgScreen ? '80px' : '85px'}
-        py="xl"
+        pt="xl"
+        pb='300px'
       >
         <Layout
           containerClassName={classes.wrapper}
@@ -82,7 +84,7 @@ export default function HeroSection(props) {
                   <Markdown text={topTitle} />
                 </Text>
               )}
-              <Text mx="auto" w="100%" color={titleColor ?? 'primary.1'}>
+              <Text mx="auto" w="100%" color={titleColor ?? 'primary.4'}>
                 <Markdown text={title} />
               </Text>
               {top_subtitle && (
@@ -101,7 +103,7 @@ export default function HeroSection(props) {
                   w={{ lg: '90%', md: '90%', sm: '78%', xs: '98%' }}
                   my={smallerXsScreen ? 'xs' : 'xl'}
                   color={subtitleColor}
-                  fz={largerSmallScreen ? 'md' : 'sm'}
+                  fz={largerSmallScreen ? 'lg' : 'md'}
                   fw="400"
                 >
                   <Markdown text={subtitle} />
@@ -151,6 +153,7 @@ export default function HeroSection(props) {
             )}
           </Col>
         </Layout>
+        <Bubble/>
       </Box>
     </>
   );

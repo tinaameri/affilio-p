@@ -160,7 +160,7 @@ const CardSubMenu = ({ link, onClick, imageData, title, description }) => {
           component="strong"
           fz={smallerLgScreen ? 'md' : 'lg'}
           fw="700"
-          color="primary.6"
+          color="primary.4"
         >
           {title}
         </Text>
@@ -170,7 +170,7 @@ const CardSubMenu = ({ link, onClick, imageData, title, description }) => {
           lineClamp={2}
           fz="sm"
           fw="400"
-          color="primary.6"
+          color="primary.4"
         >
           {description}
         </Text>

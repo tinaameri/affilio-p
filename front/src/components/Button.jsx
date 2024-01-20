@@ -14,6 +14,7 @@ export default function ButtonComponent({
   rightIcon,
   mr,
   ml,
+  size,
 }) {
   return (
     <>
@@ -27,31 +28,34 @@ export default function ButtonComponent({
             target={targetBlank ? '_blank' : '_self'}
             type={actionType}
             onClick={onClick}
-            bg={
+            radius={type==='primary' && size === 'sm' ? '3px 14px 14px 14px' : type==='secondary' && size === 'sm' ?'14px 3px 14px 14px':type==='primary' ?'4px 16px 16px 16px':type==='secondary'?'16px 3px 16px 16px':'3px 16px 16px 16px'}
+                        bg={
               type === 'primaryArrow' || type === 'primary'
-                ? 'primary.3'
-                : type === 'disable' 
+                ? 'primary.7'
+                :type === 'primaryOutline' || type==='secondary'? 'white'
+                : type === 'disable'
                   ? '#EAEEF6'
                   : ''
             }
-
             sx={(theme) => ({
               cursor: !href && !onClick && 'unset',
+              
               '&:hover': {
-                border:`1px solid ${theme.colors.primary[0]}`,
-                color:type === 'primaryArrow' || type === 'primary' ? theme.colors.primary[0]: 'white',
+                border: `1px solid ${theme.colors.primary[0]}`,
+                color:
+                  type === 'primaryArrow' || type === 'primary'
+                    ? theme.colors.primary[0]
+                    : 'white',
                 background:
                   type === 'primaryArrow' || type === 'primary'
-                    ? 'transparent!important'
-                    :  theme.colors.primary[3],
-                   
+                    ? 'white!important'
+                    : theme.colors.primary[7],
               },
 
               padding: '0 20px',
             })}
             variant={
-              type === 'primaryOutline' ||
-              type === 'primaryOutlineArrow' 
+              type === 'primaryOutline' || type === 'primaryOutlineArrow' || type ==='secondary'
                 ? 'outline'
                 : 'filled'
             }
@@ -72,10 +76,11 @@ export default function ButtonComponent({
           className={className}
           type={actionType}
           onClick={onClick}
-          bg={
+          radius={type==='primary' && size === 'sm' ? '3px 14px 14px 14px' : type==='secondary' && size === 'sm' ?'14px 3px 14px 14px':type==='primary' ?'4px 16px 16px 16px':type==='secondary'?'16px 3px 16px 16px':'3px 16px 16px 16px'}  
+                  bg={
             type === 'primaryArrow' || type === 'primary'
-              ? 'primary.3'
-              : type === 'secondaryArrow' || type === 'secondary'
+              ? 'primary.7'
+              : type === 'primaryOutline' || type === 'secondaryArrow' || type === 'secondary'
                 ? 'white'
                 : ''
           }
@@ -84,7 +89,7 @@ export default function ButtonComponent({
             '&:hover': {
               backgroundColor:
                 type === 'primaryArrow' || type === 'primary'
-                  ? 'transparent'
+                  ? 'white'
                   : 'primary.3',
             },
 
@@ -95,6 +100,11 @@ export default function ButtonComponent({
             ((type === 'primaryArrow' || type === 'secondaryArrow') && (
               <IconArrowLeft size="23px" />
             ))
+          }
+          variant={
+            type === 'primaryOutline' || type === 'primaryOutlineArrow' || type ==='secondary'
+              ? 'outline'
+              : 'filled'
           }
         >
           <Text component="span" c="#fff">

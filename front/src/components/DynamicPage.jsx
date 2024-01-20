@@ -13,6 +13,7 @@ import { LocalBusinessJsonLd, LogoJsonLd, NextSeo } from 'next-seo';
 import {
   HERO_BACKGROUNDS,
   CARD_BACKGROUNDS,
+  VERTICAL_CARD_BACKGROUNDS,
   COLOR,
   INFO_COLOR,
 } from '@/utils/constants';
@@ -170,7 +171,6 @@ export default function DynamicPage({ data, config, seo, posts }) {
         ]}
       />
       <Container fluid className="w-100" size="xl" p="0">
-        {console.log('posts', posts)}
         {data?.map((section, idx) => (
           <React.Fragment key={idx}>
             {
@@ -250,6 +250,8 @@ export default function DynamicPage({ data, config, seo, posts }) {
                     imageWidth={299}
                     cardContent={section?.cards}
                     content={section}
+                    bgSection={VERTICAL_CARD_BACKGROUNDS[section?.verticalCardBackground]}
+
                   />
                 </>
               ) : section?.__typename === 'ComponentPageSectionBlogSection' ? (

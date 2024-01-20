@@ -2,6 +2,7 @@ import { Box, Button, Text, TextInput } from '@mantine/core';
 import React, { useState } from 'react';
 import { useForm } from '@mantine/form';
 import { content } from 'public/assets/contentJson';
+import ButtonComponent from './Button';
 
 export default function NewsletterInput({ source, newsletter }) {
   const [send, setSend] = useState(false);
@@ -30,6 +31,9 @@ export default function NewsletterInput({ source, newsletter }) {
   const handleSubmit = async (values) => {
     const userDetails = {
       email: values.email,
+      attributes:{
+      affilio: true,
+      }
     };
     try {
       await window?.Intk('login', userDetails);
@@ -55,7 +59,7 @@ export default function NewsletterInput({ source, newsletter }) {
   };
   return (
     <>
-      <Text component="span" color="gray.5">
+      <Text component="span" color="white">
         {newsletter?.title}
       </Text>
       <form onSubmit={form.onSubmit(handleSubmit)}>
@@ -67,10 +71,9 @@ export default function NewsletterInput({ source, newsletter }) {
             placeholder={newsletter?.email_placeholder}
             {...form.getInputProps('email')}
           />
-          <Button type="submit" color="blue.3" c="gray.5">
-            {/* {newsletter?.button} */}
-            {send ? 'ارسال شد' : newsletter?.button}
-          </Button>
+
+          <ButtonComponent size='sm' actionType="submit" type='primary' title={send ? 'ارسال شد' : newsletter?.button}
+/>
         </Box>
       </form>
     </>

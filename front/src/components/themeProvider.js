@@ -47,43 +47,43 @@ export default function ThemeProvider(props) {
                   // 'primary': ['0-main', '1-dark-hover', '2-light1','3-light2,'4-dlight','5-cText','6-text ','7-bg',   '8-dark bg','#1B286F', '#1B286F'],
                   primary: [
                     '#2C6CF6',
+                    '#255ACC',
                     '#1B52B0',
-                    '#E0E9FE',
-                    'linear-gradient(180deg, #2C6CF6 0%, #255ACC 100%)',
-                    '#E6F1E0 ',
+                    '#173466',
+                    '#11264B ',
+                    '#0D1F3D',
                     '#ffffff',
-                    'rgba(0, 0, 0, 0.87)',
-                    '#F0F6ED',
-                    '#F0F6ED',
-                    '#F0F6ED',
-                    '#F0F6ED',
+                    'linear-gradient(180deg, #2C6CF6 100%, #255ACC 100%)',
+                    '#ffffff',
+                    '#ffffff',
+                    '#ffffff',
                   ],
                   // 'secondary': ['0-main', '1-dark-hover', '2-light2',   '3-deep light',   '4-light' , '5-contrastText' , '6-text', '7-bg', ''],
 
                   secondary: [
-                    '#6A9AE2',
-                    '#0E1E57',
-                    '#DCEAFF',
-                    '#E9F2FF',
-                    '#F2F6FD',
-                    '#ffffff',
-                    '#0F1743',
-                    '#EFF5FF',
-                    '#0E1E57',
-                    '#FDF0E5',
-                    '#FDF0E5',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
+                    '#FF7346',
                   ],
-                  warning: [
+                  social: [
+                    '#2AABEE',
+                    '#0a66c2',
+                    '#ED3976',
+                    '#00C6BB',
                     '#ff9800',
-                    '#ffb74d',
-                    '#f57c00',
-                    'rgba(0, 0, 0, 0.87)',
-                    '#ff9800',
-                    '#162059',
-                    '#EBEEFC',
-                    '#1B286F',
-                    '#1B286F',
-                    '#1B286F',
+                    '#FFD200',
+                    '#FFD200',
+                    '#FFD200',
+                    '#FFD200',
+                    '#FFD200',
                   ],
                   // 'error': ['0-light', '1-main', '2-dark',   '3-contrastText',   '4-text','5-bg'  , '6-bg' , '7-dark bg', '#1B286F', '#1B286F'],
 
@@ -124,16 +124,16 @@ export default function ThemeProvider(props) {
                     '#fff',
                   ],
                   gray: [
-                    '#F5F7FB',
                     '#EAEEF6',
                     '#BCC9E2',
-                    '#A9B5CB',
                     '#96A1B5',
-                    '#8D97AA',
-                    '#717988',
-                    '#555A66',
-                    '#42464F',
-                    '#42464F',
+                    '#44587B',
+                    '#44587B',
+                    '#44587B',
+                    '#44587B',
+                    '#44587B',
+                    '#44587B',
+                    '#44587B',
                   ],
                 },
                 primaryColor: 'primary',
@@ -151,6 +151,11 @@ export default function ThemeProvider(props) {
                     styles: (theme) => ({
                       root: {
                         '&:is(h1),&:is(h2),&:is(h3),&:is(h4),&:is(h5),&:is(h6)':
+                          {
+                            fontWeight: 'bold',
+                            lineHeight: 'normal',
+                          },   
+                              '&:is(h2),&:is(h3),&:is(h4),&:is(h5),&:is(h6)':
                           {
                             fontWeight: 700,
                             lineHeight: 'normal',
@@ -178,7 +183,7 @@ export default function ThemeProvider(props) {
                         },
                         [theme.fn.largerThan('lg')]: {
                           '&:is(h1)': {
-                            fontSize: '36px',
+                            fontSize: '40px',
                           },
                           '&:is(h2)': {
                             fontSize: '32px',
@@ -235,7 +240,7 @@ export default function ThemeProvider(props) {
                         outline: 'none',
                         border: 'none',
                         borderBottom: '1px solid #8D92A8',
-                        caretColor: theme.colors.primary[6],
+                        caretColor: theme.colors.primary[4],
                       },
                       label: {
                         color: '#252D31',
@@ -247,7 +252,7 @@ export default function ThemeProvider(props) {
                         paddingLeft: 0,
                       },
                       required: {
-                        color: theme.colors.primary[6],
+                        color: theme.colors.primary[4],
                       },
                       error: {
                         color: theme.colors.error[1],
@@ -315,22 +320,21 @@ export default function ThemeProvider(props) {
 
                         minWidth: '120px',
                         width: 'auto',
-                        borderRadius: '4px 16px 16px 16px',
+                        //borderRadius: '4px 16px 16px 16px',
                         fontSize: '16px',
-                        fontWeight: '700',
-                       
+                        fontWeight: 700,
                         position: 'relative',
                         display: 'inline-block',
                         //backgroundColor: theme.colors.primary[3],
 
-                        //color: theme.colors.primary[6],
+                        //color: theme.colors.primary[4],
 
-                        //boxShadow: `4px 4px 0 ${theme.colors.primary[6]}`,
+                        //boxShadow: `4px 4px 0 ${theme.colors.primary[4]}`,
 
                         // '&:hover': {
                         //   top: ' 3px',
                         //   left: '-3px',
-                        //   boxShadow: `0px 0px 0 ${theme.colors.primary[6]}`,
+                        //   boxShadow: `0px 0px 0 ${theme.colors.primary[4]}`,
                         //   //backgroundColor: theme.colors.primary[0],
                         //   '&::after': {
                         //     top: '1px',
@@ -361,7 +365,7 @@ export default function ThemeProvider(props) {
                         // },
 
                         span: {
-                          fontWeight: '700',
+                          fontWeight: 700,
                         },
                         [theme.fn.smallerThan('xl')]: {
                           height: '50px',
@@ -377,7 +381,7 @@ export default function ThemeProvider(props) {
                           height: '42px',
                           fontSize: '14px',
                           padding: '9px 16px',
-                          borderRadius:'3px 14px 14px 14px'
+                          borderRadius: '3px 14px 14px 14px',
                         },
                         ...theme.fn.hover({
                           backgroundColor:
@@ -451,15 +455,15 @@ export default function ThemeProvider(props) {
                     display: 'inline-block',
                     backgroundColor: 'white',
 
-                    color: theme.colors.primary[6],
+                    color: theme.colors.primary[4],
 
-                    boxShadow: `-4px 4px 0 ${theme.colors.primary[6]}`,
+                    boxShadow: `-4px 4px 0 ${theme.colors.primary[4]}`,
                     '&:hover': {
                       top: ' 3px',
                       left: '-3px',
-                      boxShadow: `0px 0px 0 ${theme.colors.primary[6]}`,
+                      boxShadow: `0px 0px 0 ${theme.colors.primary[4]}`,
                       backgroundColor: theme.colors.primary[0],
-                      color: theme.colors.primary[6],
+                      color: theme.colors.primary[4],
                       '&::after': {
                         top: '1px',
                         right: '-2px',
@@ -543,6 +547,7 @@ export default function ThemeProvider(props) {
                     padding: '8px',
                     img: {
                       height: '100%',
+                      width:'100%'
                     },
                   },
 
@@ -570,7 +575,7 @@ export default function ThemeProvider(props) {
                       backgroundPosition: 'right',
                     },
                     '&-center': {
-                      backgroundSize: 'cover',
+                      backgroundSize: '100%',
                       backgroundRepeat: 'no-repeat',
                       backgroundPosition: 'center',
                     },
@@ -579,6 +584,11 @@ export default function ThemeProvider(props) {
                       backgroundRepeat: 'no-repeat',
                       backgroundPosition: 'bottom',
                     },
+                  },
+                  '.radius':{
+'&-xl':{
+  borderRadius:'40px'
+}
                   },
                   '.shadow': {
                     '&-left': {
@@ -594,6 +604,15 @@ export default function ThemeProvider(props) {
                       borderRadius: '15px',
                     },
                   },
+                  '.back-mini-img':{
+                    width:' 61.384px',
+                    height: '60px',
+                    borderRadius: '16px',
+background: 'radial-gradient(141.42% 141.42% at 0% 0%, rgba(250, 250, 250, 0.30) 0%, rgba(246, 246, 246, 0.00) 100%)',
+
+
+backdropFilter: 'blur(12px)',
+                  },
 
                   '.login-main-box': {
                     minHeight: '100vh',
@@ -602,10 +621,18 @@ export default function ThemeProvider(props) {
                     alignItems: 'center',
                   },
                   'h1,h2,h3,h4,h5,h6': {
-                    fontWeight: 900,
+                 
                     lineHeight: 'normal',
                     margin: 0,
                     padding: 0,
+                  },  
+                      'h1,h2,h3,h4,h5,h6': {
+                 
+               fontWeight:700,
+                  }, 
+                     'h1': {
+                    fontWeight: 'bold',
+
                   },
                   h6: {
                     fontSize: '18px',
@@ -633,7 +660,7 @@ export default function ThemeProvider(props) {
                   },
                   [theme.fn.largerThan('lg')]: {
                     h1: {
-                      fontSize: '36px',
+                      fontSize: '40px',
                     },
                     h2: {
                       fontSize: '32px',
@@ -659,12 +686,12 @@ export default function ThemeProvider(props) {
                   },
                   '.wrapperHeader .menu-link a,.wrapperHeader .menu-link span':
                     {
-                      color: theme.colors.primary[6],
+                      color: theme.colors.primary[4],
                       fontWeight: 700,
                     },
                   '.wrapperHeader .mantine-rtl-Burger-burger,.wrapperHeader .mantine-rtl-Burger-burger::before,.wrapperHeader .mantine-rtl-Burger-burger::after':
                     {
-                      backgroundColor: theme.colors.primary[6],
+                      backgroundColor: theme.colors.primary[4],
                     },
                   '.dropDownMenu': {
                     position: 'relative',
@@ -678,20 +705,39 @@ export default function ThemeProvider(props) {
                     position: 'relative',
 
                     '&:hover,.active': {
-                      '&:before': {
+                      '.link-section':{
+                        color:`${theme.colors.secondary[0]}!important`,
+                      },
+                      color:`${theme.colors.secondary[0]}!important`,
+
+                      '&:before,&:after': {
                         content: '""',
                         position: 'absolute',
-                        width: '100%',
-                        height: '5px',
-                        borderRadius: '13px 13px 0px 0px',
-                        bottom: '-1px',
-                        right: '0',
-                        backgroundColor: theme.colors.primary[1],
+                        borderRadius: '50%',
+                        bottom: '-7px',
+                     
+                      }, 
+                         '&:before': {
+      
+                        width: '15px',
+                        height: '15px',                       
+
+                        backgroundColor:'white',
+                        right: 'calc(50% - 7.5px)',
+
+                      },  
+                       '&:after': {
+                        width: '7px',
+                        height: '7px',     
+                        bottom: '-3px',
+                        right: 'calc(50% - 3.5px)',
+
+                        backgroundColor: theme.colors.secondary[0],
                       },
                     },
                   },
                   '.wrapperHeader .menu-link svg': {
-                    stroke: theme.colors.primary[6],
+                    stroke: theme.colors.primary[4],
                   },
                   // '.mantine-rtl-Header-root': {
                   //     top: 'unset',
@@ -718,8 +764,8 @@ export default function ThemeProvider(props) {
                       backdropFilter: 'blur(12px)',
                     },
                     '.menu-link span, .menu-link svg,.menu-link a': {
-                      stroke: theme.colors.primary[6],
-                      color: theme.colors.primary[6],
+                      stroke: theme.colors.primary[4],
+                      color: theme.colors.primary[4],
                       fontWeight: 700,
                     },
                   },
@@ -895,7 +941,7 @@ export default function ThemeProvider(props) {
                       border: `1px solid ${theme.colors.error[1]}`,
                     },
                   '.article-terms *': {
-                    color: theme.colors.primary[6],
+                    color: theme.colors.primary[4],
                   },
                   '.article-terms p': {
                     fontWeight: 400,
@@ -944,8 +990,8 @@ export default function ThemeProvider(props) {
                     borderRadius: '24px',
                     background: 'blue',
                   },
-                  '.text-white': {
-                    color: 'white',
+                  '.text-white *': {
+                    color: 'white!important',
                   },
                   '.text-secondary': {
                     color: theme.colors.secondary[0],
@@ -1138,6 +1184,7 @@ export default function ThemeProvider(props) {
                       },
                     },
                   },
+                  
                   '.img-responsive': {
                     height: '100%',
                     width: '100%',
@@ -1149,11 +1196,31 @@ export default function ThemeProvider(props) {
                       width: '100%',
                     },
                   },
+                  '.social-item':{
+             
+                      display:'flex',
+                      alignItems:'center',
+                      justifyContent:'center',
+         
+
+                    padding:'10px',
+                    width:'32px',
+                    height:'32px',
+                    borderRadius:'10px',
+                    figure:{
+                      width:'100%',
+                      height:'100%',
+                      padding:'0',
+                      marginBottom:'-2px',
+                    },
+
+
+                  },
                   '.newsletter-section': {
                     marginTop: '20px',
                     height: '50px',
                     border: '1px solid gray',
-                    borderRadius: '5px',
+                    borderRadius: '16px',
                     position: 'relative',
                     '.mantine-rtl-InputWrapper-root': {
                       margin: '0px',
@@ -1172,9 +1239,10 @@ export default function ThemeProvider(props) {
                     button: {
                       position: 'absolute',
                       height: '40px',
-                      left: '3px',
-                      top: '3px',
-                      borderRadius: '5px',
+                      left: '4px',
+                      top: '4px',
+                      minWidth:'fit-content',
+                      
                     },
                   },
                 }),

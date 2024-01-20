@@ -182,7 +182,7 @@ export function CardSubMenu({ item, onClick }) {
               component="strong"
               fz={smallerLgScreen ? 'md' : 'lg'}
               fw="700"
-              color="primary.6"
+              color="primary.4"
             >
               {subItem?.title}
             </Text>
@@ -192,7 +192,7 @@ export function CardSubMenu({ item, onClick }) {
               lineClamp={2}
               fz="sm"
               fw="400"
-              color="primary.6"
+              color="primary.4"
             >
               {subItem?.description}
             </Text>
