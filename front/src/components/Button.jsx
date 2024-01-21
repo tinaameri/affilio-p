@@ -107,7 +107,7 @@ export default function ButtonComponent({
               : 'filled'
           }
         >
-          <Text component="span" c="#fff">
+          <Text component="span">
             {title}
           </Text>
         </Button>

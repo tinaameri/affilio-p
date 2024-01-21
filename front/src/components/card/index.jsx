@@ -208,6 +208,7 @@ export function CardItem(props) {
                 <>
                   <Box key={index}>
                     <Title
+                    className='heading-icon'
                       order={
                         3 > multiText?.length > 1
                           ? 4

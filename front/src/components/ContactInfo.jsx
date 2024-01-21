@@ -19,7 +19,7 @@ export default function ContactInfo({ content }) {
   // const linkedin = content?.contact_us?.social?.linkedin
   return (
     <Container fluid size="xl" p="0">
-      <Layout pt="100px">
+      <Layout pt="100px" pb='xl'>
         <Heading
           py="70px"
           color="white"

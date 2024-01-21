@@ -27,6 +27,8 @@ export async function getContactUs() {
         data {
           id
           attributes {
+            form_title
+            form_description
             title: heading_title
             description: heading_description
             info_description: description
@@ -112,6 +114,7 @@ export async function getSinglePage(slug) {
               ... on ComponentPageSectionHero{
                 id
                 caption
+                lottie_image_animation
                 title
                 sub_title
                 words_animation{
@@ -130,6 +133,7 @@ export async function getSinglePage(slug) {
                     attributes{
                       caption
                       url
+                      alternativeText
                     }
                   }
                 }
@@ -174,6 +178,7 @@ export async function getSinglePage(slug) {
 
               ... on ComponentPageSectionImageCarousel{
                 id
+                heading_title
                 images{
                   data{
                     attributes{

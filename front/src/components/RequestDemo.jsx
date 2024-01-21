@@ -32,7 +32,7 @@ const convertNumbers2English = function (string) {
     });
 };
 
-export default function RequestDemo({ source, bgColor, pLayout, py, demo }) {
+export default function RequestDemo({ source, bgColor, pLayout, py, demo,form_title,form_description }) {
   const { dispatch } = useContext(ModalWithReducer);
   //const [notif, setNotif] = useState(null);
 
@@ -154,10 +154,10 @@ export default function RequestDemo({ source, bgColor, pLayout, py, demo }) {
         >
           <Fade right>
             <Title order={2} fz="36px" color="primary.4">
-              {demo?.title}
+              {form_title}
             </Title>
             <Text color="primary.4" mt="xl">
-              <Markdown text={demo?.desc} />
+              <Markdown text={form_description} />
             </Text>
           </Fade>
         </Grid.Col>
@@ -300,7 +300,7 @@ export default function RequestDemo({ source, bgColor, pLayout, py, demo }) {
                 <Grid.Col xs={12} py="30px">
                   <ButtonComponent
                     className="cursor-pointer"
-                    type="secondaryArrow"
+                    type="primaryOutline"
                     actionType="submit"
                     title={demo?.submit}
                   />

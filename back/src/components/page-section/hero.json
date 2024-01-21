@@ -29,17 +29,16 @@
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images"
+        "images",
+        "videos",
+        "audios",
+        "files"
       ]
     },
     "background": {
       "type": "enumeration",
       "enum": [
-        "greenPattern",
-        "orangePattern",
-        "bluePattern",
-        "green",
-        "blue"
+        "blur"
       ],
       "default": "green"
     },
@@ -47,6 +46,10 @@
       "type": "component",
       "repeatable": true,
       "component": "page-element.words-animation"
+    },
+    "lottie_image_animation": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

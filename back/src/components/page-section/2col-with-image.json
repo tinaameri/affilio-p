@@ -33,10 +33,7 @@
     "background": {
       "type": "enumeration",
       "enum": [
-        "orange",
-        "green",
-        "white",
-        "blue"
+        "blur"
       ],
       "default": "white"
     },

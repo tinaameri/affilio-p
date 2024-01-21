@@ -322,7 +322,7 @@ export default function ThemeProvider(props) {
                         width: 'auto',
                         //borderRadius: '4px 16px 16px 16px',
                         fontSize: '16px',
-                        fontWeight: 700,
+                        fontWeight: 900,
                         position: 'relative',
                         display: 'inline-block',
                         //backgroundColor: theme.colors.primary[3],
@@ -365,7 +365,7 @@ export default function ThemeProvider(props) {
                         // },
 
                         span: {
-                          fontWeight: 700,
+                          fontWeight: 900,
                         },
                         [theme.fn.smallerThan('xl')]: {
                           height: '50px',
@@ -1184,7 +1184,22 @@ backdropFilter: 'blur(12px)',
                       },
                     },
                   },
-                  
+                  '.customer-box':{
+                    width:'133px',
+                    height:'110px',
+                    borderRadius: '20px',
+                    border: '1px solid  #EAEEF6',
+                    opacity: '0.93',
+                    background: 'white',
+                    boxShadow: '-15px 15px 25px 0px rgba(27, 82, 176, 0.12)',
+                  },
+                  '.heading-icon':{
+paddingRight:'100px',
+'&::before':{
+  content:'"',
+  
+}
+                  },
                   '.img-responsive': {
                     height: '100%',
                     width: '100%',

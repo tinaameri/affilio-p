@@ -38,12 +38,18 @@
       "component": "page-element.social"
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "form_title": {
+      "type": "richtext"
+    },
+    "form_description": {
+      "type": "richtext"
     }
   }
 }

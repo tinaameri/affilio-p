@@ -18,21 +18,21 @@ const CounterAnimation = ({ content, heading_title, heading_description }) => {
       className={classes.wrapper}
       containerClassName={`${classes.container} radius-xl`}
       bgLayout={`radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%)`}
-      pb="100px"
+      pb="30px"
     >
       {heading_title && (
         <Heading
           title={heading_title}
           description={heading_description}
           className="text-white"
-          without_image={false}
+          without_image={true}
         />
       )}
 
       {content?.map((item, index) => (
         <Grid.Col sx={12} md={6} lg={3} key={index} mb="xl">
           <Box>
-            <Box>
+         
               <Flex
                 fw="900"
                 fz="36px"
@@ -46,8 +46,8 @@ const CounterAnimation = ({ content, heading_title, heading_description }) => {
                 </Text>
                 <CountUp end={item?.count} enableScrollSpy />
               </Flex>
-            </Box>
-            <Text component="p" fz="sm" c="primary.6">
+       
+            <Text component="p" fz="sm" c="primary.6" pr='xl'>
               {item?.title}
             </Text>
           </Box>

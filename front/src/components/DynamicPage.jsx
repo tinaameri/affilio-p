@@ -195,6 +195,8 @@ export default function DynamicPage({ data, config, seo, posts }) {
                     //link={section?.action?.link}
                     //targetBlank={!!section?.action?.newPage}
                     wordsAnimation={section?.words_animation}
+                    lottie={section?.lottie_image_animation}
+                    alt={`${IMAGES_BASE_UR}${section?.media?.data?.attributes?.alternativeText}`}
                   />
                 </>
               ) : section?.__typename === 'ComponentPageSectionInfo' ? (
@@ -218,6 +220,7 @@ export default function DynamicPage({ data, config, seo, posts }) {
                 <>
                   <ImageCarousel
                     customers={section?.images?.data}
+                    heading_title={section?.heading_title}
                     className="white-images"
                   />
                 </>

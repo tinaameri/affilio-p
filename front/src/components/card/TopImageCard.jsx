@@ -111,7 +111,6 @@ export function TopImageCardItems({
           title={content?.heading_title}
           description={content?.heading_description}
           text_light={content?.text_light && 'text-white'}
-          without_image={true}
         />
       )}
       {Object?.values(cardContent).map((card, index) => (

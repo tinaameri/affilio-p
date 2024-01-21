@@ -27,12 +27,6 @@
       "component": "page-element.footer-links",
       "max": 3
     },
-    "contactFormTitle": {
-      "type": "string"
-    },
-    "contactFormDescription": {
-      "type": "text"
-    },
     "Gdpr": {
       "displayName": "GDPR",
       "type": "component",

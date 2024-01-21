@@ -29,7 +29,7 @@ const useStyles = createStyles((theme) => ({
     '&:nth-of-type(3)': {
       width: '65px',
       height: '65px',
-      top: '100%',
+      top: '80%',
       backgroundColor:theme.colors.primary[0],
       left: '8%',
       opacity: '0.15',
@@ -43,15 +43,15 @@ const useStyles = createStyles((theme) => ({
       },
 
       '25%': {
-        transform: 'translate(15px, 0)',
+        transform: 'translate(25px, 0)',
       },
 
       '50%': {
-        transform: 'translate(15px, 15px)',
+        transform: 'translate(25px, 25px)',
       },
 
       '75%': {
-        transform: 'translate(0, 15px)',
+        transform: 'translate(0, 25px)',
       },
 
       '100%': {

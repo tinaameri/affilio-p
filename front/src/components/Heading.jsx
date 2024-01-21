@@ -19,7 +19,7 @@ export default function Heading({ title, description,without_image,text_light,cl
               <Title order={2} ta="center" color={text_light ? 'primary.6':'primary.4'}>
                 {title}
               </Title>
-              {without_image && <Center mt="lg">
+              {!without_image && <Center mt="lg">
                 <Image
                   src={'/assets/images/heading.svg'}
                   width={34}

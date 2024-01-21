@@ -22,7 +22,7 @@
     "background": {
       "type": "enumeration",
       "enum": [
-        "light",
+        "blur",
         "dark"
       ]
     },

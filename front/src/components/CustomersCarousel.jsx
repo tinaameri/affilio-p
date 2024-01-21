@@ -9,7 +9,7 @@ import 'swiper/css/free-mode';
 export default function CustomersCarousel({ customers }) {
   const midScreen = useMediaQuery('(max-width: 64em) and (min-width: 37.5em)');
   return (
-    <Container fluid bg="secondary.8" className="seller">
+    <Container fluid bg="/assets/images/bg/bg-blur-card.svg" className="seller">
       <Container pt="50px" size={midScreen ? 'md' : 'xl'}>
         <Title order={2} ta="center" c="white">
           {customers?.heading_title}
@@ -52,30 +52,11 @@ export default function CustomersCarousel({ customers }) {
                 <Flex
                   //justify="space-around"
                   align="center"
+                  className="customer-item"
                 >
-                  {/* <Image height='40px' fit='contain' className='white-images'
-                                        alt={item?.attributes?.alt} src={`${IMAGES_BASE_UR}${item?.attributes?.url}`} /> */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="17"
-                    height="17"
-                    viewBox="0 0 17 17"
-                    fill="none"
-                  >
-                    <path
-                      d="M7.70984 6.94508L9.35938 0L9.74084 7.16984L16.6922 8.96666L9.55785 9.20486L7.9085 16.1498L7.52718 8.98014L0.575711 7.18314L7.70984 6.94508Z"
-                      fill="#8ce969"
-                    />
-                  </svg>
-                  <Text
-                    color="white"
-                    fz="18px"
-                    component="p"
-                    mx="xl"
-                    className="text-dastNevis"
-                  >
-                    {item?.title}
-                  </Text>
+                  <Image height='40px' fit='contain' className='white-images'
+                                        alt={item?.attributes?.alt} src={`${IMAGES_BASE_UR}${item?.attributes?.url}`} />
+
                 </Flex>
               </SwiperSlide>
             ))}

@@ -335,8 +335,7 @@ export interface PageSection2ColWithImage extends Schema.Component {
     image: Attribute.Media & Attribute.Required;
     buttons: Attribute.Component<'page-element.button', true>;
     reverse: Attribute.Boolean & Attribute.DefaultTo<false>;
-    background: Attribute.Enumeration<['orange', 'green', 'white', 'blue']> &
-      Attribute.DefaultTo<'white'>;
+    background: Attribute.Enumeration<['blur']> & Attribute.DefaultTo<'white'>;
     content: Attribute.Component<'page-element.content', true>;
   };
 }
@@ -476,11 +475,9 @@ export interface PageSectionHero extends Schema.Component {
       }>;
     action: Attribute.Component<'page-element.button', true>;
     image: Attribute.Media;
-    background: Attribute.Enumeration<
-      ['greenPattern', 'orangePattern', 'bluePattern', 'green', 'blue']
-    > &
-      Attribute.DefaultTo<'green'>;
+    background: Attribute.Enumeration<['blur']> & Attribute.DefaultTo<'green'>;
     words_animation: Attribute.Component<'page-element.words-animation', true>;
+    lottie_image_animation: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
 }
 
@@ -489,9 +486,11 @@ export interface PageSectionImageCarousel extends Schema.Component {
   info: {
     displayName: 'imageCarousel';
     icon: 'picture';
+    description: '';
   };
   attributes: {
     images: Attribute.Media & Attribute.Required;
+    heading_title: Attribute.String;
   };
 }
 
@@ -598,7 +597,7 @@ export interface PageSectionVerticalCardList extends Schema.Component {
     heading_description: Attribute.RichText;
     three_column: Attribute.Boolean;
     text_light: Attribute.Boolean & Attribute.DefaultTo<false>;
-    background: Attribute.Enumeration<['light', 'dark']>;
+    background: Attribute.Enumeration<['blur', 'dark']>;
     cards: Attribute.Component<'page-element.vertical-card', true>;
   };
 }

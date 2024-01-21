@@ -774,8 +774,6 @@ export interface ApiConfigConfig extends Schema.SingleType {
       Attribute.SetMinMax<{
         max: 3;
       }>;
-    contactFormTitle: Attribute.String;
-    contactFormDescription: Attribute.Text;
     Gdpr: Attribute.Component<'shared.gdpr'>;
     copy_right: Attribute.Text &
       Attribute.Required &
@@ -825,6 +823,8 @@ export interface ApiContactUsContactUs extends Schema.SingleType {
     social_description: Attribute.RichText;
     social_media: Attribute.Component<'page-element.social', true>;
     image: Attribute.Media & Attribute.Required;
+    form_title: Attribute.RichText;
+    form_description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -20,6 +20,7 @@ export default function HeroSection(props) {
     button,
     src,
     // href,
+    alternativeText,
     topTitleColor,
     bg,
     // pyContent,
@@ -141,7 +142,7 @@ export default function HeroSection(props) {
                   width="auto"
                   height="auto"
                   loading="lazy"
-                  alt={title}
+                  alt={alternativeText}
                 />
               </figure>
               // <Box className={classes.wrapperImage}>
@@ -153,7 +154,7 @@ export default function HeroSection(props) {
             )}
           </Col>
         </Layout>
-        <Bubble/>
+        <Bubble />
       </Box>
     </>
   );
