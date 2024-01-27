@@ -1,4 +1,4 @@
-import { Button, Text } from '@mantine/core';
+import { Button } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 
 import Link from 'next/link';
@@ -14,6 +14,7 @@ export default function ButtonComponent({
   rightIcon,
   mr,
   ml,
+  mt,
   size,
 }) {
   return (
@@ -23,23 +24,37 @@ export default function ButtonComponent({
           <Button
             ml={ml}
             mr={mr}
+            mt={mt}
             className={className}
             component="a"
             target={targetBlank ? '_blank' : '_self'}
             type={actionType}
             onClick={onClick}
-            radius={type==='primary' && size === 'sm' ? '3px 14px 14px 14px' : type==='secondary' && size === 'sm' ?'14px 3px 14px 14px':type==='primary' ?'4px 16px 16px 16px':type==='secondary'?'16px 3px 16px 16px':'3px 16px 16px 16px'}
-                        bg={
+            p={size === 'sm' ? '21px 24px' : '21px 32px'}
+            h={size === 'sm' && '42px'}
+            radius={
+              type === 'primary' && size === 'sm'
+                ? '3px 14px 14px 14px'
+                : type === 'secondary' && size === 'sm'
+                  ? '14px 3px 14px 14px'
+                  : type === 'primary'
+                    ? '4px 16px 16px 16px'
+                    : type === 'secondary'
+                      ? '16px 3px 16px 16px'
+                      : '3px 16px 16px 16px'
+            }
+            bg={
               type === 'primaryArrow' || type === 'primary'
                 ? 'primary.7'
-                :type === 'primaryOutline' || type==='secondary'? 'white'
-                : type === 'disable'
-                  ? '#EAEEF6'
-                  : ''
+                : type === 'primaryOutline' || type === 'secondary'
+                  ? 'white'
+                  : type === 'disable'
+                    ? '#EAEEF6'
+                    : ''
             }
             sx={(theme) => ({
               cursor: !href && !onClick && 'unset',
-              
+
               '&:hover': {
                 border: `1px solid ${theme.colors.primary[0]}`,
                 color:
@@ -51,11 +66,11 @@ export default function ButtonComponent({
                     ? 'white!important'
                     : theme.colors.primary[7],
               },
-
-              padding: '0 20px',
             })}
             variant={
-              type === 'primaryOutline' || type === 'primaryOutlineArrow' || type ==='secondary'
+              type === 'primaryOutline' ||
+              type === 'primaryOutlineArrow' ||
+              type === 'secondary'
                 ? 'outline'
                 : 'filled'
             }
@@ -73,18 +88,33 @@ export default function ButtonComponent({
         <Button
           ml={ml}
           mr={mr}
+          mt={mt}
           className={className}
           type={actionType}
           onClick={onClick}
-          radius={type==='primary' && size === 'sm' ? '3px 14px 14px 14px' : type==='secondary' && size === 'sm' ?'14px 3px 14px 14px':type==='primary' ?'4px 16px 16px 16px':type==='secondary'?'16px 3px 16px 16px':'3px 16px 16px 16px'}  
-                  bg={
+          p={size === 'sm' ? '21px 24px' : '21px 32px'}
+          h={size === 'sm' && '42px'}
+          radius={
+            type === 'primary' && size === 'sm'
+              ? '3px 14px 14px 14px'
+              : type === 'secondary' && size === 'sm'
+                ? '14px 3px 14px 14px'
+                : type === 'primary'
+                  ? '4px 16px 16px 16px'
+                  : type === 'secondary'
+                    ? '16px 3px 16px 16px'
+                    : '3px 16px 16px 16px'
+          }
+          bg={
             type === 'primaryArrow' || type === 'primary'
               ? 'primary.7'
-              : type === 'primaryOutline' || type === 'secondaryArrow' || type === 'secondary'
+              : type === 'primaryOutline' ||
+                  type === 'secondaryArrow' ||
+                  type === 'secondary'
                 ? 'white'
                 : ''
           }
-          sx={(theme) => ({
+          sx={() => ({
             cursor: !href && !onClick && actionType !== 'submit' && 'unset',
             '&:hover': {
               backgroundColor:
@@ -92,8 +122,6 @@ export default function ButtonComponent({
                   ? 'white'
                   : 'primary.3',
             },
-
-            padding: '0 20px',
           })}
           rightIcon={
             rightIcon ??
@@ -102,14 +130,16 @@ export default function ButtonComponent({
             ))
           }
           variant={
-            type === 'primaryOutline' || type === 'primaryOutlineArrow' || type ==='secondary'
+            type === 'primaryOutline' ||
+            type === 'primaryOutlineArrow' ||
+            type === 'secondary'
               ? 'outline'
               : 'filled'
           }
         >
-          <Text component="span">
-            {title}
-          </Text>
+          {/* <Text component="span"> */}
+          {title}
+          {/* </Text> */}
         </Button>
       )}
     </>

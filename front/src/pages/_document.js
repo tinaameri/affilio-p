@@ -51,8 +51,8 @@ export default class _Document extends Document {
             as="font"
             crossOrigin="true"
             type="font/woff2"
-          />       
-             <link
+          />
+          <link
             rel="preload"
             href="/assets/fonts/yekan bakh en 07 heavy.woff2"
             as="font"

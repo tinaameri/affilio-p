@@ -11,6 +11,7 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'center',
     margin: '10px 0 40px 0',
     listStyle: 'none',
+    flexDirection: 'row-reverse',
     // direction: 'rtl'
   },
   link: {
@@ -27,24 +28,24 @@ const useStyles = createStyles((theme) => ({
     width: '35px',
     height: '35px',
     textDecoration: 'none',
-    color: theme.colors.primary[1],
+    color: theme.colors.primary[4],
   },
   paginationButtonArrow: {
     margin: '0 5px',
     width: '35px',
     height: '35px',
     textDecoration: 'none',
-    color: theme.colors.primary[1],
+    color: theme.colors.primary[0],
   },
 
   active: {
-    backgroundColor: theme.colors.primary[1],
+    backgroundColor: theme.colors.secondary[0],
     color: ' #fff',
     borderRadius: '50px',
   },
 
   disabled: {
-    opacity: '0.2',
+    color: theme.colors.gray[2],
     pointerEvents: 'none',
   },
 }));
@@ -90,7 +91,7 @@ export default function PostPagination({ totalPages, currentPage }) {
                       [classes.disabled]: currentPage == 1,
                     })}
                   >
-                    <IconChevronRight />
+                    <IconChevronLeft />
                   </a>
                 </Link>
               </li>
@@ -124,7 +125,7 @@ export default function PostPagination({ totalPages, currentPage }) {
                       [classes.disabled]: currentPage == totalPages,
                     })}
                   >
-                    <IconChevronLeft />
+                    <IconChevronRight />
                   </a>
                 </Link>
               </li>
@@ -149,7 +150,7 @@ export default function PostPagination({ totalPages, currentPage }) {
                       [classes.disabled]: currentPage == 1,
                     })}
                   >
-                    <IconChevronRight />
+                    <IconChevronLeft />
                   </a>
                 </Link>
               </li>
@@ -165,7 +166,7 @@ export default function PostPagination({ totalPages, currentPage }) {
                         [classes.active]: pageNumber == currentPage,
                       })}
                     >
-                      {persianjs(pageNumber).englishNumber().toString()}{' '}
+                      {persianjs(pageNumber).englishNumber().toString()}
                     </a>
                   </Link>
                 </li>
@@ -188,7 +189,7 @@ export default function PostPagination({ totalPages, currentPage }) {
                       [classes.disabled]: currentPage == totalPages,
                     })}
                   >
-                    <IconChevronLeft />
+                    <IconChevronRight />
                   </a>
                 </Link>
               </li>

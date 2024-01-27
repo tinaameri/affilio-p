@@ -1,15 +1,18 @@
 import { Autoplay, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Container, Box, Text, Flex, Title } from '@mantine/core';
+import { Container, Box, Flex, Title, Image } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 //import Image from 'next/image';
 import 'swiper/css/free-mode';
+import { pages } from 'public/assets/contentJson';
+import { IMAGES_BASE_UR } from '@/api/clinet';
 
 export default function CustomersCarousel({ customers }) {
   const midScreen = useMediaQuery('(max-width: 64em) and (min-width: 37.5em)');
+
   return (
-    <Container fluid bg="/assets/images/bg/bg-blur-card.svg" className="seller">
+    <Container fluid bg={pages?.bg_card} className="seller">
       <Container pt="50px" size={midScreen ? 'md' : 'xl'}>
         <Title order={2} ta="center" c="white">
           {customers?.heading_title}
@@ -54,9 +57,13 @@ export default function CustomersCarousel({ customers }) {
                   align="center"
                   className="customer-item"
                 >
-                  <Image height='40px' fit='contain' className='white-images'
-                                        alt={item?.attributes?.alt} src={`${IMAGES_BASE_UR}${item?.attributes?.url}`} />
-
+                  <Image
+                    height="40px"
+                    fit="contain"
+                    className="white-images"
+                    alt={item?.attributes?.alt}
+                    src={`${IMAGES_BASE_UR}${item?.attributes?.url}`}
+                  />
                 </Flex>
               </SwiperSlide>
             ))}

@@ -2,11 +2,11 @@ import { Container, Title, Text, Button, Box, Modal } from '@mantine/core';
 import { ModalWithReducer } from '@/context/ModalProvider';
 import { useContext } from 'react';
 import { DotLottiePlayer } from '@dotlottie/react-player';
-import { content } from 'public/assets/contentJson';
+import { pages } from 'public/assets/contentJson';
 import { textSplitter } from '@/utils/helpers';
 
 export default function SuccessModal() {
-  const submission = content.section_request_demo.submission_modal;
+  const submission = pages?.contact_us?.sections[1]?.data?.submission_modal;
   const { modalOpenState, dispatch } = useContext(ModalWithReducer);
   const handleClose = () => {
     dispatch({ type: 'Close' });

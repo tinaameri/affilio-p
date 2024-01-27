@@ -6,16 +6,17 @@ import { useEffect, useState } from 'react';
 import { useThemeContext } from '@/context/theme';
 import TrustLogo from '@/components/footer/TrustLogo';
 import NewsletterInput from '../NewsletterInput';
+import { pages } from 'public/assets/contentJson';
 const useStyles = createStyles((theme) => ({
   //TODO: change style for mantine v7
   control: {
     ...theme.fn.hover({
-      backgroundColor: theme.colors.primary[1],
+      backgroundColor: theme.colors.primary[4],
       color: 'white',
     }),
   },
   item: {
-    backgroundColor: theme.colors.primary[1],
+    background: pages?.blue_gradient_bg,
 
     borderBottom: '1px solid white',
   },
@@ -58,7 +59,7 @@ export default function AccordionFooter({ links, trust, logo, newsletter }) {
   const { classes } = useStyles();
 
   return (
-    <Box bg="primary.1" py="45px" mih="480px">
+    <Box bg={pages?.blue_gradient_bg} py="45px" mih="480px">
       <Container size="xl">
         <Logo position="footer" logo={logo} />
         <Box bg="primary.1">

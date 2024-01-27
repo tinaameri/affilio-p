@@ -97,6 +97,37 @@ export const content = {
 };
 
 export const pages = {
+  // background
+  header_icon: `${IMAGES}/heading.svg`,
+  header_blog: `url(${IMAGES}/bg/bg-blur-header-blog.svg) bottom/cover 
+  no-repeat`,
+  blur_left: `url(${IMAGES}/bg/bg-blur-left-blue.svg)  no-repeat`,
+  blog_section_bg: `url('${IMAGES}/bg/bg-blur-right-white.svg') left no-repeat`,
+  counter_bg: `radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%)`,
+  blue_gradient_bg:
+    'radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%)',
+  bg_caroucel_image:
+    'url("/assets/images/bg/bg-blur-caroucel.png") left/cover no-repeat',
+  bg_card: '/assets/images/bg/bg-blur-card.svg',
+  newsletter: {
+    empty_validate: 'ایمیل خود را وارد کنید',
+    validate: 'ایمیل خود را به صورت صحیح وارد کنید',
+  },
+  blog: {
+    categories: {
+      title: 'همه',
+    },
+    topHeader: {
+      title: 'اخبار',
+      description: 'در جریان آخرین اخبار مارکتینگ تکنولوژی باشید',
+    },
+    search: {
+      placeholder: 'کلید‌واژه مورد نظر شما ...',
+      button: 'جستجوی مقاله',
+    },
+    latest_post: 'آخرین اخبار',
+    related_posts: 'مقالات مرتبط',
+  },
   contact_us: {
     title: 'تماس با ما',
     description: '',

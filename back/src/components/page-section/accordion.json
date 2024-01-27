@@ -6,11 +6,14 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
+    "accordion_item": {
+      "displayName": "accordion_item",
+      "type": "component",
+      "repeatable": true,
+      "component": "page-element.accordion-item"
     },
-    "description": {
-      "type": "richtext"
+    "heading_title": {
+      "type": "string"
     }
   }
 }

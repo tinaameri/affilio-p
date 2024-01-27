@@ -19,6 +19,7 @@ import Markdown from '@/components/Markdown';
 import Heading from '@/components/Heading';
 import ButtonComponent from '@/components/Button';
 import { IMAGES_BASE_UR } from '@/api/clinet';
+import Bubble from './BubbleCard';
 const useStyles = createStyles((theme) => ({
   box: {
     height: 50,
@@ -55,15 +56,12 @@ export function CardItem(props) {
     contentAlign,
     plContent,
     prContent,
-
-    imgHeight,
     //onClick,
 
     number,
 
     heading_title,
     heading_description,
-    imageAlt,
     multiText,
     bgSection,
   } = props;
@@ -71,7 +69,6 @@ export function CardItem(props) {
   const smallerScreen = useMediaQuery('(max-width: 64em)');
   //   const largerScreen = useMediaQuery('(min-width: 768px)');
   //   const largerLgScreen = useMediaQuery('(min-width: 90em)'); //(min-1440)
-  const largerMidScreen = useMediaQuery('(min-width: 64em)'); //(min-1024)lg
   const largerSmallScreen = useMediaQuery('(min-width: 37.51em)'); //(min-600)md green
   //   const smallerSmallScreen = useMediaQuery('(max-width: 37.5em)'); //(max-600)md green
   //   const largerXsScreen = useMediaQuery('(min-width: 22.5625em)'); //(min-361px)sm
@@ -100,7 +97,7 @@ export function CardItem(props) {
       mt={mt}
       pt={pt}
       pb={pb}
-      className="cover-bottom"
+      //className="cover-bottom"
     >
       <Fade top distance="10%" duration={1000}>
         <Layout pt="45px" pb="70px" className="flex-align-center">
@@ -135,26 +132,18 @@ export function CardItem(props) {
                 />
               </Box>
             ) : (
-              <Box
-                pos="relative"
-                //h={imgHeight ?? '538px'}
-                mih={largerMidScreen ? `${imgHeight}px` : '300px'}
-                w="100%"
-              >
-                <Image
-                  width="100%"
-                  height={largerMidScreen ? `auto` : '300px'}
-                  //objectFit='contain'
-                  fit="contain"
-                  src={src}
-                  alt={imageAlt}
-                />
-                {/* <Image
-                                layout='fill'
-                                objectFit='contain'
-                                src={src}
-                                alt={title}
-                                /> */}
+              <Box pos="relative" mx="auto" className="responsive-img">
+                <figure>
+                  <img
+                    width="100%"
+                    height="auto"
+                    loading="lazy"
+                    //layout="fill"
+                    //objectFit="contain"
+                    src={src}
+                    alt={title}
+                  />
+                </figure>
               </Box>
             )}
           </Grid.Col>
@@ -163,7 +152,8 @@ export function CardItem(props) {
             xs={12}
             sm={12}
             md={12}
-            lg={btns?.length < 2 ? 6 : 7}
+            //lg={btns?.length < 2 ? 6 : 7}
+            lg={6}
             pt="xl"
             sx={{ alignSelf: 'center' }}
           >
@@ -207,20 +197,27 @@ export function CardItem(props) {
               {multiText?.map((item, index) => (
                 <>
                   <Box key={index}>
-                    <Title
-                    className='heading-icon'
-                      order={
-                        3 > multiText?.length > 1
-                          ? 4
-                          : multiText?.length > 2
-                            ? 5
-                            : 3
-                      }
-                      mt="md"
-                      fw="400"
-                    >
-                      {item?.title}
-                    </Title>
+                    <Flex align={'center'}>
+                      <Image
+                        src="/assets/images/heading.svg"
+                        width={30}
+                        mr="md"
+                        alt="heading"
+                      />
+                      <Title
+                        order={
+                          3 > multiText?.length > 1
+                            ? 4
+                            : multiText?.length > 2
+                              ? 5
+                              : 3
+                        }
+                        mt="md"
+                        fw="400"
+                      >
+                        {item?.title}
+                      </Title>
+                    </Flex>
 
                     <Text
                       py="10px"
@@ -316,6 +313,7 @@ export function CardItem(props) {
               )}
             </Box>
           </Grid.Col>
+          <Bubble />
         </Layout>
       </Fade>
     </Box>

@@ -3,11 +3,10 @@ import { IconSearch } from '@tabler/icons-react';
 import { Grid } from '@mantine/core';
 import { Flex, Input } from '@mantine/core';
 import Layout from '@/components/LayoutComponent';
-import { content } from '/public/assets/contentJson';
 import { useRouter } from 'next/router';
+import ButtonComponent from '@/components/Button';
 
-const Search = ({ py, mt, searchDisplay }) => {
-  const search = content.blog.search;
+const Search = ({ py, mt, searchDisplay, input_placeholder, button }) => {
   const router = useRouter();
   const [query, setQuery] = useState(router?.query?.query);
 
@@ -30,12 +29,12 @@ const Search = ({ py, mt, searchDisplay }) => {
             <Flex justify="space-between" className="border-radius-gray">
               <Input
                 icon={<IconSearch />}
-                placeholder={search.placeholder}
+                placeholder={input_placeholder}
                 radius="11px"
-                size="md"
+                size="lg"
                 name="query"
                 w="100%"
-                className="focus-radius"
+                className="search-input"
                 defaultValue={query}
                 value={query}
                 onChange={(e) => {
@@ -43,7 +42,14 @@ const Search = ({ py, mt, searchDisplay }) => {
                 }}
               />
 
-              <button className="simple-button">{search?.button}</button>
+              <ButtonComponent
+                mr="4px"
+                mt="3px"
+                size="sm"
+                actionType={'submit'}
+                type="primary"
+                title={button}
+              />
             </Flex>
             <span
               onClick={() => {

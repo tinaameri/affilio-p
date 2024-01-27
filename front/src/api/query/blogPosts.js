@@ -1,4 +1,9 @@
-import { strapiClient, gql, PAGINATION_POSTS_PER_PAGE } from '@/api/clinet';
+import {
+  strapiClient,
+  gql,
+  PAGINATION_POSTS_PER_PAGE,
+  ALL_POSTS,
+} from '@/api/clinet';
 import { CONFIG_QUERY, SEO_QUERY } from './shared';
 
 const BLOG_CATEGORIES = gql`
@@ -44,16 +49,31 @@ export const BLOG_POSTS = gql`
         attributes {
           title
           page_dynamic_sections_blog{
+            __typename
             ... on ComponentPageSectionArticle{
               id
               body
             }
+            
             ... on ComponentPageSectionAccordion{
               id
-              title
-              description
+              heading_title
+              accordion_item{
+                id
+                title
+                description
+              }
               
               
+            }
+            ... on ComponentPageSectionVideo {
+              video {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
             }
           }
           slug: title
@@ -114,6 +134,28 @@ export const BLOG_POSTS_SECTION = gql`
 export async function requestPosts({ categoryName, page, search, title } = {}) {
   const params = {
     size: PAGINATION_POSTS_PER_PAGE,
+    page: page || 1,
+  };
+  if (categoryName) {
+    params.categoryName = categoryName;
+  }
+  if (search) {
+    params.search = search;
+  }
+  if (title) {
+    params.title = title;
+  }
+
+  return await strapiClient.request(BLOG_POSTS, params);
+}
+export async function requestAllPosts({
+  categoryName,
+  page,
+  search,
+  title,
+} = {}) {
+  const params = {
+    size: ALL_POSTS,
     page: page || 1,
   };
   if (categoryName) {

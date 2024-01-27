@@ -35,7 +35,6 @@ export default function Categories({
                 alignItems: 'center',
               }}
             >
-              {console.log('currentCategory', currentCategory)}
               <List.Item mx="2px">
                 <Link href={`/blog/`} passHref>
                   <a aria-label={allPosts?.title}>
@@ -54,8 +53,8 @@ export default function Categories({
                     <button
                       className={`${
                         currentCategory
-                          ? 'simple-button-transparent'
-                          : 'simple-button-outline'
+                          ? 'simple-button-outline'
+                          : 'simple-button-secondary'
                       } simple-button`}
                     >
                       {allPosts?.title}
@@ -75,8 +74,8 @@ export default function Categories({
                         onClick={() => toggleLoading()}
                         className={`${
                           currentCategory === category?.attributes?.slug
-                            ? 'simple-button-outline'
-                            : 'simple-button-transparent'
+                            ? 'simple-button-secondary'
+                            : 'simple-button-outline'
                         } simple-button`}
                       >
                         <Link

@@ -2,6 +2,7 @@ import { GraphQLClient, gql as _gql } from 'graphql-request';
 
 // export const GRAPHQL_ENDPOINT = 'https://wapi1.smartech.ir/index.php?graphql=';
 export const PAGINATION_POSTS_PER_PAGE = 16;
+export const ALL_POSTS = 1600;
 export const PAGINATION_SEARCH_POSTS_PER_PAGE = 100;
 export const CMS_BASE_URL = process.env.NEXT_PUBLIC_CMS_BASE_URL;
 export const GRAPHQL_STRAPI_ENDPOINT = `${CMS_BASE_URL}/graphql`;

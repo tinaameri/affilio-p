@@ -2,7 +2,8 @@ import Layout from '@/components/LayoutComponent';
 import { Grid, Title } from '@mantine/core';
 import BlogCard from './BlogCard';
 import { useMediaQuery } from '@mantine/hooks';
-import { content } from 'public/assets/contentJson';
+import { pages } from 'public/assets/contentJson';
+import Bubble from '@/components/blog/Bubble';
 
 const BlogCardItem = ({
   post,
@@ -22,7 +23,7 @@ const BlogCardItem = ({
     slug={post?.slug}
     date={post?.date}
     img={post?.featuredImage?.data?.attributes?.url}
-    categories={post.categories?.data || []}
+    categories={post.categories?.data[0]?.attributes?.title || []}
     latestTxt={latestTxt}
     latestImg={latestImg}
     imgHeight={imgHeight}
@@ -39,10 +40,16 @@ const BlogCardItem = ({
 
 export default function LatestPost({ posts }) {
   const smallerMidScreen = useMediaQuery('(max-width: 64em)');
-  const latestPosts = content.blog.latest_post;
-
+  const latestPosts = pages.blog.latest_post;
+  const latest_post_bg = pages?.blur_left;
   return (
-    <Layout Layout mt="xl" display={smallerMidScreen && 'none'}>
+    <Layout
+      Layout
+      mt="xl"
+      display={smallerMidScreen && 'none'}
+      bgFluid={latest_post_bg}
+      fluid
+    >
       <Grid.Col xs={12} sm={12} md={6} lg={7} xl={7} mt="xl">
         {posts?.slice(0, 1)?.map((post) => (
           <BlogCardItem
@@ -78,6 +85,7 @@ export default function LatestPost({ posts }) {
           />
         ))}
       </Grid.Col>
+      <Bubble />
     </Layout>
   );
 }

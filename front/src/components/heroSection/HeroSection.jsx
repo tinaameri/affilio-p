@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Text, Box, Col, Flex } from '@mantine/core';
+import { Text, Box, Col, Flex, Skeleton } from '@mantine/core';
 import Layout from '@/components/LayoutComponent';
 import { useMediaQuery } from '@mantine/hooks';
 //import Image from 'next/image';
@@ -19,8 +19,8 @@ export default function HeroSection(props) {
     subtitle,
     button,
     src,
+    image,
     // href,
-    alternativeText,
     topTitleColor,
     bg,
     // pyContent,
@@ -65,69 +65,71 @@ export default function HeroSection(props) {
   // };
   return (
     <>
-      <Box
-        bg={bg}
-        mt={smallerXsScreen ? '78px' : smallerLgScreen ? '80px' : '85px'}
-        pt="xl"
-        pb='300px'
+      <Layout
+        containerClassName={classes.wrapper}
+        className={classes.innerWrapper}
+        fluid
+        bgFluid={bg}
+        mtFluid={smallerXsScreen ? '78px' : smallerLgScreen ? '80px' : '85px'}
+        ptFluid="xl"
+        pbFluid="300px"
       >
-        <Layout
-          containerClassName={classes.wrapper}
-          className={classes.innerWrapper}
-        >
-          <Col span={12} lg={6}>
-            <Box className={classes.content}>
-              {topTitle && (
-                <Text
-                  fz={smallerXsScreen ? '14px' : '16px'}
-                  color={topTitleColor}
-                >
-                  <Markdown text={topTitle} />
-                </Text>
-              )}
-              <Text mx="auto" w="100%" color={titleColor ?? 'primary.4'}>
-                <Markdown text={title} />
+        <Col span={12} lg={6}>
+          <Box className={classes.content}>
+            {topTitle && (
+              <Text
+                fz={smallerXsScreen ? '14px' : '16px'}
+                color={topTitleColor}
+              >
+                <Markdown text={topTitle} />
               </Text>
-              {top_subtitle && (
-                <Text
-                  component="p"
-                  mt="xl"
-                  fw="700"
-                  fz={largerSmallScreen ? 'lg' : 'sm'}
-                  color={topSubtitleColor}
-                >
-                  {top_subtitle}
-                </Text>
-              )}
-              {subtitle && (
-                <Text
-                  w={{ lg: '90%', md: '90%', sm: '78%', xs: '98%' }}
-                  my={smallerXsScreen ? 'xs' : 'xl'}
-                  color={subtitleColor}
-                  fz={largerSmallScreen ? 'lg' : 'md'}
-                  fw="400"
-                >
-                  <Markdown text={subtitle} />
-                </Text>
-              )}
-              {button && (
-                <Flex>
-                  {button?.map((button, index) => (
-                    <Box key={index} m={'xs'}>
-                      <ButtonComponent
-                        type={button?.type}
-                        href={button?.link}
-                        title={button?.title}
-                        targetBlank={button?.newPage}
-                      />
-                    </Box>
-                  ))}
-                </Flex>
-              )}
-            </Box>
-          </Col>
-          <Col span={12} lg={6} sx={{ alignSelf: 'center' }}>
-            {lottie === true ? (
+            )}
+            <Text mx="auto" w="100%" color={titleColor ?? 'primary.4'}>
+              <Markdown text={title} />
+            </Text>
+            {top_subtitle && (
+              <Text
+                component="p"
+                mt="xl"
+                fw="700"
+                fz={largerSmallScreen ? 'lg' : 'sm'}
+                color={topSubtitleColor}
+              >
+                {top_subtitle}
+              </Text>
+            )}
+            {subtitle && (
+              <Text
+                w={{ lg: '90%', md: '90%', sm: '78%', xs: '98%' }}
+                my={smallerXsScreen ? 'xs' : 'xl'}
+                color={subtitleColor}
+                fz={largerSmallScreen ? 'lg' : 'md'}
+                fw="400"
+              >
+                <Markdown text={subtitle} />
+              </Text>
+            )}
+            {button && (
+              <Flex className={classes.button}>
+                {button?.map((button, index) => (
+                  <Box key={index} m={'xs'}>
+                    <ButtonComponent
+                      type={button?.type}
+                      href={button?.link}
+                      title={button?.title}
+                      targetBlank={button?.newPage}
+                    />
+                  </Box>
+                ))}
+              </Flex>
+            )}
+          </Box>
+        </Col>
+        <Col span={12} lg={6} sx={{ alignSelf: 'center' }}>
+          {image === undefined ? (
+            <Skeleton height={'400px'} mt={6} width="100%" radius="1rem" />
+          ) : lottie === true ? (
+            <Box mih={400}>
               <DotLottiePlayer
                 autoplay
                 loop
@@ -135,27 +137,21 @@ export default function HeroSection(props) {
                 src={src}
                 style={{ height: '100%', width: '100%', zIndex: '999' }}
               />
-            ) : (
-              <figure className={classes.image}>
-                <img
-                  src={src}
-                  width="auto"
-                  height="auto"
-                  loading="lazy"
-                  alt={alternativeText}
-                />
-              </figure>
-              // <Box className={classes.wrapperImage}>
-              //   <BackgroundImage
-              //     className={classes.image}
-              //     src={src}
-              //   ></BackgroundImage>
-              // </Box>
-            )}
-          </Col>
-        </Layout>
-        <Bubble />
-      </Box>
+            </Box>
+          ) : (
+            <figure className={classes.image}>
+              <img
+                src={src}
+                width="auto"
+                height="auto"
+                loading="lazy"
+                alt={title}
+              />
+            </figure>
+          )}
+        </Col>
+      </Layout>
+      <Bubble />
     </>
   );
 }

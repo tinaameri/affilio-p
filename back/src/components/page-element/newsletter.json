@@ -15,6 +15,9 @@
     },
     "button": {
       "type": "string"
+    },
+    "caption": {
+      "type": "string"
     }
   }
 }

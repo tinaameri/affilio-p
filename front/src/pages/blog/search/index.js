@@ -17,7 +17,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function SearchPage() {
+export default function SearchPage({ config }) {
   const router = useRouter();
   const [posts, setPosts] = useState(null);
   const [totalSearchPages, setTotalSearchpages] = useState(null);
@@ -38,6 +38,7 @@ export default function SearchPage() {
   useEffect(() => {
     getPosts();
   }, [router?.query?.query]);
+  const header = config?.top_header_blog;
 
   return (
     <>
@@ -55,6 +56,8 @@ export default function SearchPage() {
           currentCategory={null}
           categoriesTab="none"
           paginationDisplay="none"
+          input_placeholder={header?.input_placeholder}
+          button={header?.button}
         />
       </Box>
     </>

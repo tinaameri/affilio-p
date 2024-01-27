@@ -183,6 +183,7 @@ export default function NavbarItem({ links, slug }) {
   const { classes } = useStyles();
   const router = useRouter();
   const smallerLgScreen = useMediaQuery('(max-width: 75em)');
+  const isBlogPage = router.pathname.includes('/blog');
   return (
     <>
       {links.map((item, idx) => (
@@ -196,7 +197,7 @@ export default function NavbarItem({ links, slug }) {
           <HoverCard.Target>
             <Box
               className={`${classes.link} ${
-                router.pathname === slug && 'active'
+                router.pathname === slug || isBlogPage ? 'active' : ''
               } menu-link`}
             >
               {item?.sub_links?.length ? (

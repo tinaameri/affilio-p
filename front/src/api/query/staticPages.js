@@ -32,6 +32,8 @@ export async function getContactUs() {
             title: heading_title
             description: heading_description
             info_description: description
+            lottie_image_animation
+            show_contact_us_form
             image {
               data {
                 id
@@ -54,6 +56,16 @@ export async function getContactUs() {
               id
               title
               link
+              color
+              icon_hover {
+                data {
+                  id
+                  attributes {
+                    url
+                    caption
+                  }
+                }
+              }
               icon {
                 data {
                   id
@@ -285,20 +297,14 @@ button{
               description
         
             }
-            ... on ComponentPageSectionVideo{
-              id
-              title
-              videoBackground:background
-              video{
-                data{
-                  id,
-                  attributes{
+            ... on ComponentPageSectionVideo {
+              video {
+                data {
+                  attributes {
                     url
                   }
-                  
                 }
               }
-         
             }
             ... on ComponentPageSectionTestimonial {
               id

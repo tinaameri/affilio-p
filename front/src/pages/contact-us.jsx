@@ -6,10 +6,10 @@ import { getConfig } from '@/api/query/shared';
 
 import { REVALIDATE_RATE } from '@/api/clinet';
 
-export default function contactUs({ contactUs, contactForm,ContactUsFormDescription }) {
+export default function contactUs({ contactUs, contactForm }) {
   return (
     <>
-      <DynamicPage contactForm={contactForm?.sections} content={contactUs}   />
+      <DynamicPage contactForm={contactForm?.sections} content={contactUs} />
     </>
   );
 }

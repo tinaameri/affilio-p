@@ -1,21 +1,11 @@
 /* eslint-disable no-unused-vars */
-import {
-  Box,
-  Container,
-  Text,
-  List,
-  Grid,
-  TextInput,
-  Button,
-} from '@mantine/core';
+import { Box, Container, Text, List, Grid, MediaQuery } from '@mantine/core';
 import Logo from '@/components/Logo';
 import Link from 'next/link';
-import { useThemeContext } from '@/context/theme';
 import TrustLogo from '@/components/footer/TrustLogo';
-import { useForm } from '@mantine/form';
-import ButtonComponent from '../Button';
 import NewsletterInput from '../NewsletterInput';
-export default function TopFooter({ links, trust, logo, newsletter, source }) {
+import { pages } from 'public/assets/contentJson';
+export default function TopFooter({ links, trust, logo, newsletter }) {
   // const { setActiveTab } = useThemeContext();
   // const handleRouteClick = async (route) => {
   //   //await setActiveTab(route);
@@ -25,23 +15,26 @@ export default function TopFooter({ links, trust, logo, newsletter, source }) {
   // const handleDeactive = (event) => {
   //   event.preventDefault();
   // };
-
   return (
-    <Box bg="radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%);" py="80px" mih="400px">
+    <Box bg={pages?.blue_gradient_bg} pt="80px" pb="50" mih="400px">
       <Container size="1344px">
         <Grid spacing="48px">
           <Grid.Col style={{ minHeight: '50px' }} xs={12} md={12} lg={2} xl={2}>
             <Logo logo={logo} position="footer" />
-            <TrustLogo items={trust} />
+            <MediaQuery smallerThan="lg" styles={{ display: 'none' }}>
+              <Box>
+                <TrustLogo items={trust} />
+              </Box>
+            </MediaQuery>
           </Grid.Col>
           <Grid.Col xs={12} md={12} lg={10} xl={10} px="sm">
             <Grid columns={5}>
               {links.map((item, idx) => (
                 <Grid.Col key={idx} md={2} lg={1}>
-                  <Text component="span" color="white">
+                  <Text component="span" color="white" fw="700">
                     {item.title}
                   </Text>
-                  <List listStyleType="none" size="sm">
+                  <List listStyleType="none" size="sm" mt="lg">
                     {item?.links?.map((subItem, idx) => (
                       <List.Item
                         py="xs"
@@ -56,7 +49,8 @@ export default function TopFooter({ links, trust, logo, newsletter, source }) {
                             >
                               <Text
                                 component="span"
-                                color="white"
+                                color="gray.2"
+                                fz="md"
                                 sx={(theme) => ({
                                   '&:hover': {
                                     color: theme.colors.secondary[0],
@@ -70,7 +64,7 @@ export default function TopFooter({ links, trust, logo, newsletter, source }) {
                         )}
                         {(subItem?.link === null ||
                           subItem?.type === 'disable') && (
-                          <Text component="span" color="white">
+                          <Text component="span" color="gray.2" fz="md">
                             {subItem?.title}
                           </Text>
                         )}
@@ -82,6 +76,12 @@ export default function TopFooter({ links, trust, logo, newsletter, source }) {
               <Grid.Col md={3} lg={2}>
                 <NewsletterInput source="footer" newsletter={newsletter} />
               </Grid.Col>
+
+              <MediaQuery largerThan="lg" styles={{ display: 'none' }}>
+                <Grid.Col>
+                  <TrustLogo items={trust} />
+                </Grid.Col>
+              </MediaQuery>
             </Grid>
           </Grid.Col>
         </Grid>

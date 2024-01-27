@@ -23,7 +23,7 @@ export default function BottomFooter({ copy_right, social }) {
         >
           <Text
             fz="sm"
-            color="#A9B5CB"
+            color="gray.2"
             ta={smallerLgScreen && 'center'}
             py={smallerLgScreen && 'sm'}
             px={smallerLgScreen && 'lg'}

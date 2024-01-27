@@ -1,7 +1,7 @@
-import { Box, Button, Text, TextInput } from '@mantine/core';
+import { Box, Text, TextInput } from '@mantine/core';
 import React, { useState } from 'react';
 import { useForm } from '@mantine/form';
-import { content } from 'public/assets/contentJson';
+import { pages } from 'public/assets/contentJson';
 import ButtonComponent from './Button';
 
 export default function NewsletterInput({ source, newsletter }) {
@@ -13,7 +13,7 @@ export default function NewsletterInput({ source, newsletter }) {
     // functions will be used to validate values at corresponding key
     validate: {
       email: (value) => {
-        if (!value) return content?.newsletter?.empty_validate;
+        if (!value) return pages?.newsletter?.empty_validate;
         if (
           !value
             .toLowerCase()
@@ -21,7 +21,7 @@ export default function NewsletterInput({ source, newsletter }) {
               /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             )
         ) {
-          return content?.newsletter?.validate;
+          return pages?.newsletter?.validate;
         }
 
         return null;
@@ -31,9 +31,9 @@ export default function NewsletterInput({ source, newsletter }) {
   const handleSubmit = async (values) => {
     const userDetails = {
       email: values.email,
-      attributes:{
-      affilio: true,
-      }
+      attributes: {
+        affilio: true,
+      },
     };
     try {
       await window?.Intk('login', userDetails);
@@ -59,10 +59,13 @@ export default function NewsletterInput({ source, newsletter }) {
   };
   return (
     <>
-      <Text component="span" color="white">
+      <Text component="span" color="white" fw="900">
         {newsletter?.title}
       </Text>
       <form onSubmit={form.onSubmit(handleSubmit)}>
+        <Text component="p" c="gray.2" mt="xl">
+          {newsletter?.caption}
+        </Text>
         <Box className="newsletter-section">
           <TextInput
             variant="unstyled"
@@ -72,8 +75,12 @@ export default function NewsletterInput({ source, newsletter }) {
             {...form.getInputProps('email')}
           />
 
-          <ButtonComponent size='sm' actionType="submit" type='primary' title={send ? 'ارسال شد' : newsletter?.button}
-/>
+          <ButtonComponent
+            size="sm"
+            actionType="submit"
+            type="primary"
+            title={send ? 'ارسال شد' : newsletter?.button}
+          />
         </Box>
       </form>
     </>

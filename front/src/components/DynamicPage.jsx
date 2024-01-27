@@ -1,9 +1,9 @@
-import { Container } from '@mantine/core';
+import { Box, Container, Title } from '@mantine/core';
 //import styles from './page.module.scss'
 import HeroSection from '@/components/heroSection/HeroSection';
 //import CustomersCarousel from '@/components/CustomersCarousel';
 //import Heading from '@/components/Heading';
-//import { content } from '/public/assets/contentJson'
+import { pages } from '/public/assets/contentJson';
 import { Card } from '@/components/card';
 //import BlogSection from '@/components/blog/BlogSection';
 //import RequestDemo from '@/components/RequestDemo';
@@ -35,6 +35,8 @@ import Head from 'next/head';
 import CounterAnimation from '@/components/counterAnimation/CounterAnimation';
 import { TopImageCardItems } from '@/components/card/TopImageCard';
 import BlogSection from '@/components/blog/BlogSection';
+import Markdown from './Markdown';
+import AccordionComponent from './accordion/Accordion';
 export default function DynamicPage({ data, config, seo, posts }) {
   const router = useRouter();
   const logo = config?.logo?.header?.data?.attributes?.url;
@@ -171,6 +173,7 @@ export default function DynamicPage({ data, config, seo, posts }) {
         ]}
       />
       <Container fluid className="w-100" size="xl" p="0">
+        {console.log(data, 'data')}
         {data?.map((section, idx) => (
           <React.Fragment key={idx}>
             {
@@ -190,6 +193,7 @@ export default function DynamicPage({ data, config, seo, posts }) {
                     title={section?.title}
                     subtitle={section?.sub_title}
                     src={`${IMAGES_BASE_UR}${section?.media?.data?.attributes?.url}`}
+                    image={section?.media?.data?.attributes?.url}
                     //buttonType={section?.action?.type}
                     button={section?.action}
                     //link={section?.action?.link}
@@ -248,13 +252,16 @@ export default function DynamicPage({ data, config, seo, posts }) {
               ) : section?.__typename ===
                 'ComponentPageSectionVerticalCardList' ? (
                 <>
+                  {console.log(section, '>>>')}
+
                   <TopImageCardItems
                     imageHeight={274}
                     imageWidth={299}
                     cardContent={section?.cards}
                     content={section}
-                    bgSection={VERTICAL_CARD_BACKGROUNDS[section?.verticalCardBackground]}
-
+                    bgSection={
+                      VERTICAL_CARD_BACKGROUNDS[section?.verticalCardBackground]
+                    }
                   />
                 </>
               ) : section?.__typename === 'ComponentPageSectionBlogSection' ? (
@@ -263,12 +270,14 @@ export default function DynamicPage({ data, config, seo, posts }) {
                   <BlogSection
                     posts={posts}
                     title={section?.heading_title}
-                    background={INFO_COLOR[section?.background]}
+                    background={pages?.blog_section_bg}
+                    //background={INFO_COLOR[section?.background]}
                     button={section?.button}
                   />
                 </>
               ) : section.__typename === 'ComponentPageSectionVideo' ? (
                 <>
+                  {console.log(section, '>>>')}
                   <Video
                     content={section}
                     bgSection={CARD_BACKGROUNDS[section?.videoBackground]}
@@ -324,6 +333,19 @@ export default function DynamicPage({ data, config, seo, posts }) {
                     content={section?.Counter}
                     heading_title={section?.heading_title}
                   />
+                </>
+              ) : section?.__typename === 'ComponentPageSectionAccordion' ? (
+                <>
+                  <Box py="xl" my="xl">
+                    <Title order={3} color="primary.4">
+                      {section?.heading_title}:
+                    </Title>
+                  </Box>
+                  <AccordionComponent content={section?.accordion_item} />
+                </>
+              ) : section?.__typename === 'ComponentPageSectionArticle' ? (
+                <>
+                  <Markdown text={section?.body} />
                 </>
               ) : // : section.__typename === "ComponentPageSectionContactUsInfo" ? (
               //   <>

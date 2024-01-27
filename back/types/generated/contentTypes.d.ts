@@ -736,7 +736,7 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
       'api::blog-category.blog-category'
     >;
     page_dynamic_sections_blog: Attribute.DynamicZone<
-      ['page-section.accordion', 'page-section.article']
+      ['page-section.article', 'page-section.accordion', 'page-section.video']
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -786,6 +786,7 @@ export interface ApiConfigConfig extends Schema.SingleType {
     top_banner: Attribute.Component<'page-section.top-banner'>;
     header_button: Attribute.Component<'page-element.drop-down-menu'>;
     newsletter: Attribute.Component<'page-element.newsletter'>;
+    top_header_blog: Attribute.Component<'page-element.top-header-blog'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -825,6 +826,8 @@ export interface ApiContactUsContactUs extends Schema.SingleType {
     image: Attribute.Media & Attribute.Required;
     form_title: Attribute.RichText;
     form_description: Attribute.RichText;
+    lottie_image_animation: Attribute.Boolean;
+    show_contact_us_form: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

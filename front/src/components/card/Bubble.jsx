@@ -1,4 +1,4 @@
-import { createStyles, em } from '@mantine/core';
+import { createStyles } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   circle: {
@@ -12,7 +12,7 @@ const useStyles = createStyles((theme) => ({
       width: '46px',
       height: '46px',
       top: '20%',
-      backgroundColor:theme.colors.primary[0],
+      backgroundColor: theme.colors.primary[0],
       opacity: '0.15',
       right: '-10%',
     },
@@ -20,13 +20,10 @@ const useStyles = createStyles((theme) => ({
       width: '40px',
       height: '40px',
       top: '50%',
-      backgroundColor:theme.colors.primary[0],
+      backgroundColor: theme.colors.primary[0],
       opacity: '0.15',
       left: '-20%',
-
     },
-
-
 
     '@keyframes moveAround': {
       '0%': {
@@ -34,15 +31,15 @@ const useStyles = createStyles((theme) => ({
       },
 
       '25%': {
-        transform: 'translate(15px, 0)',
+        transform: 'translate(25px, 0)',
       },
 
       '50%': {
-        transform: 'translate(15px, 15px)',
+        transform: 'translate(25px, 25px)',
       },
 
       '75%': {
-        transform: 'translate(0, 15px)',
+        transform: 'translate(0, 25px)',
       },
 
       '100%': {
@@ -54,7 +51,7 @@ const useStyles = createStyles((theme) => ({
 export default function Bubble() {
   const { classes } = useStyles();
 
-  const circleCount = 100;
+  const circleCount = 2;
 
   const circleDivs = Array.from({ length: circleCount }, (_, index) => (
     <>

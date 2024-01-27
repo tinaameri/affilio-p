@@ -42,7 +42,10 @@
       "multiple": false,
       "required": true,
       "allowedTypes": [
-        "images"
+        "images",
+        "videos",
+        "audios",
+        "files"
       ]
     },
     "form_title": {
@@ -50,6 +53,13 @@
     },
     "form_description": {
       "type": "richtext"
+    },
+    "lottie_image_animation": {
+      "type": "boolean"
+    },
+    "show_contact_us_form": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -1,11 +1,12 @@
+
 .container{
-  transform: translateY(-200px);
+  transform: translateY(-150px);
+  padding: 13px;
 
 }
 .wrapper{
-  background:url('/assets/images/top-right-blue.png') no-repeat right top ;
-  padding-right:70px;
-  padding-left:40px;
+  background:url('/assets/images/bg/bg-left-circle.svg') no-repeat left bottom,url('/assets/images/bg/bg-right-circle.svg') no-repeat right top;
+  padding: 63px 70px 50px 50px;
   .circle {
     content:'';
     position: absolute;

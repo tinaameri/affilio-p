@@ -71,6 +71,12 @@
       "type": "component",
       "repeatable": false,
       "component": "page-element.newsletter"
+    },
+    "top_header_blog": {
+      "displayName": "top_header_blog",
+      "type": "component",
+      "repeatable": false,
+      "component": "page-element.top-header-blog"
     }
   }
 }

@@ -32,7 +32,15 @@ const convertNumbers2English = function (string) {
     });
 };
 
-export default function RequestDemo({ source, bgColor, pLayout, py, demo,form_title,form_description }) {
+export default function RequestDemo({
+  source,
+  bgColor,
+  pLayout,
+  py,
+  demo,
+  form_title,
+  form_description,
+}) {
   const { dispatch } = useContext(ModalWithReducer);
   //const [notif, setNotif] = useState(null);
 
@@ -153,7 +161,7 @@ export default function RequestDemo({ source, bgColor, pLayout, py, demo,form_ti
           px="xl"
         >
           <Fade right>
-            <Title order={2} fz="36px" color="primary.4">
+            <Title order={3} fz="36px" color="primary.4">
               {form_title}
             </Title>
             <Text color="primary.4" mt="xl">

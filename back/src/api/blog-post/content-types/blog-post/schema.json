@@ -38,8 +38,9 @@
     "page_dynamic_sections_blog": {
       "type": "dynamiczone",
       "components": [
+        "page-section.article",
         "page-section.accordion",
-        "page-section.article"
+        "page-section.video"
       ]
     }
   }

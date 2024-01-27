@@ -12,17 +12,14 @@ export const PAGINATION_SEARCH_POSTS_PER_PAGE = 100;
 export const IMAGES = '/assets/images';
 
 export const HERO_BACKGROUNDS = {
-  blur: `url(${IMAGES}/bg/bg-blur.svg) center/cover no-repeat`,
-
+  blur: `url(${IMAGES}/bg/bg-blur.svg) bottom/cover no-repeat`,
 };
 export const CARD_BACKGROUNDS = {
-  blur: `url(${IMAGES}/bg/bg-blur-card.svg) center/cover no-repeat`,
-
+  blur: `url(${IMAGES}/bg/bg-blur-left-blue.svg)  no-repeat,#F2F6FE`,
 };
 export const VERTICAL_CARD_BACKGROUNDS = {
-dark:'url("/assets/images/top-right-blue.png") no-repeat left top,url("/assets/images/bottom-left-blue.png") no-repeat right bottom,radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%)',
-blur: `url(${IMAGES}/bg/bg-blur-card.svg) center/cover no-repeat`,
-
+  dark: 'url("/assets/images/top-right-blue.png") no-repeat left top,url("/assets/images/bottom-left-blue.png") no-repeat right bottom,radial-gradient(50% 50% at 50% 50%, #173466 0%, #11264B 100%)',
+  blur: `url(${IMAGES}/bg/bg-blur-card.svg) 0 42%/cover no-repeat,#F2F6FE`,
 };
 export const COLOR = {
   green: '#F4FBEC',

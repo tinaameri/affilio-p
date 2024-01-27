@@ -1,4 +1,4 @@
-import { Container, Grid, Box, Flex, Text, Image } from '@mantine/core';
+import { Container, Grid, Box, Flex, Text } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 // import { IconBrandInstagram, IconBrandLinkedin } from '@tabler/icons-react';
 import Layout from '@/components/LayoutComponent';
@@ -8,6 +8,7 @@ import { Fade } from 'react-reveal';
 // import RequestDemo from '@/components/RequestDemo';
 import Social from '@/components/Social';
 import { IMAGES_BASE_UR } from '@/api/clinet';
+import { DotLottiePlayer } from '@dotlottie/react-player';
 
 export default function ContactInfo({ content }) {
   //const smallerXsScreen = useMediaQuery('(max-width: 22.5em)');
@@ -19,7 +20,7 @@ export default function ContactInfo({ content }) {
   // const linkedin = content?.contact_us?.social?.linkedin
   return (
     <Container fluid size="xl" p="0">
-      <Layout pt="100px" pb='xl'>
+      <Layout pt="100px" pb="xl">
         <Heading
           py="70px"
           color="white"
@@ -39,22 +40,22 @@ export default function ContactInfo({ content }) {
         >
           <Fade right>
             <>
-              <Text component="p" fw="400" mt="xl">
+              <Text component="p" fw="900" fz="lg" mt="xl">
                 {content?.info_description}
               </Text>
-              <Box>
+              <Box my="40px">
                 {content?.info?.map((item, index) => (
                   <>
                     {/* {item?.map((info, index) => (
                       console.log(info, 'info')
                     ))} */}
-                    <Box key={index} mb="xl">
+                    <Box key={index}>
                       {/* <Title order={4} color="primary.0">
                       {item?.title}
                     </Title> */}
 
-                      <Box mt="40px">
-                        <Flex align="start" key={index} mt="xl">
+                      <Box>
+                        <Flex align="start" key={index} mt="xs">
                           <Text mr="8px" fw="700" fz="md">
                             {item?.title} :
                           </Text>
@@ -76,16 +77,10 @@ export default function ContactInfo({ content }) {
                   </>
                 ))}
               </Box>
-              <Text
-                component="strong"
-                ff="Yekan Bakh Bold"
-                fz="xl"
-                fw="900"
-                mb="xl"
-              >
+              <Text component="strong" fz="lg" fw="900">
                 {content?.social_title}
               </Text>
-              <Text component="p" fw="400" mt="xl">
+              <Text component="p" fw="400" mt="xs">
                 {content?.social_description}
               </Text>
               <Social social={content?.social_media} position="page" />
@@ -103,14 +98,27 @@ export default function ContactInfo({ content }) {
           order={smallerLgScreen && 1}
         >
           <Fade left>
-            <Image
-              src={`${IMAGES_BASE_UR}${content?.image?.data?.attributes?.url}`}
-              height={content?.image?.data?.attributes?.height}
-              width="100%"
-              withPlaceholder
-              fit="contain"
-              alt="contact-us"
-            />
+            {content?.lottie_image_animation === true ? (
+              <DotLottiePlayer
+                autoplay
+                loop
+                mode="normal"
+                src={`${IMAGES_BASE_UR}${content?.image?.data?.attributes?.url}`}
+                style={{ height: '100%', width: '100%', zIndex: '999' }}
+              />
+            ) : (
+              <figure
+              //className={classes.image}
+              >
+                <img
+                  src={`${IMAGES_BASE_UR}${content?.image?.data?.attributes?.url}`}
+                  width="auto"
+                  height="auto"
+                  loading="lazy"
+                  alt="contact-us"
+                />
+              </figure>
+            )}
           </Fade>
         </Grid.Col>
       </Layout>

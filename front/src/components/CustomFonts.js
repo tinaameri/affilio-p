@@ -8,7 +8,7 @@ export function CustomFonts() {
             fontFamily: 'Yekan Bakh',
             fontDisplay: 'swap',
             fontStyle: 'normal',
-            fontWeight: 400,
+            fontWeight: 'normal',
             lineHeight: 'normal',
             src: `url('/assets/fonts/yekan bakh en 04 regular.woff2') format('woff2')`,
           },
@@ -32,8 +32,8 @@ export function CustomFonts() {
             lineHeight: 'normal',
             src: `url('/assets/fonts/yekan bakh en 06 bold.woff2') format('woff2')`,
           },
-        },      
-          {
+        },
+        {
           '@font-face': {
             fontFamily: 'Yekan Bakh',
             fontDisplay: 'swap',

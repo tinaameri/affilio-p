@@ -47,14 +47,18 @@ export default function BlogCard(props) {
       <Card
         padding="24px 17px 5px 17px"
         bg="white"
-        radius="24px"
+        radius="20px"
         mt="md"
         onClick={() => toggleLoader()}
+        shadow="-10px 10px 25px 0px rgba(27, 82, 176, 0.12)"
         sx={(theme) => ({
-          border: `1px solid ${theme.colors.gray[2]}`,
+          border: `1px solid ${theme.colors.gray[0]}`,
           borderRadius: '15px',
-          '&:hover .mantine-rtl-Title-root': {
+          '&:hover': {
             color: theme.colors.primary[1],
+            border: `1px solid ${theme.colors.secondary[0]}`,
+            opacity: '0.93',
+            boxShadow: '-10px 10px 30px 0px #FDE1D7',
           },
         })}
       >
@@ -123,34 +127,26 @@ export default function BlogCard(props) {
 
                       <Box pos="absolute" bottom="20px" w="95%" left="3%">
                         <Flex justify="space-between" mt="md" w="100%">
+                          <Text
+                            display={dateDisplay}
+                            c="gray.3"
+                            fz="xs"
+                            fw="700"
+                          >
+                            {postDate}
+                          </Text>
                           {/* <Link href='#'>
                         <a> */}
                           <Text
                             component="span"
-                            c="gray.6"
+                            c="primary.0"
                             fz="xs"
-                            fw="900"
-                            sx={(theme) => ({
-                              '&:hover': {
-                                color: theme.colors.gray[9],
-                              },
-                            })}
+                            fw="normal"
                           >
-                            {categories?.length
-                              ? categories[0]?.attributes?.title
-                              : ''}
+                            {categories?.length > 0 ? categories : ''}
                           </Text>
                           {/* </a>
                     </Link> */}
-
-                          <Text
-                            display={dateDisplay}
-                            c="gray.6"
-                            fz="xs"
-                            fw="900"
-                          >
-                            {postDate}
-                          </Text>
                         </Flex>
                       </Box>
                     </>

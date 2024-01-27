@@ -43,7 +43,7 @@ export default function Post({
     data.push(i);
   }
   const logo = config?.logo?.header?.data?.attributes?.url;
-
+  const header = config?.top_header_blog;
   return (
     <>
       <ArticleJsonLd
@@ -79,7 +79,12 @@ export default function Post({
           ],
         }}
       />
-      <TopHeader />
+      <TopHeader
+        heading_title={header?.heading_title}
+        heading_description={header?.heading_description}
+        input_placeholder={header?.input_placeholder}
+        button={header?.button}
+      />
       <LatestPost
         posts={posts}
         categories={categories}

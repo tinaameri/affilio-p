@@ -9,22 +9,31 @@ import {
   Skeleton,
   BackgroundImage,
 } from '@mantine/core';
-import { getPostSlugs, getSinglePost } from '@/api/query/blogPosts';
+import {
+  getCategories,
+  getSinglePost,
+  requestAllPosts,
+} from '@/api/query/blogPosts';
 import Layout from '@/components/LayoutComponent';
 import { useMediaQuery } from '@mantine/hooks';
 import Link from 'next/link';
 import { IconChevronLeft } from '@tabler/icons-react';
 import { IMAGES_BASE_UR } from '@/api/clinet';
-import Markdown from '@/components/Markdown';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import AccordionComponent from '@/components/accordion/Accordion';
+import DynamicPage from '@/components/DynamicPage';
+import { pages } from 'public/assets/contentJson';
+import BlogSection from '@/components/blog/BlogSection';
 
 export async function getStaticPaths() {
-  const slugs = await getPostSlugs();
+  const response = await getCategories();
+
   return {
-    paths: slugs,
+    //paths: slugs,
+    paths: response?.map((category) => ({
+      params: { slug: category?.attributes?.slug },
+    })),
     fallback: true,
   };
 }
@@ -32,6 +41,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const slug = params.slug;
   const response = await getSinglePost(slug);
+  const allPostsResponse = await requestAllPosts({});
+
   if (!response?.post) {
     return {
       notFound: true,
@@ -39,6 +50,7 @@ export async function getStaticProps({ params }) {
   }
   return {
     props: {
+      allPosts: allPostsResponse?.blogPosts?.data,
       post: response?.post?.attributes,
       config: response?.config?.data?.attributes,
     },
@@ -46,7 +58,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function Post({ post }) {
+export default function Post({ post, allPosts }) {
   const router = useRouter();
 
   const smallerXsScreen = useMediaQuery('(max-width: 22.5em)');
@@ -121,6 +133,15 @@ export default function Post({ post }) {
     );
   }
 
+  let relatedPosts = allPosts?.filter(
+    (item) =>
+      item?.attributes?.categories?.data[0]?.attributes?.slug ===
+      currentCategory.attributes.slug,
+  );
+  let relatedPostsData = relatedPosts?.filter(
+    (item) => item?.attributes?.slug !== post?.slug,
+  );
+
   return (
     <>
       {post?.seo?.structuredData !== null && (
@@ -178,10 +199,17 @@ export default function Post({ post }) {
         }}
       />
       <Layout
+        fluid
+        bgFluid={pages?.blur_left}
         mt={smallerXsScreen ? '78px' : smallerLgScreen ? '90px' : '109px'}
       >
         <Grid.Col xs={12}>
-          <Title order={1} ta="center" my={largerSmallScreen ? '40px' : 'xl'}>
+          <Title
+            order={1}
+            className="icon-bottom"
+            ta="center"
+            my={largerSmallScreen ? '40px' : 'xl'}
+          >
             {post?.title}
           </Title>
           <Flex justify="center" mb="15px">
@@ -192,7 +220,7 @@ export default function Post({ post }) {
             </Text>
           </Flex>
           <Box h={largerSmallScreen ? '420px' : '200px'}>
-            {post?.featuredImage?.data?.attributes?.url ? (
+            {post?.featuredImage?.data?.attributes?.url === undefined ? (
               // <Image
               //   //layout='responsive'
               //   fit="cover"
@@ -203,18 +231,19 @@ export default function Post({ post }) {
               //   radius="1rem"
               //   src={`${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`}
               // />
-              <BackgroundImage
-                sx={{ borderRadius: '15px' }}
-                src={`${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`}
-                h={largerSmallScreen ? '420px' : '200px'}
-                py="20%"
-              />
-            ) : (
+
               <Skeleton
                 height={largerSmallScreen ? '420px' : '200px'}
                 mt={6}
                 width="100%"
                 radius="1rem"
+              />
+            ) : (
+              <BackgroundImage
+                sx={{ borderRadius: '15px' }}
+                src={`${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`}
+                h={largerSmallScreen ? '420px' : '200px'}
+                py="20%"
               />
             )}
           </Box>
@@ -244,23 +273,25 @@ export default function Post({ post }) {
         </Grid.Col>
         <Grid.Col>
           <article className="article-post">
-            {post?.page_dynamic_sections_blog?.map((pageSection, idx) => (
-
-              pageSection?.__typename ===
-                'ComponentPageSectionAccordion' ? (
-                <>
-                        <AccordionComponent
-                          content={pageSection?.accordion_item}
-                        />
-
-                </>)
-                : pageSection?.__typename === 'ComponentPageSectionArticle' ? (<></>):null
-              ))
-
-            }
+            <DynamicPage
+              data={post?.page_dynamic_sections_blog}
+              //seo={pageData?.seo}
+              //posts={posts}
+            />
           </article>
         </Grid.Col>
       </Layout>
+      {relatedPosts.length > 0 && (
+        <BlogSection
+          background="primary.6"
+          posts={relatedPostsData}
+          title={pages?.blog?.related_posts}
+          //background={pages?.blog_section_bg}
+          //background={INFO_COLOR[section?.background]}
+          //button={section?.button}
+          withButton={false}
+        />
+      )}
     </>
   );
 }

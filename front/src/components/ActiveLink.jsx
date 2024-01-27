@@ -4,24 +4,24 @@ import Link from 'next/link';
 import React, { Children } from 'react';
 
 const ActiveLink = ({ children, activeClassName, as, ...props }) => {
-  const { asPath } = useRouter();
+  const router = useRouter();
   const child = Children.only(children);
   const childClassName = child.props.className || '';
-
-  // pages/index.js will be matched via props.href
-  // pages/about.js will be matched via props.href
-  // pages/[slug].js will be matched via props.as
   const className =
-    asPath === props.href || asPath === props.as
+    router.asPath === props.href ||
+    router.asPath === props.as ||
+    (router.pathname?.includes('/blog') && props.href?.includes('blog'))
       ? `${childClassName} ${activeClassName}`.trim()
       : childClassName;
 
   return (
-    <Link {...props} as={as}>
-      {React.cloneElement(child, {
-        className: className || null,
-      })}
-    </Link>
+    <>
+      <Link {...props} as={as}>
+        {React.cloneElement(child, {
+          className: className || null,
+        })}
+      </Link>
+    </>
   );
 };
 

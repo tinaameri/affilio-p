@@ -56,63 +56,61 @@ export default function Category({
   config,
 }) {
   const logo = config?.logo?.header?.data?.attributes?.url;
+  const header = config?.top_header_blog;
+
   return (
     <>
-      {console.log(currentCategory, '<<<<')}
-      <Box mt="80px">
-        <NextSeo
-          title={
-            'در جریان آخرین اخبار مارکتینگ تکنولوژی باشید' + currentCategory
-          }
-          // description={post?.seo?.metaDescription}
-          // images={[
-          //   {
-          //     url: `${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`,
-          //   },
-          // ]}
-        />
-        <ArticleJsonLd
-          type="Blog Category"
-          url={`${IMAGES_BASE_UR}/blog`}
-          //title={`${currentCategory} اخبار`}
-          images={`${IMAGES_BASE_UR}${logo}`}
-          description="در جریان آخرین اخبار مارکتینگ تکنولوژی باشید"
-        />
-        <LogoJsonLd
-          logo={`${IMAGES_BASE_UR}${logo}`}
-          url={`${IMAGES_BASE_UR}`}
-        />
-        <NextSeo
-          title={` اخبار ${currentCategory} `}
-          description="در جریان آخرین اخبار مارکتینگ تکنولوژی باشید"
-          additionalMetaTags={[
+      <NextSeo
+        title={'در جریان آخرین اخبار مارکتینگ تکنولوژی باشید' + currentCategory}
+        // description={post?.seo?.metaDescription}
+        // images={[
+        //   {
+        //     url: `${IMAGES_BASE_UR}${post?.featuredImage?.data?.attributes?.url}`,
+        //   },
+        // ]}
+      />
+      <ArticleJsonLd
+        type="Blog Category"
+        url={`${IMAGES_BASE_UR}/blog`}
+        //title={`${currentCategory} اخبار`}
+        images={`${IMAGES_BASE_UR}${logo}`}
+        description="در جریان آخرین اخبار مارکتینگ تکنولوژی باشید"
+      />
+      <LogoJsonLd logo={`${IMAGES_BASE_UR}${logo}`} url={`${IMAGES_BASE_UR}`} />
+      <NextSeo
+        title={` اخبار ${currentCategory} `}
+        description="در جریان آخرین اخبار مارکتینگ تکنولوژی باشید"
+        additionalMetaTags={[
+          {
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1',
+          },
+        ]}
+        openGraph={{
+          type: 'website',
+          url: `${IMAGES_BASE_UR}/blog`,
+          title: `${currentCategory} اخبار`,
+          description: 'در جریان آخرین اخبار مارکتینگ تکنولوژی باشید',
+          images: [
             {
-              name: 'viewport',
-              content: 'width=device-width, initial-scale=1',
+              url: `${IMAGES_BASE_UR}${logo}`,
+              width: 600,
+              height: 800,
+              alt: `${currentCategory} اخبار`,
+              type: 'image/png',
             },
-          ]}
-          openGraph={{
-            type: 'website',
-            url: `${IMAGES_BASE_UR}/blog`,
-            title: `${currentCategory} اخبار`,
-            description: 'در جریان آخرین اخبار مارکتینگ تکنولوژی باشید',
-            images: [
-              {
-                url: `${IMAGES_BASE_UR}${logo}`,
-                width: 600,
-                height: 800,
-                alt: `${currentCategory} اخبار`,
-                type: 'image/png',
-              },
-            ],
-          }}
-        />
+          ],
+        }}
+      />
+      <Box mt="150px">
         <Posts
           posts={posts}
           totalPages={totalPages}
           currentPage={currentPage}
           categories={categories}
           currentCategory={currentCategory}
+          input_placeholder={header?.input_placeholder}
+          button={header?.button}
         />
       </Box>
     </>

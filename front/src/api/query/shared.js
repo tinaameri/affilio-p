@@ -58,6 +58,7 @@ config {
           title
           email_placeholder
           button
+          caption
         }
         footerNavigation {
           id
@@ -71,7 +72,12 @@ config {
           }
 
         }
-
+        top_header_blog{
+          heading_title
+          heading_description
+          input_placeholder
+          button
+        }
         Gdpr {
           id
           heading_title
@@ -122,6 +128,7 @@ config {
               }
             }
           }
+
         }
         trust_logo {
           id
@@ -154,6 +161,7 @@ config {
               }
             }
           }
+
         }
 
    

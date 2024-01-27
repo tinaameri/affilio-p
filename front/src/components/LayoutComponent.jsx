@@ -18,38 +18,51 @@ export default function Layout({
   bgColor,
   sx,
   containerClassName,
+  bgFluid,
+  pbFluid,
+  ptFluid,
+  mtFluid,
+  sxFluid,
 }) {
   const midScreen = useMediaQuery('(max-width: 64em) and (min-width: 37.5em)');
 
   return (
     <Container
-      display={display}
-      bg={bgLayout}
       fluid={fluid}
-      size={midScreen ? 'md' : 'xl'}
-      h="100%"
-      pos="relative"
-      mt={mt}
-      my={my}
-      sx={{ zIndex: '3' }}
-      className={containerClassName}
+      bg={bgFluid}
+      mt={mtFluid}
+      pt={ptFluid}
+      pb={pbFluid}
+      sx={sxFluid}
     >
-      <Grid
-        gutter="xl"
-        align={align}
-        className={className}
-        bg={bgColor}
+      <Container
+        display={display}
+        bg={bgLayout}
+        size={midScreen ? 'md' : 'xl'}
         h="100%"
         pos="relative"
-        sx={sx}
-        mih={mih}
-        px={{ md: 'sm', sm: '0' }}
-        py={py}
-        pt={pt}
-        pb={pb}
+        mt={mt}
+        my={my}
+        sx={{ zIndex: '3' }}
+        className={containerClassName}
       >
-        {children}
-      </Grid>
+        <Grid
+          gutter="xl"
+          align={align}
+          className={className}
+          bg={bgColor}
+          h="100%"
+          pos="relative"
+          sx={sx}
+          mih={mih}
+          px={{ md: 'sm', sm: '0' }}
+          py={py}
+          pt={pt}
+          pb={pb}
+        >
+          {children}
+        </Grid>
+      </Container>
     </Container>
   );
 }

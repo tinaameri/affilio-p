@@ -8,7 +8,7 @@ export default function TrustLogo({ items }) {
     <Box>
       <Flex
         mt="xl"
-        justify={smallerSmallScreen ? 'center' : 'space-around'}
+        justify={smallerSmallScreen ? 'center' : 'flex-start'}
         w={smallerSmallScreen ? '100%' : '90%'}
         wrap="wrap"
       >

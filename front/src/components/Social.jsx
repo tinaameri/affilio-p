@@ -1,5 +1,5 @@
 import { IMAGES_BASE_UR } from '@/api/clinet';
-import { List, Image } from '@mantine/core';
+import { List, Box } from '@mantine/core';
 import Link from 'next/link';
 import React from 'react';
 import { useMediaQuery } from '@mantine/hooks';
@@ -18,25 +18,34 @@ export default function Social({ social, position }) {
       }}
     >
       {social?.map((item, i) => (
-        <List.Item ml="xl" key={i}  sx={{border:`2px solid ${item?.color}`,      
-         '&:hover': {
-          backgroundColor: item?.color,
-        },}} className='social-item'>
+        <List.Item
+          mr="xl"
+          key={i}
+          sx={{
+            border: `2px solid ${item?.color}`,
+            '&:hover': {
+              backgroundColor: item?.color,
+            },
+          }}
+          className="social-item cursor-pointer"
+        >
           <Link prefetch={false} href={item?.link} passHref>
             <a
               className="cursor-pointer"
               target="_blank"
               aria-label={item?.social_title}
             >
-              <figure>
-              <img loading='lazy'
-                width={20}
-                height={20}
-                alt={item?.social_title}
-                src={`${IMAGES_BASE_UR}${item?.icon?.data?.attributes?.url}`}
-              />
-              </figure>
-             
+              <Box
+                h="22px"
+                className="cover-center cursor-pointer"
+                w="22px"
+                bg={`url(${IMAGES_BASE_UR}${item?.icon?.data?.attributes?.url})`}
+                sx={{
+                  '&:hover': {
+                    background: `url(${IMAGES_BASE_UR}${item?.icon_hover?.data?.attributes?.url}) center no-repeat`,
+                  },
+                }}
+              ></Box>
             </a>
           </Link>
         </List.Item>

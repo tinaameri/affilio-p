@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface PageElementAccordionItem extends Schema.Component {
+  collectionName: 'components_page_element_accordion_items';
+  info: {
+    displayName: 'accordion_item';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.RichText;
+  };
+}
+
 export interface PageElementAccordion extends Schema.Component {
   collectionName: 'components_page_element_accordions';
   info: {
@@ -187,6 +198,7 @@ export interface PageElementNewsletter extends Schema.Component {
     title: Attribute.String;
     email_placeholder: Attribute.String;
     button: Attribute.String;
+    caption: Attribute.String;
   };
 }
 
@@ -251,6 +263,7 @@ export interface PageElementSocial extends Schema.Component {
     link: Attribute.String & Attribute.Required;
     icon: Attribute.Media & Attribute.Required;
     color: Attribute.String;
+    icon_hover: Attribute.Media;
   };
 }
 
@@ -284,6 +297,19 @@ export interface PageElementTimelineItem extends Schema.Component {
     date: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
     description: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface PageElementTopHeaderBlog extends Schema.Component {
+  collectionName: 'components_page_element_top_header_blogs';
+  info: {
+    displayName: 'top_header_blog';
+  };
+  attributes: {
+    heading_title: Attribute.String;
+    heading_description: Attribute.Text;
+    input_placeholder: Attribute.String;
+    button: Attribute.String;
   };
 }
 
@@ -347,8 +373,8 @@ export interface PageSectionAccordion extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.RichText;
+    accordion_item: Attribute.Component<'page-element.accordion-item', true>;
+    heading_title: Attribute.String;
   };
 }
 
@@ -610,9 +636,7 @@ export interface PageSectionVideo extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
     video: Attribute.Media & Attribute.Required;
-    background: Attribute.Enumeration<['orange', 'green', 'white']>;
   };
 }
 
@@ -689,6 +713,7 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'page-element.accordion-item': PageElementAccordionItem;
       'page-element.accordion': PageElementAccordion;
       'page-element.button-without-link': PageElementButtonWithoutLink;
       'page-element.button': PageElementButton;
@@ -710,6 +735,7 @@ declare module '@strapi/types' {
       'page-element.social': PageElementSocial;
       'page-element.tab': PageElementTab;
       'page-element.timeline-item': PageElementTimelineItem;
+      'page-element.top-header-blog': PageElementTopHeaderBlog;
       'page-element.trust-logo': PageElementTrustLogo;
       'page-element.vertical-card': PageElementVerticalCard;
       'page-element.words-animation': PageElementWordsAnimation;
