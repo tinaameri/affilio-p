@@ -15,6 +15,7 @@ export default function CustomersCarousel({ customers, heading_title }) {
       fluid
       bgFluid={pages?.bg_caroucel_image}
       sxFluid={{ position: 'relative', zIndex: '-1' }}
+      py='xl'
     >
       <Heading title={heading_title} />
       <Grid.Col xs={12}>
@@ -53,7 +54,7 @@ export default function CustomersCarousel({ customers, heading_title }) {
           >
             {customers?.map((item, index) => (
               <SwiperSlide key={index}>
-                <Box py="xl" h="200px" className="flex-center">
+                <Box pb="50px" h="150px" className="flex-center">
                   <figure className="flex-center customer-box">
                     <img
                       height="auto"

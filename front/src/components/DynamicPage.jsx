@@ -173,7 +173,6 @@ export default function DynamicPage({ data, config, seo, posts }) {
         ]}
       />
       <Container fluid className="w-100" size="xl" p="0">
-        {console.log(data, 'data')}
         {data?.map((section, idx) => (
           <React.Fragment key={idx}>
             {
@@ -252,7 +251,6 @@ export default function DynamicPage({ data, config, seo, posts }) {
               ) : section?.__typename ===
                 'ComponentPageSectionVerticalCardList' ? (
                 <>
-                  {console.log(section, '>>>')}
 
                   <TopImageCardItems
                     imageHeight={274}
@@ -273,11 +271,11 @@ export default function DynamicPage({ data, config, seo, posts }) {
                     background={pages?.blog_section_bg}
                     //background={INFO_COLOR[section?.background]}
                     button={section?.button}
+                    withButton={true}
                   />
                 </>
               ) : section.__typename === 'ComponentPageSectionVideo' ? (
                 <>
-                  {console.log(section, '>>>')}
                   <Video
                     content={section}
                     bgSection={CARD_BACKGROUNDS[section?.videoBackground]}
