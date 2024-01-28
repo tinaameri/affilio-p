@@ -1,8 +1,8 @@
 {
-  "name": "adverge-cms",
+  "name": "affilio-cms",
   "version": "0.1.0",
   "private": true,
-  "description": "Backend for adverge.io",
+  "description": "Backend for affilio.ir",
   "license": "MIT",
   "author": {
     "name": "Smartech"

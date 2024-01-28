@@ -705,7 +705,7 @@
     ckeditor5 "40.0.0"
     lodash-es "4.17.21"
 
-"@ckeditor/strapi-plugin-ckeditor@file:/Volumes/Development/Affilio/back/src/plugins/strapi-plugin-ckeditor-fork":
+"@ckeditor/strapi-plugin-ckeditor@file:/Users/farhan/workspace/affilio/website/back/src/plugins/strapi-plugin-ckeditor-fork":
   version "0.0.10"
   resolved "file:src/plugins/strapi-plugin-ckeditor-fork"
   dependencies:

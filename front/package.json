@@ -1,7 +1,10 @@
 {
-  "name": "base",
+  "name": "affilio_front",
   "version": "0.1.0",
   "private": true,
+  "dev": "PORT=1351 next dev",
+  "build": "next build",
+  "start": "PORT=1351 next start",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
